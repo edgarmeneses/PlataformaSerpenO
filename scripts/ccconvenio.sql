@@ -10,5 +10,5 @@
 ALTER TABLE CONVENIO ADD (
 
 CONSTRAINT con_fk_nit FOREIGN KEY (fondo) REFERENCES fondo(nit),
-CONSTRAINT con_fk_nite FOREIGN KEY (entidad) REFERENCES entidad(nit)
+CONSTRAINT con_fk_nite FOREIGN KEY (entidad) REFERENCES entidad(id)
 );

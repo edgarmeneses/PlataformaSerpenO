@@ -11,6 +11,6 @@ id     		 INT(2)     	NOT NULL    AUTO_INCREMENT,
 url     	 VARCHAR(50)  	NOT NULL,
 puerto  	 INT(6)       	NOT NULL,
 nombre_bd 	 VARCHAR(20) 	NOT NULL,
-nit	   	 VARCHAR(11)	    NULL,
+nit	   	 	 INT(11)	    NULL,
 PRIMARY KEY(id)
 );
