@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/04/2015 11:13:06 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.Agreement" table="convenio">
+        <id column="id" name="id" type="int">
+            <generator class="assigned" />
+        </id>  
+        <property column="beneficio" name="benefit" type="double"/>
+        <many-to-one column="fondo" name="nit" class="com.serpen.logic.entity.PensionFund" fetch="join"/>
+        <many-to-one column="entidad" name="nitEntity" class="com.serpen.logic.entity.Entity" fetch="join"/>
+    </class>
+</hibernate-mapping>

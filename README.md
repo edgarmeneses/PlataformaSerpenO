@@ -1,2 +1,0 @@
-# PlataformaSerpenO
-Proyecto Software

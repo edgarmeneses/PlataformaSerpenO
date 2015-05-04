@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1/05/2015 01:37:11 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.User" table="usuario">
+        <id name="nickname"   length="12" type="int">
+            <column name="nickname" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" length="20" type="string">
+            <column name="constraseña" />
+        </property>
+        <property name="answer" length="50" type="string">
+            <column name="respuesta" />
+        </property>
+        <many-to-one name="rol"  class="com.serpen.logic.entity.Role" fetch="join">
+            <column name="rol" />
+        </many-to-one>
+        <property name="state" length="1" type="string">
+            <column name="estado" />
+        </property>
+        <property name="name" length="15" type="string">
+            <column name="nombre" />
+        </property>
+        <property name="lastName" length="15" type="string">
+            <column name="apellido" />
+        </property>
+        <property name="address" length="25" type="string">
+            <column name="direccion" />
+        </property>
+        <property name="numberPhone" length="15" type="string">
+            <column name="telefono" />
+        </property>
+        <property name="business" length="20" type="string">
+            <column name="empresa" />
+        </property>
+        <property name="salary"  type="double">
+            <column name="salario" />
+        </property>
+        <property name="affiliate" length="1" type="string">
+            <column name="afiliado" />
+        </property>
+        <many-to-one name="pensionFund" class="com.serpen.logic.entity.PensionFund" fetch="join">
+            <column name="fondo" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

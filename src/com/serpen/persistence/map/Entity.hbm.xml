@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/04/2015 07:37:16 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.Entity" table="entidad">
+		<!-- llave primaria de la clase -->
+        <id  column="id" length="11" name="id" type="int">
+            <generator class="increment" />
+        </id> 
+        <property column="nit" length="1" name="nit" type="string"/>      
+        <property column="tipo_entidad" length="1" name="entityType" type="char"/>      
+        <property column="nombre" length="15" name="name" type="string"/>       
+        <property column="descripcion" length="30" name="description" type="string"/>        
+        <set name="agreements">
+            <key column="entidad"/>
+            <one-to-many class="com.serpen.logic.entity.Agreement"/>
+        </set>      
+        <one-to-one name="conection"  class="com.serpen.logic.entity.Conection"/>
+    </class>  
+</hibernate-mapping>
