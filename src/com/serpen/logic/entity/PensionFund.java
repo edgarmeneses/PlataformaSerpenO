@@ -108,8 +108,8 @@ public class PensionFund {
 	@Override
 	public String toString() {
 		return "PensionFund [nit=" + nit + ", name=" + name + ", porcent="
-				+ porcent + ", collectionAgreement=" + collectionAgreement
-				+ ", collectionUser=" + collectionUser + "]";
+				+ porcent + "]";
 	}
+	
 
 }
