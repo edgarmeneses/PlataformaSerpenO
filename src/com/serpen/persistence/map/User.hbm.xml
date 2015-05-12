@@ -17,7 +17,7 @@
         <many-to-one name="rol"  class="com.serpen.logic.entity.Role" fetch="join">
             <column name="rol" />
         </many-to-one>
-        <property name="state" length="1" type="string">
+        <property name="state" length="1" type="char">
             <column name="estado" />
         </property>
         <property name="name" length="15" type="string">
@@ -38,7 +38,7 @@
         <property name="salary"  type="double">
             <column name="salario" />
         </property>
-        <property name="affiliate" length="1" type="string">
+        <property name="affiliate" length="1" type="char">
             <column name="afiliado" />
         </property>
         <many-to-one name="pensionFund" class="com.serpen.logic.entity.PensionFund" fetch="join">

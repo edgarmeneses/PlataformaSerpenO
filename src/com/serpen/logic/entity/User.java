@@ -22,7 +22,7 @@ public class User {
 	/**
 	 * indica el estado que tiene el usuario
 	 */
-	private String  state;
+	private char  state;
 	/**
 	 * nombre de pila del usuario
 	 */
@@ -50,7 +50,7 @@ public class User {
 	/**
 	 * tipo de afilliacion que tiene si es cotizante o pensionado
 	 */
-	private String affiliate;
+	private char affiliate;
 	/**
 	 * fondo de penciones a la que pertenece el usuario
 	 */
@@ -58,15 +58,15 @@ public class User {
 	/**
 	 * estado activo del suaurio
 	 */
-	public static final String STATE_TYPE_ACTIVE = "A";
+	public static final char STATE_TYPE_ACTIVE = 'A';
 	/**
 	 * tipo de afiliacion contisante
 	 */
-	public static final String AFFILIATE_TYPE_CONTRIBUTOR="C";
+	public static final char AFFILIATE_TYPE_CONTRIBUTOR='C';
 	/**
 	 * tipo de afiliacion pensionado
 	 */
-	public static final String AFFILIATE_TUPE_PENSIONARY = "P";
+	public static final char AFFILIATE_TUPE_PENSIONARY = 'P';
 	/**
 	 * Construcot por omision para la clase User.java
 	 */
@@ -91,9 +91,8 @@ public class User {
 	 */
 	public User(int nickname, String password, String answer, Role rol,
 			String name, String lastName, String address,
-			String numberPhone, String business, double salary, String affiliate,
+			String numberPhone, String business, double salary, char affiliate,
 			PensionFund pensionFund) {
-		super();
 		this.nickname = nickname;
 		this.password = password;
 		this.answer = answer;
@@ -260,18 +259,18 @@ public class User {
 	public PensionFund getPensionFund() {
 		return pensionFund;
 	}
-	public String getAffiliate() {
+
+	public char getState() {
+		return state;
+	}
+	public void setState(char state) {
+		this.state = state;
+	}
+	public char getAffiliate() {
 		return affiliate;
 	}
-	public void setAffiliate(String affiliate) {
+	public void setAffiliate(char affiliate) {
 		this.affiliate = affiliate;
-	}
-
-	public String getState() {
-		return STATE_TYPE_ACTIVE;
-	}
-	public void setState(String state) {
-		this.state = state;
 	}
 	/**
 	 * asigna un fondo de penciones
@@ -280,11 +279,6 @@ public class User {
 	public void setPensionFund(PensionFund pensionFund) {
 		this.pensionFund = pensionFund;
 	}
-
-
-	/**
-	 * metodo delegado toString
-	 */
 	@Override
 	public String toString() {
 		return "User [nickname=" + nickname + ", password=" + password
@@ -294,4 +288,5 @@ public class User {
 				+ business + ", salary=" + salary + ", affiliate=" + affiliate
 				+ ", pensionFund=" + pensionFund + "]";
 	}
+
 }

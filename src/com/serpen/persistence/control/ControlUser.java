@@ -1,267 +1,173 @@
 package com.serpen.persistence.control;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia
+ * @author Eliana Ayala
+ * 		   Daniela Blanco
+ * 		   Diana Gonzalez
+ * 	       Edgar Meneces
+ *Clase  que se  tiene los controles de Usuario
+ */
 import java.util.List;
 
-import org.atmosphere.interceptor.SSEAtmosphereInterceptor;
 import org.hibernate.Criteria;
-import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.PensionFund;
 import com.serpen.logic.entity.Role;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.conf.HibernateUtil;
-import com.vaadin.ui.Notification;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 /**
- * Clase que permite controlar las acciones de la clase Usuario.java
- * @author Edgar Meneses
- *
+ * Atributos de la clase Control  Usuario
  */
 public class ControlUser {
-	/**
-	 * sesion de la base de datos
-	 */
-	private Session session;
-	/**
-	 * permite realizar transacciones con la base de datos 
-	 */
-	private Transaction transaction;
 
-	private final String [][] SELECT_LIST ={{"lista","rol"},{"nickname","union"}};
-
+/**
+ * Atributos de la clase control
+ */
+	Session session;
+	Transaction  transaction;
 	/**
-	 * Constructor de la clase ControlUser.java
-	 * @param session sesion
-	 * @param transaction transaccion
+	 * Constructor de la clase Control Conection
+	 * @param session
+	 * @param transaction
 	 */
-	public ControlUser(Session session, Transaction transaction) {
-		this.session = session;
-		this.transaction = transaction;
+	public ControlUser(Session session,Transaction transaction) {
+		// TODO Auto-generated constructor stub
+		this.session=session;
+		this.transaction=transaction;	
 	}
+    
 	/**
-	 * metodo que permite insertar un usuario en la tabla Usuario de la base de datos
-	 * @param nickname nombre de ingreso
-	 * @param pasword contraseña
-	 * @param answer respuesta de seguridad
-	 * @param role rol
-	 * @throws ErrorConnection 
-	 */
-	public void insert (int nickname, String pasword, String answer, Role role)
-			throws ErrorConnection{
-		try{
-			User user = new User();
-			user.setNickname(nickname);
-			user.setPassword(pasword);
-			user.setState((User.STATE_TYPE_ACTIVE));
-			user.setRol(role);
-			user.setAnswer(answer);
-
-			session.save(user);
-			transaction.commit();
-
-		}catch(Exception e){
-			throw new ErrorConnection("no se pudo insertar el dato"
-					+ " Casua: "+e.getCause());
-		}
-	}
-	/**
-	 * metodo que pemite consultar todos los uaurios iinsertados en la tabla Usuario
-	 * @return usuarios
-	 * @throws ErrorConnection
-	 */
-	public List<User> list() throws ErrorConnection{
-		try{
-			List<User> listaUsuario = session.createQuery(
-					"from usuario " +
-					"in class com.serpen.logic.entity.User order by nickname").list();
-			for (int i = 0; i<listaUsuario.size(); i++) {
-				User user = listaUsuario.get(i);
-			}
-			if(!listaUsuario.isEmpty()){
-				return listaUsuario;
-			}else{
-				throw new ErrorConnection("no hay datos en la entidad usuario");
-			}
-		}catch(Exception e){
-			throw new ErrorConnection("No se pudo realizar la coneccion"
-					+ " Causa: "+ e.getCause());
-		} 
-	}
-	/**
-	 * TIENE ERRORES
-	 * metodo para consultar todos los uaurios que tienen un rol especifico  
-	 * @param rol
-	 * @return usuarios
-	 * @throws ErrorConnection
-	 */
-	public List<User> list(int rol) throws ErrorConnection{
-		try{
-			String sql = "from com.serpen.logic.entity.User u " +
-					"WHERE u.rol.id = "+ rol;
-
-			List<User> listaUsuario = session.createQuery(sql).list();
-
-			return listaUsuario;
-		}catch(Exception e){
-			throw new ErrorConnection("No se pudo realizar la consulta"
-					+ " Causa: "+e.getCause());
-		}
-	}
-	/**
-	 * metodo que permite listar los usuarios decuerdo a una palabra clave que 
-	 * representa el nickname
-	 * se haceun filtrado por nikname
+	 * Metodo que se encarga de insertar un Usuario en la base de datos
 	 * @param nickname
-	 * @return
-	 */
-	public List<User> list(String nickname){
-		String sql="from com.serpen.logic.entity.User where nickname like '%"+nickname+"%'";
-		List<User> users = session.createQuery(sql).list();
-		//Criteria criteria = session.createCriteria(User.class);c
-		//criteria.add(Restrictions.like("answer", "%D%"));
-		//List<User> users =  session.createQuery(sql).list();
-		return users;
-
-	}
-	public List<User> list(String nickname, String rol){
-
-		String sql="from com.serpen.logic.entity.User u WHERE u.nickname like '%"+nickname+"%'"
-				+" AND u.rol.name = '"+ rol+"'";
-		List<User> users = session.createQuery(sql).list();
-		//Criteria criteria = session.createCriteria(User.class);c
-		//criteria.add(Restrictions.like("answer", "%D%"));
-		//List<User> users =  session.createQuery(sql).list();
-		return users;
-	}
-
-	public List<User> list(int estdoNickname, int estadoRol, String nickname, String rol,ControlRole role) throws ErrorConnection{
-		try{
-			switch (SELECT_LIST[estdoNickname][estadoRol]) {
-			case "lista":
-				return list();
-			case "rol":
-				return list(role.consultName(rol).getId());
-			case "nickname":
-				return list(nickname);
-			case "union":
-				return list(nickname, rol);
-				
-			default:
-				return null;
-			}
-		}catch(Exception e){
-			throw new ErrorConnection("No se pudo realizar la consulta"
-					+ " Causa: "+e.getCause());
-		}
-	}
-	/**
-	 * metodo para consultar un usuario segun su nickname
-	 * @param nickname nickname
-	 * @return usuario
+	 * @param password
+	 * @param answer
+	 * @param role
+	 * @param name
+	 * @param lastName
+	 * @param address
+	 * @param numberPhone
+	 * @param business
+	 * @param salary
+	 * @param affiliate
+	 * @param pensionFund
 	 * @throws ErrorConnection
 	 */
-	public User consult(int nickname) throws ErrorConnection{
-		try{
-			User user = (User) session.load(User.class, nickname);
+	public void insert(int nickname,String password,String answer,
+			Role role,String name,String lastName,
+			String address,String numberPhone,String business,
+			double salary,char affiliate,PensionFund pensionFund)throws ErrorConnection{
 
-			if(user != null){
-				return user;
-			}
-			else{
-				throw new ErrorConnection("No hay datos para el usuario"
-						+ " " +user.getNickname());
-			}
-		}
-		catch(Exception e){
-			throw new ErrorConnection("No se pudo realizar la conecion");
-		}
+		transaction = session.beginTransaction();
+		Role rol= role;
+		rol = (Role) session.load(Role.class,rol.getId());
+		PensionFund pensionFun = pensionFund;
+		pensionFun = (PensionFund) session.load(PensionFund.class, pensionFun.getNit());
+		User user = new User();
+		user.setNickname(nickname);
+		user.setPassword(password);
+		user.setAnswer(answer);
+		user.setRol(rol);
+		user.setName(name);
+		user.setLastName(lastName);
+		user.setAddress(address);
+		user.setNumberPhone(numberPhone);
+		user.setBusiness(business);
+		user.setSalary(salary);
+		user.setAffiliate(affiliate);
+		user.setPensionFund(pensionFun);
+		user.setState(user.STATE_TYPE_ACTIVE);
+		session.save(user);	
+		transaction.commit();
+		session.close();
 	}
+/**
+ * metodo que se encarga de consultar un Usuario  por el id
+ * @param id
+ * @return
+ * @throws ErrorConnection
+ */
+	public User consultId(int id)throws ErrorConnection{
+
+		User user =  (User) session.load(User.class, id);
+		return user;
+	}
+
 	/**
-	 * METODO NO APLICABLE DE MOMENTO
+	 * Metodo que se encarga de consultar un usuario por el nombre
 	 * @param name
 	 * @return
 	 * @throws ErrorConnection
 	 */
-	public User consultName(String name) throws ErrorConnection{
+	public User consultName(String name)throws ErrorConnection{
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.like("name", name));
 
-		User user = (User) session.load(User.class,name);
-		System.out.println(user);
-		//		sesion.close();
-		if(user != null){
-			return user;
-		}
-		else{
-			throw new ErrorConnection("no se encnto ningun rol");
-		}
+		return (User) criteria.list().get(0);
+	}
+    /**
+     * Metodo que se encarga de actualizar un usuario
+     */
+	public void update(int nickname,String password,String answer,
+			String name,String lastName,
+			String address,String numberPhone)throws ErrorConnection{
+		//transaction = session.beginTransaction();
+		User user = consultId(nickname);	
+		user.setPassword(password);
+		user.setAnswer(answer);
+		user.setName(name);
+		user.setLastName(lastName);
+		user.setAddress(address);
+		user.setNumberPhone(numberPhone);
+		session.update(user);
+		transaction.commit();		
+		session.close();
 	}
 	/**
-	 * metodo para elimina un usuario
-	 * @param nickname nickname
+	 * Metodo que se encarga de remover un Usuario
+	 * @param nickname
 	 * @throws ErrorConnection
 	 */
-	public void remove(int nickname) throws ErrorConnection{
-		try{
-			// Transaction transaction = session.beginTransaction();
-			User user = consult(nickname);
-			System.out.println(user);
-			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session, transaction);
-			controlHistoryUser.insert(user.getNickname(), user.getRol().getId());
+	public void removeUser(int nickname)throws ErrorConnection{
 
+		User user =consultId(nickname);
+		session.delete(user);
+		transaction.commit();
+		session.close();
+	}
+	/**
+	 * Metodo que se encarga de listar los usuarios
+	 * @param name
+	 * @return lista de usuario
+	 */
+	public List<User> listUser(String name){
 
-			session.delete(user);
-			//transaction.commit();
-		}catch(Exception e){
-			throw new ErrorConnection("no se pudo eliminar el usuario "
-					+ "Causa: "+ e.getCause());
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.like("name", "%"+name+"%"));	
+		return criteria.list();	
+	}
 
+	public static void main(String[] args) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		ControlUser controlUser= new ControlUser(session,transaction);
+		//		Role role = (Role) session.load(Role.class, 1);
+		//		PensionFund pensionFund = (PensionFund) session.load(PensionFund.class,"123r45-1-1");
+		//		controlUser.insert(1, "123ed", "ProfeCarlos", role,"Eliana", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund);
+		// controlUser.consultId(1);
+		// System.out.println(controlUser.consultName("Eliana"));
+		//controlUser.update(1,"Actualizacion", "Juan Jose", "Jesi", "Ramirez", "Calle", "312234354");
+		try {
+			controlUser.removeUser(1);
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
-
-	public void remover() throws ErrorConnection{
-		List<User> list = list();
-		for (User user : list) {
-			remove(user.getNickname());
-			transaction.commit();
-		}
-
-	}
-
-	public void removeRol(int rol, ControlHistoryUser controlHistoryUser) throws ErrorConnection{
-		try{
-			List<User> listaUsuario = session.createQuery(
-					"from usuario " +
-							"in class com.serpen.logic.entity.User "
-							+ "where com.serpen.logic.User.rol.id= " +rol).list();
-			for (int i = 0; i<listaUsuario.size(); i++) {
-				User user = listaUsuario.get(i);
-				remove(user.getNickname());
-			}
-
-		}catch(Exception e){
-			throw new ErrorConnection("No se pudo realizar la coneccion"
-					+ " Causa: "+ e.getCause());
-		} 
-	}
-
-	public void upDate(int nickname, String password, String answer) throws ErrorConnection{
-
-		try{
-			User user = consult(nickname);
-
-			user.setPassword(password);  
-			user.setAnswer(answer);
-
-			session.update(user);
-
-			transaction.commit();
-			session.close();
-		}catch(Exception e){
-			throw new ErrorConnection("no se pudo editar el suario "
-					+ "Causa: "+ e.getCause());
-		}
-	}
-
 
 }
+
