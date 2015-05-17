@@ -20,6 +20,9 @@ public class EntityEducation extends CustomComponent implements View{
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setVisible(true);
 		
+		FormLayout horizontal = new FormLayout();
+		horizontal.setVisible(true);
+		
 		panelEducation= new PanelEntityEducation();
 		
 		
@@ -28,7 +31,8 @@ public class EntityEducation extends CustomComponent implements View{
 		horizontalLayout.addComponent(panelEducation);
 		horizontalLayout.addComponent(pServiceEducation);
 		
-		layout.addComponent(horizontalLayout);
+		horizontal.addComponent(horizontalLayout);
+		layout.addComponent(horizontal);
 		setCompositionRoot(layout);
 		setSizeFull();
 		
