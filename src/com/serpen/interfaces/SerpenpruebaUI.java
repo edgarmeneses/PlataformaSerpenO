@@ -18,6 +18,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
 //
 
@@ -33,33 +34,20 @@ public class SerpenpruebaUI extends UI{
 
 	@Override
 	protected void init(VaadinRequest request) {
-		setContent(new HousingAgreement());
-		setSizeFull();
-//		//creacin de la sesion de hibernate para conectar los mapeos con la base da datos
-//		Session sesion = HibernateUtil.getSessionFactory().openSession();
-//		/*se utiliza cuando la consulta necesita una trasnaccion es decir para
-//		 * consultas tipo insert, update, delete
-//		 */
-//		Transaction transaction = sesion.beginTransaction();
-//		/*
-//		 * clase control general que permite manejar los metodos de insert, delete, update,
-//		 * select... de cada tabla
-//		 */
-//		ControlGeneral control = new ControlGeneral(sesion,transaction);
-//		
-//		/*
-//		 * navegator se utiliza para crear las navegaciones entre las paginas
-//		 */
-//		Navigator navigator = new Navigator(this, this);
-//		/*
-//		 * se esta creando la pagina logue y se esta agregando como navegacion
-//		 * 
-//		 * para la clase question se hace la creacion de la ventana y se agrega su navegacion
-//		 * al inicar dado que es un link
-//		 */
-//		navigator.addView(Login.NAMElOGUEO, new Login(navigator, control) );
-//		navigator.addView(Question.NAMEQUESTION, new Question(navigator, control));
+		
+		VerticalLayout layout = new VerticalLayout();
+		setContent(layout);
+		
 
+//		EntityEducation question = new EntityEducation();
+//		layout.addComponent(question);
+//		
+//		EntityPensions pensions= new EntityPensions();
+//		layout.addComponent(pensions);
+		
+		HomePageFound pFound = new HomePageFound();
+		layout.addComponent(pFound);
+		
 	}
 
 }
