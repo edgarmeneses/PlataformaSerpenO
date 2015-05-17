@@ -2,6 +2,7 @@ package com.serpen.interfaces;
 
 import com.sun.xml.internal.bind.v2.util.FatalAdapter;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 /**
@@ -14,41 +15,31 @@ import com.vaadin.ui.VerticalLayout;
  */
 public class HousingAgreement extends CustomComponent{
 	
-	private Label featureTitle;
-	
-	private Label benefitTitle;
-	
-	private Label feature;
-	
-	private Label benefit;
+	private PanelHousingEntity entity;
+	private PanelHousingServices services;
+	private PanelGeneral options;
 	
 	public HousingAgreement() {
 		// TODO Auto-generated constructor stub
-		VerticalLayout layout = new VerticalLayout();
+		HorizontalLayout layout = new HorizontalLayout();
+		//layout.setSizeFull();
+		layout.setVisible(true);
 		
-		featureTitle = new Label("Caracteristicas");
-		featureTitle.setWidth("120px");
-		featureTitle.setHeight("280px");
+		entity = new PanelHousingEntity();
+		setWidth("20%");
 		
-		feature = new Label("Caractristicas....");
-		feature.setWidth("120px");
-		feature.setHeight("100px");
+		services = new PanelHousingServices();
+		services.setWidth("60%");
 		
-		benefitTitle = new Label("Beneficios:");
-		benefitTitle.setWidth("120px");
-		benefitTitle.setHeight("150px");
-	
-		benefit = new Label("Beneficios: -.......");
-		benefit.setWidth("120px");
-		benefit.setHeight("200px");
+		options = new PanelGeneral();
+		options.setWidth("20%");
 		
-		layout.addComponent(featureTitle);
-		layout.addComponent(feature);
-		layout.addComponent(benefitTitle);
-		layout.addComponent(benefit);
+		layout.addComponent(entity);
+		layout.addComponent(services);
+		layout.addComponent(options);
 		
 		setCompositionRoot(layout);
-	
+		setSizeFull();
 	}
 	
 	

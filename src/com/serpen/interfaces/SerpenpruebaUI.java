@@ -33,7 +33,8 @@ public class SerpenpruebaUI extends UI{
 
 	@Override
 	protected void init(VaadinRequest request) {
-		setContent(new HomePageFound());
+		setContent(new HousingAgreement());
+		setSizeFull();
 //		//creacin de la sesion de hibernate para conectar los mapeos con la base da datos
 //		Session sesion = HibernateUtil.getSessionFactory().openSession();
 //		/*se utiliza cuando la consulta necesita una trasnaccion es decir para
