@@ -21,10 +21,12 @@ public class HomePageFound extends CustomComponent implements TabSheet.SelectedT
 
 	public EntityPensions pensions = new EntityPensions();
 	public EntityEducation education = new EntityEducation();
+	public HousingAgreement housing = new HousingAgreement();
+	public TourismAgreement tourism = new TourismAgreement(); 
 //	public Label tab1 = new Label("holaaa1");
 //	public Label tab2 = new Label("holaa2");
-	public Label tab3 = new Label("hola3");
-	public Label tab4 = new Label("holaaaa4");
+//	public Label tab3 = new Label("hola3");
+//	public Label tab4 = new Label("holaaaa4");
 
 	public HomePageFound() {
 
@@ -38,11 +40,11 @@ public class HomePageFound extends CustomComponent implements TabSheet.SelectedT
 		tabsheet.addTab(education, "Educacion", null);
 		tabsheet.getTab(education).setVisible(true);
 
-		tabsheet.addTab(tab3, "Vivienda", null);
-		tabsheet.getTab(tab3).setEnabled(true);
+		tabsheet.addTab(housing, "Vivienda", null);
+		tabsheet.getTab(housing).setEnabled(true);
 		
-		tabsheet.addTab(tab4, "Turismo", null);
-		tabsheet.getTab(tab4).setEnabled(true);
+		tabsheet.addTab(tourism, "Turismo", null);
+		tabsheet.getTab(tourism).setEnabled(true);
 	}
 
 	public void selectedTabChange(SelectedTabChangeEvent event) {
