@@ -69,6 +69,7 @@ public class PanelServiceEducation extends Panel{
      	pnlTable.setSizeFull();
 		pnlTable.setWidth("1000px");
 		pnlTable.setHeight("400px");
+		pnlTable.setVisible(true);
 
 		lbltitle = new Label("Convenio Educativo");		
 		lbltitle.setWidth("200px");
