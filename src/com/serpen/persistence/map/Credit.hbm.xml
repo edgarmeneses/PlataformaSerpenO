@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.Credit" table="CREDITO">
+        <id name="id" type="integer"  length="5">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        
+        <property name="amount" type="double" length="9" precision="2">
+            <column name="monto" />
+        </property>
+        
+        <property name="share" type="integer" length="3">
+            <column name="cuotas" />
+        </property>
+        
+        <many-to-one name="user" class="com.serpen.logic.entity.User" fetch="join">
+            <column name="usuario" />
+        </many-to-one>
+        
+        <many-to-one name="financialEntity" class="com.serpen.logic.entity.FinancialEntity" fetch="join">
+            <column name="entidad_financiera" />
+        </many-to-one>
+        
+        <set name="paymentPlans">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="com.serpen.logic.entity.PaymentPlan" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

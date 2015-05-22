@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.FinancialEntity" table="FINANCIALENTITY">
+        <id name="nit" type="java.lang.String">
+            <column name="NIT" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="numberPhone" type="java.lang.String">
+            <column name="NUMBERPHONE" />
+        </property>
+        <set name="accounts" table="ACCOUNT" inverse="false" lazy="true">
+            <key>
+                <column name="NIT" />
+            </key>
+            <one-to-many class="com.serpen.logic.entity.Account" />
+        </set>
+        <set name="credits" table="CREDIT" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="NIT" />
+            </key>
+            <one-to-many class="com.serpen.logic.entity.Credit" />
+        </set>
+    </class>
+</hibernate-mapping>
