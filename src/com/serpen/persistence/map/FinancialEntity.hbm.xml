@@ -3,29 +3,29 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.serpen.logic.entity.FinancialEntity" table="FINANCIALENTITY">
-        <id name="nit" type="java.lang.String">
-            <column name="NIT" />
+    <class name="com.serpen.logic.entity.FinancialEntity" table="entidad_financiera">
+        <id name="nit" length="11" type="string">
+            <column name="nit" />
             <generator class="assigned" />
         </id>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
+        <property name="name" type="string">
+            <column name="nombre" />
         </property>
-        <property name="address" type="java.lang.String">
-            <column name="ADDRESS" />
+        <property name="address" type="string">
+            <column name="direccion" />
         </property>
-        <property name="numberPhone" type="java.lang.String">
-            <column name="NUMBERPHONE" />
+        <property name="numberPhone" type="string">
+            <column name="telefono" />
         </property>
-        <set name="accounts" table="ACCOUNT" inverse="false" lazy="true">
+        <set name="accounts">
             <key>
-                <column name="NIT" />
+                <column name="banco" />
             </key>
             <one-to-many class="com.serpen.logic.entity.Account" />
         </set>
-        <set name="credits" table="CREDIT" inverse="false" lazy="true" access="field">
+        <set name="credits">
             <key>
-                <column name="NIT" />
+                <column name="banco" />
             </key>
             <one-to-many class="com.serpen.logic.entity.Credit" />
         </set>

@@ -3,25 +3,25 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.serpen.logic.entity.Account" table="ACCOUNT">
-        <id name="number" type="int">
-            <column name="NUMBER" />
+    <class name="com.serpen.logic.entity.Account" table="cuenta">
+        <id name="number"  type="int">
+            <column name="numero" />
             <generator class="assigned" />
         </id>
-        <property name="tipoCuenta" type="java.lang.String">
-            <column name="TIPOCUENTA" />
+        <property name="tipoCuenta" length="3" type="string">
+            <column name="tipo_cuenta" />
         </property>
         <many-to-one name="user" class="com.serpen.logic.entity.User" fetch="join">
-            <column name="USER" />
+            <column name="usuario" />
         </many-to-one>
         <many-to-one name="financialEntity" class="com.serpen.logic.entity.FinancialEntity" fetch="join">
-            <column name="FINANCIALENTITY" />
+            <column name="entidad_financiera" />
         </many-to-one>
-        <set name="transactions" table="TRANSACTION" inverse="false" lazy="true" access="field">
+        <set name="transactions">
             <key>
-                <column name="NUMBER" />
+                <column name="cuenta" />
             </key>
-            <one-to-many class="com.serpen.logic.entity.Transaction" />
+            <one-to-many class="com.serpen.logic.entity.TransactionP" />
         </set>
     </class>
 </hibernate-mapping>

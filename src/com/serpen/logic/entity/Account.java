@@ -18,14 +18,14 @@ public class Account {
 	private String tipoCuenta;
 	private User user;
 	private FinancialEntity financialEntity;
-	private Set<Transaction> transactions;
+	private Set<TransactionP> transactions;
 	public static final String CERTIFICA_DE_DEPOSITO="CDT";
 	public static final String CUENTA_CORRIENTE="COR";
 	public static final String CUENTA_DE_AHORROS="AHO";
 	public static final String CUENTA_DE_CARTERA_COLECTIVA="COL";
 	
 	public Account() {
-		transactions =new HashSet<Transaction>();
+		transactions =new HashSet<TransactionP>();
 	}
 
 	public Account(int number, String tipoCuenta, User user,
@@ -35,7 +35,7 @@ public class Account {
 		this.tipoCuenta = tipoCuenta;
 		this.user = user;
 		this.financialEntity = financialEntity;
-		transactions = new HashSet<Transaction>();
+		transactions = new HashSet<TransactionP>();
 	}
 
 	public int getNumber() {

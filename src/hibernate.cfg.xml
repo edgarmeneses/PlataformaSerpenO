@@ -19,7 +19,7 @@
         <mapping resource="com/serpen/persistence/map/Credit.hbm.xml"/>
         <mapping resource="com/serpen/persistence/map/FinancialEntity.hbm.xml"/>
         <mapping resource="com/serpen/persistence/map/PaymentPlan.hbm.xml"/>
-         <mapping resource="com/serpen/persistence/map/Transaction.hbm.xml"/>
+         <mapping resource="com/serpen/persistence/map/TransactionP.hbm.xml"/>
         
     </session-factory>
 </hibernate-configuration>

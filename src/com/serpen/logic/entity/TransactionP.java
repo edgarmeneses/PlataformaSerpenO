@@ -2,7 +2,7 @@ package com.serpen.logic.entity;
 
 import java.util.Date;
 
-public class Transaction {
+public class TransactionP {
 
 	private int id;
 	private char transactionType;
@@ -12,11 +12,11 @@ public class Transaction {
 	public static final char RETREAT='R';
 	public static final char ENTRY='I';
 	
-	public Transaction() {
+	public TransactionP() {
 		
 	}
 
-	public Transaction(int id, char trnsactionType, double amount, Date date,
+	public TransactionP(int id, char trnsactionType, double amount, Date date,
 			Account account) {
 		super();
 		this.id = id;
@@ -68,8 +68,10 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [id=" + id + ", trnsactionType=" + transactionType
-				+ ", amount=" + amount + ", date=" + date + ", account="
-				+ account + "]";
+		return "TransactionP [id=" + id + ", transactionType="
+				+ transactionType + ", amount=" + amount + ", date=" + date
+				+ ", account=" + account + "]";
 	}
+	
+	
 }

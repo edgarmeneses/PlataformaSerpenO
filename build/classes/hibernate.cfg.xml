@@ -15,6 +15,11 @@
         <mapping resource="com/serpen/persistence/map/PensionFund.hbm.xml"/>
         <mapping resource="com/serpen/persistence/map/User.hbm.xml"/>
         <mapping resource="com/serpen/persistence/map/Role.hbm.xml"/>
+        <mapping resource="com/serpen/persistence/map/Account.hbm.xml"/>
+        <mapping resource="com/serpen/persistence/map/Credit.hbm.xml"/>
+        <mapping resource="com/serpen/persistence/map/FinancialEntity.hbm.xml"/>
+        <mapping resource="com/serpen/persistence/map/PaymentPlan.hbm.xml"/>
+         <mapping resource="com/serpen/persistence/map/TransactionP.hbm.xml"/>
         
     </session-factory>
 </hibernate-configuration>
