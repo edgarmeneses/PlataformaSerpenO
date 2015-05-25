@@ -70,6 +70,14 @@ public class Account {
 		this.financialEntity = financialEntity;
 	}
 
+	public Set<TransactionP> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(Set<TransactionP> transactions) {
+		this.transactions = transactions;
+	}
+
 	@Override
 	public String toString() {
 		return "Account [number=" + number + ", tipoCuenta=" + tipoCuenta

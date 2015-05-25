@@ -33,15 +33,7 @@ public class TransactionP {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public char getTrnsactionType() {
-		return transactionType;
-	}
-
-	public void setTrnsactionType(char trnsactionType) {
-		this.transactionType = trnsactionType;
-	}
-
+	
 	public double getAmount() {
 		return amount;
 	}
@@ -64,6 +56,14 @@ public class TransactionP {
 
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+
+	public char getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(char transactionType) {
+		this.transactionType = transactionType;
 	}
 
 	@Override

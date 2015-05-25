@@ -71,6 +71,8 @@ public class Agreement {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
 	/**
 	 * Metodo Tostring 
 	 * que retorna los atrbutos de la clase

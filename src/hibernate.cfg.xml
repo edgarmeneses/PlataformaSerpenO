@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC
-		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">1234</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/plataformaserpen</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <mapping resource="com/serpen/persistence/map/Conection.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/Entity.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/Agreement.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/PensionFund.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/User.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/Role.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/Account.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/Credit.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/FinancialEntity.hbm.xml"/>
-        <mapping resource="com/serpen/persistence/map/PaymentPlan.hbm.xml"/>
-         <mapping resource="com/serpen/persistence/map/TransactionP.hbm.xml"/>
-        
-    </session-factory>
+ <session-factory name="">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">1234</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/plataformaserpen</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <mapping class="com.serpen.logic.entity.Account"
+   file="Account.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Account.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.Agreement"
+   file="Agreement.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Agreement.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.Conection"
+   file="Conection.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Conection.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.Credit" file="Credit.hbm.xml"
+   package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Credit.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.Entity" file="Entity.hbm.xml"
+   package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Entity.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.FinancialEntity"
+   file="FinancialEntity.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/FinancialEntity.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.PaymentPlan"
+   file="PaymentPlan.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/PaymentPlan.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.PensionFund"
+   file="PensionFund.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/PensionFund.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.Role" file="role.hbm.xml"
+   package="com.serpen.persistence.map" resource="com/serpen/persistence/map/role.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.RoleHistory"
+   file="RoleHistory.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/RoleHistory.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.TransactionP"
+   file="TransactionP.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/TransactionP.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.User" file="User.hbm.xml"
+   package="com.serpen.persistence.map" resource="com/serpen/persistence/map/User.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.UserHistory"
+   file="UserHistory.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/UserHistory.hbm.xml"/>
+ </session-factory>
 </hibernate-configuration>

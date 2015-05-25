@@ -10,12 +10,12 @@ import com.serpen.persistence.conf.HibernateUtil;
 public class ControlCredit {
 	
 	Session session;
-	Transaction transaction;
+	//Transaction transaction;
 	
 	
-	public ControlCredit(Session session, Transaction transaction) {
+	public ControlCredit(Session session) {
 		this.session = session;
-		this.transaction = transaction;
+		//this.transaction = transaction;
 	}
 	
 	public void insert(double amount, int share) throws ErrorConnection{
@@ -34,9 +34,8 @@ public class ControlCredit {
 	public static void main(String[] args) {
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
 		
-		ControlCredit credit = new ControlCredit(session, transaction);
+		ControlCredit credit = new ControlCredit(session);
 		
 		try{
 			

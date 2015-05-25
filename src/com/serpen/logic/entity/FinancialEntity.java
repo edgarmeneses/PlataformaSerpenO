@@ -77,6 +77,14 @@ public class FinancialEntity {
 		this.accounts = accounts;
 	}
 
+	public Set<Credit> getCredits() {
+		return credits;
+	}
+
+	public void setCredits(Set<Credit> credits) {
+		this.credits = credits;
+	}
+
 	@Override
 	public String toString() {
 		return "FinancialEntity [nit=" + nit + ", name=" + name + ", address="
