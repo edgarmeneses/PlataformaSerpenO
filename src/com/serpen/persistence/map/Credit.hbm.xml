@@ -22,7 +22,7 @@
         </many-to-one>
         
         <many-to-one name="financialEntity" class="com.serpen.logic.entity.FinancialEntity" fetch="join">
-            <column name="entidad_financiera" />
+            <column name="banco" />
         </many-to-one>
         
         <set name="paymentPlans">

@@ -28,13 +28,13 @@ public class FinancialEntity {
 	
 	public FinancialEntity(String nit, String name, String address,
 			String numberPhone) {
-		super();
+		
 		this.nit = nit;
 		this.name = name;
 		this.address = address;
 		this.numberPhone = numberPhone;
-		accounts = new HashSet<Account>();
-		credits = new HashSet<Credit>();
+		this.accounts = new HashSet<Account>();
+		this.credits = new HashSet<Credit>();
 	}
 
 	public String getNit() {
@@ -90,13 +90,6 @@ public class FinancialEntity {
 		return "FinancialEntity [nit=" + nit + ", name=" + name + ", address="
 				+ address + ", numberPhone=" + numberPhone + "]";
 	}
-	
-	
-	
-	 
-	
-	
-	
-	
+
 
 }

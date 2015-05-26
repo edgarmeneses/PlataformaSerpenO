@@ -23,7 +23,7 @@ public class Credit {
 
 	public Credit(int id, double amount, int share, User user,
 			FinancialEntity financialEntity) {
-		super();
+		
 		this.id = id;
 		this.amount = amount;
 		this.share = share;
@@ -84,7 +84,7 @@ public class Credit {
 	public String toString() {
 		return "Credit [id=" + id + ", amount=" + amount + ", share=" + share
 				+ ", user=" + user + ", financialEntity=" + financialEntity
-				+ ", paymentPlans=" + paymentPlans + "]";
+				+ "]";
 	}
 
 }

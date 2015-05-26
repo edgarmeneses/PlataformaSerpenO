@@ -132,10 +132,10 @@ public class ControlPensionFund {
 		try{
 
 //			pensionFund.insert("68", "fondoyi", 8.9);
-//			pensionFund.list();
+			pensionFund.list();
 //			pensionFund.consult("68");
 //			pensionFund.remove("68");
-			pensionFund.update("68", "FondoModi", 3.7);
+//			pensionFund.update("68", "FondoModi", 3.7);
 
 			session.close();
 

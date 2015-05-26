@@ -157,7 +157,7 @@ public class ControlUser {
 		ControlUser controlUser= new ControlUser(session,transaction);
 		//		Role role = (Role) session.load(Role.class, 1);
 		//		PensionFund pensionFund = (PensionFund) session.load(PensionFund.class,"123r45-1-1");
-		//		controlUser.insert(1, "123ed", "ProfeCarlos", role,"Eliana", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund);
+//				controlUser.insert(1, "123ed", "ProfeCarlos", role,"Eliana", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund);
 		// controlUser.consultId(1);
 		// System.out.println(controlUser.consultName("Eliana"));
 		//controlUser.update(1,"Actualizacion", "Juan Jose", "Jesi", "Ramirez", "Calle", "312234354");

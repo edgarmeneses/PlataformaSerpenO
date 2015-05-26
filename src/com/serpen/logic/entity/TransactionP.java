@@ -18,7 +18,7 @@ public class TransactionP {
 
 	public TransactionP(int id, char trnsactionType, double amount, Date date,
 			Account account) {
-		super();
+		
 		this.id = id;
 		this.transactionType = trnsactionType;
 		this.amount = amount;
