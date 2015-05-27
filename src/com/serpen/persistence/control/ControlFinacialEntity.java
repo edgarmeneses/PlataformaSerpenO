@@ -125,9 +125,11 @@ public class ControlFinacialEntity {
 
 		try{
 
-			fEntity.consult("12346");
+			//			fEntity.consult("12346");
 //			fEntity.list();
-//			fEntity.insert("12346", "Pension2", "carrera457", "7444058");
+			fEntity.insert("12346", "Pension2", "carrera457", "7444058");
+			
+			//Pruebaaaaaa
 
 		}catch(ErrorConnection e){
 
