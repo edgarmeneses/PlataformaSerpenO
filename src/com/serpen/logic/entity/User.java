@@ -1,5 +1,6 @@
 package com.serpen.logic.entity;
 
+import com.serpen.interfaces.EntityHealth;
 import com.serpen.logic.entity.Role;
 
 public class User {
@@ -55,6 +56,8 @@ public class User {
 	 * fondo de penciones a la que pertenece el usuario
 	 */
 	private PensionFund pensionFund;
+	
+	private HealthEntity entityHealth;
 	/**
 	 * estado activo del suaurio
 	 */
@@ -92,7 +95,7 @@ public class User {
 	public User(int nickname, String password, String answer, Role rol,
 			String name, String lastName, String address,
 			String numberPhone, String business, double salary, char affiliate,
-			PensionFund pensionFund) {
+			PensionFund pensionFund, HealthEntity entityHealth) {
 		this.nickname = nickname;
 		this.password = password;
 		this.answer = answer;
@@ -106,6 +109,7 @@ public class User {
 		this.salary = salary;
 		this.affiliate = affiliate;
 		this.pensionFund = pensionFund;
+		this.entityHealth =  entityHealth;
 	}
 	/**
 	 * retorna el rol al que pertenece el usuario
@@ -279,6 +283,13 @@ public class User {
 	public void setPensionFund(PensionFund pensionFund) {
 		this.pensionFund = pensionFund;
 	}
+	
+	public HealthEntity getEntityHealth() {
+		return entityHealth;
+	}
+	public void setEntityHealth(HealthEntity entityHealth) {
+		this.entityHealth = entityHealth;
+	}
 	@Override
 	public String toString() {
 		return "User [nickname=" + nickname + ", password=" + password
@@ -286,7 +297,8 @@ public class User {
 				+ ", name=" + name + ", lastName=" + lastName + ", address="
 				+ address + ", numberPhone=" + numberPhone + ", business="
 				+ business + ", salary=" + salary + ", affiliate=" + affiliate
-				+ ", pensionFund=" + pensionFund + "]";
+				+ ", pensionFund=" + pensionFund + ", entityHealth="
+				+ entityHealth + "]";
 	}
 
 }
