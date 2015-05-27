@@ -26,8 +26,9 @@ public class EntityHealth extends CustomComponent {
 		panelTableService = new PanelTableService();
 		
 		verticalLayout.addComponent(panelOptionHealth);
-		verticalLayout.addComponent(general);
 		verticalLayout.addComponent(panelTableService);
+		verticalLayout.addComponent(general);
+
 		
 		formLayout.addComponent(verticalLayout);
 		setCompositionRoot(formLayout);

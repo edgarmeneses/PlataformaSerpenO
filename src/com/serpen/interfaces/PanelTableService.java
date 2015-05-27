@@ -8,14 +8,20 @@ import com.vaadin.ui.VerticalLayout;
 public class PanelTableService extends Panel{
 
 	private Table table;
+	private Panel pnlTable;
 
 		
 	public PanelTableService(){
 		
 		FormLayout formLayout = new FormLayout();
 		formLayout.setVisible(true);
+					
+		pnlTable = new Panel();
+		pnlTable.setSizeFull();
+		pnlTable.setWidth("1000px");
+		pnlTable.setHeight("300px");
 		
-				
+		table = new Table();
 		
 		table.addContainerProperty("Servicios", String.class, null);
 		table.addContainerProperty("Descripcion", String.class, null);
@@ -30,6 +36,7 @@ public class PanelTableService extends Panel{
 		
 		
 		formLayout.addComponent(table);
+		this.pnlTable.setContent(formLayout);
 		
 		
 		setContent(formLayout);
