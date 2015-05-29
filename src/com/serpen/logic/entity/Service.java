@@ -1,5 +1,13 @@
 package com.serpen.logic.entity;
-
+/**
+ * Clase sericio
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
+ *
+ *
+ */
 public class Service {
 
 	private int id;
@@ -7,7 +15,7 @@ public class Service {
 	private double cost;
 	
 	public Service() {
-		super();
+		
 	}
 
 	public Service(int id , String name, int cost){

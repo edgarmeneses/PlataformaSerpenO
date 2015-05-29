@@ -6,7 +6,7 @@
 -- Fecha ultima modificacion: 
 -- Revisado por:
 -- Fecha Ultima Revision:
-CREATE TABLE coneccion(
+CREATE TABLE CONECCION(
 id     		 INT(2)     	NOT NULL    AUTO_INCREMENT,
 url     	 VARCHAR(50)  	NOT NULL,
 puerto  	 INT(6)       	NOT NULL,

@@ -8,7 +8,7 @@
             <column name="numero" />
             <generator class="assigned" />
         </id>
-        <property name="tipoCuenta" length="3" type="string">
+        <property name="accountType" length="3" type="string">
             <column name="tipo_cuenta" />
         </property>
         <many-to-one name="user" class="com.serpen.logic.entity.User" fetch="join">

@@ -10,6 +10,6 @@ CREATE TABLE PLAN_PAGO (
 numero_cuota          INT(3)          NOT NULL AUTO_INCREMENT,
 fecha_pago            DATE            NOT NULL,
 monto                 NUMERIC(9,2)    NOT NULL,
-credito               INT(3)          NOT NULL,
+credito               INT(5)          NOT NULL,
 PRIMARY KEY(numero_cuota)
 );

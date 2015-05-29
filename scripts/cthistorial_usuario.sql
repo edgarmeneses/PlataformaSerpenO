@@ -9,15 +9,15 @@
 
 CREATE TABLE HISTORIAL_USUARIO(
 
+id                      INT             NOT NULL      AUTO_INCREMENT,
 nickname                INT(6)          NOT NULL,
 estado                  CHAR(1)         NOT NULL,
 nombre                  VARCHAR(15)     NOT NULL,
 apellido                VARCHAR(15)     NOT NULL,
-telefono                VARCHAR(25)     NOT NULL, 
 empresa                 VARCHAR(20)     NOT NULL,
 salario                 NUMERIC(9,2)    NOT NULL,
-afiliado                CHAR(1)         NOT NULL,
-rol                     INT(2)          NOT NULL,
-fondo                   VARCHAR(11)     NOT NULL,
-PRIMARY KEY (nickname)
+rol                     VARCHAR(15)     NOT NULL,
+fondo                   VARCHAR(15)     NOT NULL,
+eps                     VARCHAR(30)     NOT NULL,
+PRIMARY KEY (id)
 );

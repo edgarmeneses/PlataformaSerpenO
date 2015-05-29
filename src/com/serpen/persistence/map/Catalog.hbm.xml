@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/05/2015 10:38:10 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.Catalog" table="catalogo">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="discount" type="double">
+            <column name="descuento" />
+        </property>
+        <many-to-one name="service" class="com.serpen.logic.entity.Service" fetch="join">
+            <column name="servicio" />
+        </many-to-one>
+        <many-to-one name="carecenter" class="com.serpen.logic.entity.CareCenter" fetch="join">
+            <column name="centro_atencion" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

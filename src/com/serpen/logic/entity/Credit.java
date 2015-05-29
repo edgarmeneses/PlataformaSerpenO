@@ -4,8 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * credito
- * @author Edgar Meneses
+ * Clase credito
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
  *
  */
 public class Credit {

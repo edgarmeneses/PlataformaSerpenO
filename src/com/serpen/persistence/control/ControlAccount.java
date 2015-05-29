@@ -46,7 +46,7 @@ public class ControlAccount {
 
 			Account account= new Account();
 			account.setNumber(numero);
-			account.setTipoCuenta(tipocuenta);
+			account.setAccountType((tipocuenta));
 			account.setUser(user);
 			account.setFinancialEntity(financiera);
 
@@ -76,8 +76,6 @@ public class ControlAccount {
 					"in class com.serpen.logic.entity.Account").list();
 			for (int i = 0; i < lisAccounts.size(); i++) {
 				Account pAccount = lisAccounts.get(i);
-				System.out.println(pAccount);
-
 			}
 			if (!lisAccounts.isEmpty()){
 
@@ -106,8 +104,6 @@ public class ControlAccount {
 	public Account consult(int numer) throws ErrorConnection{
 
 		Account account=(Account) session.load(Account.class, numer);
-		System.out.println("--------------------------------------------------");
-		System.out.println(account);
 
 		if(account != null){
 			return account;
@@ -118,14 +114,14 @@ public class ControlAccount {
 		}
 
 	}
+	
 	public static void main(String[] args) throws ErrorConnection {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
 
 		ControlAccount cAccount = new ControlAccount(session);
 
-		ControlUser user= new ControlUser(session, transaction);
+		ControlUser user= new ControlUser(session);
 		User user2 = user.consultId(1049635);
 
 		ControlFinacialEntity fEntity = new ControlFinacialEntity(session);
@@ -133,9 +129,21 @@ public class ControlAccount {
 
 
 		try{
+			
+			cAccount.insert(123,Account.CERTIFICADO_DE_DEPOSITO,user2,fEntity2);
+			cAccount.insert(13,Account.CERTIFICADO_DE_DEPOSITO,user2,fEntity2);
 
-//			cAccount.insert(123,Account.CERTIFICA_DE_DEPOSITO,user2,fEntity2);
-			cAccount.list();
+			List<Account> accounts = cAccount.list();
+			System.out.println("Cuentas");
+			
+			for (Account account : accounts) {
+				System.out.println(account);
+			}
+			
+			System.out.println("cuenta");
+			
+			System.out.println(cAccount.consult(12));
+			
 //			cAccount.consult(1234);
 
 		}catch(ErrorConnection e){

@@ -7,7 +7,10 @@ import java.util.Set;
  * Clase entidad
  * esta clase contiene las entidades de educacion, turismo
  * y vivienda que interactuan en la aplicacion
- * @author Diana
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
  *
  */
 

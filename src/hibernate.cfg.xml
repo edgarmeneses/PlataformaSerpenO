@@ -12,6 +12,10 @@
    file="Account.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Account.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.Agreement"
    file="Agreement.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Agreement.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.CareCenter"
+   file="CareCenter.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/CareCenter.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.Catalog"
+   file="Catalog.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Catalog.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.Conection"
    file="Conection.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Conection.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.Credit" file="Credit.hbm.xml"
@@ -20,6 +24,8 @@
    package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Entity.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.FinancialEntity"
    file="FinancialEntity.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/FinancialEntity.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.HealthEntity"
+   file="HealthEntity.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/HealthEntity.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.PaymentPlan"
    file="PaymentPlan.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/PaymentPlan.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.PensionFund"
@@ -28,6 +34,8 @@
    package="com.serpen.persistence.map" resource="com/serpen/persistence/map/role.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.RoleHistory"
    file="RoleHistory.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/RoleHistory.hbm.xml"/>
+  <mapping class="com.serpen.logic.entity.Service"
+   file="Service.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/Service.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.TransactionP"
    file="TransactionP.hbm.xml" package="com.serpen.persistence.map" resource="com/serpen/persistence/map/TransactionP.hbm.xml"/>
   <mapping class="com.serpen.logic.entity.User" file="User.hbm.xml"

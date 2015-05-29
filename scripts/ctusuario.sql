@@ -8,7 +8,7 @@
 -- Fecha Ultima Revision:
 CREATE TABLE USUARIO (
 nickname              INT(12)            NOT NULL,     
-constraseña           VARCHAR(20)        NOT NULL, 
+pasword               VARCHAR(20)        NOT NULL, 
 estado                CHAR(1)            DEFAULT 'A' NOT NULL,
 respuesta             VARCHAR(50)        NOT NULL,
 nombre                VARCHAR(15)        NOT NULL,
@@ -20,5 +20,6 @@ salario               NUMERIC(9,2)       NOT NULL,
 afiliado              CHAR(1)            NOT NULL,
 rol		      INT(2)             NOT NULL,
 fondo                 VARCHAR(11)        NOT NULL,
+entidad_salud	      VARCHAR(11)        NOT NULL,
 PRIMARY KEY (nickname)
 );

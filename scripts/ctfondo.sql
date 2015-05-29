@@ -9,6 +9,6 @@
 CREATE TABLE FONDO (
 nit              VARCHAR(11)        NOT NULL,
 nombre           VARCHAR(15)        NOT NULL,
-porcentaje       NUMERIC(2,1)       NOT NULL,
+porcentaje       NUMERIC(3,1)       NOT NULL,
 PRIMARY KEY(nit)   
 );

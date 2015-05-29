@@ -6,6 +6,6 @@
 -- Fecha ultima modificacion: 
 -- Revisado por:
 -- Fecha Revision: 
-ALTER TABLE coneccion ADD (
+ALTER TABLE CONECCION ADD (
 CONSTRAINT con_fk_entidad FOREIGN KEY (nit) REFERENCES  entidad(id)
 );

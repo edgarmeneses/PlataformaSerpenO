@@ -1,7 +1,16 @@
 package com.serpen.logic.entity;
-
+/**
+ * 
+ * Clase Catalogo
+ * 
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
+ *
+ */
 public class Catalog {
-	
+
 	/**
 	 * indica el id que tiene calogo
 	 */
@@ -13,12 +22,16 @@ public class Catalog {
 	/**
 	 * servicio que se ofrece en el catalogo 
 	 */
-	private int service; 
+	private Service service; 
 	/**
 	 * centro de antencion
 	 */
-	private String carecenter;
-	
+	private CareCenter carecenter;
+
+	public Catalog() {
+		
+	}
+
 	/**
 	 * 
 	 * @param id 
@@ -26,63 +39,54 @@ public class Catalog {
 	 * @param service  Servicion
 	 * @param careCenter Centro de antencion
 	 */
-	public Catalog(int id , double discount , int service , String careCenter){
-	this.id = id;
-	this.discount = discount;
-	this.service = service;
-	this.carecenter = careCenter;
+	public Catalog(int id , int discount , Service service , CareCenter careCenter){
+		this.id = id;
+		this.discount = discount;
+		this.service = service;
+		this.carecenter = careCenter;
 	}
-    /**
-     * constructor de la clase catalog 
-     */
-	public Catalog(){
-		
-	}
-	/**
- 	 * Getters y Setters de la clase catalog
-	 */
+
 	public int getId() {
 		return id;
 	}
 
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public double  getDiscount() {
+
+
+	public double getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(int discount) {
+	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
 
-	public int getService() {
+	public Service getService() {
 		return service;
 	}
 
-	public void setService(int service) {
+	public void setService(Service service) {
 		this.service = service;
 	}
 
-	public String getCarecenter() {
+	public CareCenter getCarecenter() {
 		return carecenter;
 	}
 
-	public void setCarecenter(String carecenter) {
+	public void setCarecenter(CareCenter carecenter) {
 		this.carecenter = carecenter;
 	}
 
-	/**
-	 * toString de la clase catalog
-	 */
 	@Override
 	public String toString() {
 		return "Catalog [id=" + id + ", discount=" + discount + ", service="
 				+ service + ", carecenter=" + carecenter + "]";
 	}
-	
-	
+
+
 
 }

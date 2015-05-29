@@ -118,7 +118,7 @@ public class ControlCredit {
 
 		ControlCredit credit = new ControlCredit(session);
 
-		ControlUser user= new ControlUser(session, transaction);
+		ControlUser user= new ControlUser(session);
 		User user2 = user.consultId(1049635);
 
 		ControlFinacialEntity fEntity = new ControlFinacialEntity(session);

@@ -10,6 +10,6 @@ CREATE TABLE CONVENIO(
 id                  INT(4)              NOT NULL,    
 fondo			    VARCHAR(11)			NOT NULL,
 entidad				INT(11)			NOT NULL,
-beneficio 			NUMERIC(2,1)		NOT NULL,
+beneficio 			NUMERIC(3,1)		NOT NULL,
 PRIMARY KEY(id)
 );

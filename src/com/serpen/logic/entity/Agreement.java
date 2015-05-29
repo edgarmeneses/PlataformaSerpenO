@@ -6,7 +6,11 @@ import com.serpen.logic.entity.Entity;
  * Clase Convenio 
  * Esta clase permite la conexion con Entidad y Fondo.
  * Tambien contiene el beneficio del convenio de las entidades
- * @author Diana
+ * 
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
  *
  */
 

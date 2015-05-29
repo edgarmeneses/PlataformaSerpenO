@@ -19,13 +19,13 @@ public class ControlHistoryUser {
 	}
 
 	public void insert(int nikname, int role ){
-		UserHistory userHistory = new UserHistory();
-		userHistory.setNickname(nikname);
-		userHistory.setEstado(userHistory.TIPO_ESTADO_INACTIVO);
-		userHistory.setRol(role);
-		
-		sesion.save(userHistory);
-		
+//		UserHistory userHistory = new UserHistory();
+//		userHistory.setNickname(nikname);
+//		userHistory.setEstado(userHistory.TIPO_ESTADO_INACTIVO);
+//		userHistory.setRol(role);
+//		
+//		sesion.save(userHistory);
+//		
 	}
 
 }

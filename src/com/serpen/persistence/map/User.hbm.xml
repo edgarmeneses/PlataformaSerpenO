@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <property name="password" length="20" type="string">
-            <column name="constraseña" />
+            <column name="pasword" />
         </property>
         <property name="answer" length="50" type="string">
             <column name="respuesta" />
@@ -35,7 +35,7 @@
         <property name="business" length="20" type="string">
             <column name="empresa" />
         </property>
-        <property name="salary"  type="double">
+        <property name="salary"  type="double" length="9" precision="2">
             <column name="salario" />
         </property>
         <property name="affiliate" length="1" type="char">
@@ -43,6 +43,9 @@
         </property>
         <many-to-one name="pensionFund" class="com.serpen.logic.entity.PensionFund" fetch="join">
             <column name="fondo" />
+        </many-to-one>
+         <many-to-one name="healthEntity" class="com.serpen.logic.entity.HealthEntity" fetch="join">
+            <column name="entidad_salud" />
         </many-to-one>
     </class>
 </hibernate-mapping>

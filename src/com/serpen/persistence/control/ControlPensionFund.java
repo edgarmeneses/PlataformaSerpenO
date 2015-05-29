@@ -18,11 +18,9 @@ import com.serpen.persistence.conf.HibernateUtil;
 public class ControlPensionFund {
 
 	Session session;
-	Transaction transaction;
 
-	public ControlPensionFund(Session session, Transaction transaction){
+	public ControlPensionFund(Session session){
 		this.session=session;
-		this.transaction=transaction;
 	}
 
 	public void insert(String nit,String name, double porcent)throws ErrorConnection{
@@ -35,7 +33,7 @@ public class ControlPensionFund {
 			pFund.setPorcent(porcent);
 
 			session.save(pFund);
-			transaction.commit();
+			session.beginTransaction().commit();
 
 		}catch(Exception e){
 
@@ -53,7 +51,6 @@ public class ControlPensionFund {
 							+ "order by nit").list();
 			for (int i=0; i<listFund.size();i++){
 				PensionFund pFund = listFund.get(i);
-				System.out.println(pFund);
 
 			}
 
@@ -72,10 +69,10 @@ public class ControlPensionFund {
 		}
 
 	}
+	
 	public PensionFund consult(String nit)throws ErrorConnection{
 		
 		PensionFund pensionFund = (PensionFund) session.load(PensionFund.class,nit);
-		System.out.println(pensionFund);
 		
 		if(pensionFund != null){
 			return pensionFund;
@@ -113,38 +110,12 @@ public class ControlPensionFund {
 
 			session.update(pFund);
 
-			transaction.commit();
-//			session.close();
+			session.beginTransaction().commit();
 			
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo editar el suario "
 					+ "Causa: "+ e.getCause());
 		}
-	}
-
-	public static void main(String[] args) {
-
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
-
-		ControlPensionFund pensionFund= new ControlPensionFund(session, transaction);
-
-		try{
-
-//			pensionFund.insert("68", "fondoyi", 8.9);
-			pensionFund.list();
-//			pensionFund.consult("68");
-//			pensionFund.remove("68");
-//			pensionFund.update("68", "FondoModi", 3.7);
-
-			session.close();
-
-		}catch(ErrorConnection e){
-
-			e.printStackTrace();
-
-		}
-
 	}
 
 }

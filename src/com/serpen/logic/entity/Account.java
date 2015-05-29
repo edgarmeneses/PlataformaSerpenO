@@ -15,11 +15,11 @@ import java.util.Set;
 public class Account {
 	
 	private int number;
-	private String tipoCuenta;
+	private String accountType;
 	private User user;
 	private FinancialEntity financialEntity;
 	private Set<TransactionP> transactions;
-	public static final String CERTIFICA_DE_DEPOSITO="CDT";
+	public static final String CERTIFICADO_DE_DEPOSITO="CDT";
 	public static final String CUENTA_CORRIENTE="COR";
 	public static final String CUENTA_DE_AHORROS="AHO";
 	public static final String CUENTA_DE_CARTERA_COLECTIVA="COL";
@@ -32,7 +32,7 @@ public class Account {
 			FinancialEntity financialEntity) {
 		super();
 		this.number = number;
-		this.tipoCuenta = tipoCuenta;
+		this.accountType = tipoCuenta;
 		this.user = user;
 		this.financialEntity = financialEntity;
 		transactions = new HashSet<TransactionP>();
@@ -44,14 +44,6 @@ public class Account {
 
 	public void setNumber(int number) {
 		this.number = number;
-	}
-
-	public String getTipoCuenta() {
-		return tipoCuenta;
-	}
-
-	public void setTipoCuenta(String tipoCuenta) {
-		this.tipoCuenta = tipoCuenta;
 	}
 
 	public User getUser() {
@@ -78,9 +70,17 @@ public class Account {
 		this.transactions = transactions;
 	}
 
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
 	@Override
 	public String toString() {
-		return "Account [number=" + number + ", tipoCuenta=" + tipoCuenta
+		return "Account [number=" + number + ", tipoCuenta=" + accountType
 				+ ", user=" + user + ", financialEntity=" + financialEntity
 				+ "]";
 	}

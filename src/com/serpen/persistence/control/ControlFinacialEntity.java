@@ -78,7 +78,6 @@ public class ControlFinacialEntity {
 					"in class com.serpen.logic.entity.FinancialEntity").list();
 			for (int i = 0; i < listfinancial.size(); i++) {
 				FinancialEntity pFinancial = listfinancial.get(i);
-				System.out.println(pFinancial);
 
 			}
 			if (!listfinancial.isEmpty()){
@@ -106,7 +105,6 @@ public class ControlFinacialEntity {
 	public FinancialEntity consult(String nit) throws ErrorConnection{
 
 		FinancialEntity fEntity=(FinancialEntity) session.load(FinancialEntity.class, nit);
-		System.out.println(fEntity);
 
 		if(fEntity != null){
 			return fEntity;
@@ -117,27 +115,4 @@ public class ControlFinacialEntity {
 		}
 
 	}
-	public static void main(String[] args) {
-
-		Session session = HibernateUtil.getSessionFactory().openSession();
-
-		ControlFinacialEntity fEntity = new ControlFinacialEntity(session);
-
-		try{
-
-			//			fEntity.consult("12346");
-//			fEntity.list();
-			fEntity.insert("12346", "Pension2", "carrera457", "7444058");
-			
-			//Pruebaaaaaa
-
-		}catch(ErrorConnection e){
-
-			e.printStackTrace();
-
-		}
-	}
-
-
-
 }

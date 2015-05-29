@@ -1,8 +1,15 @@
 package com.serpen.logic.entity;
 
-import com.serpen.interfaces.EntityHealth;
 import com.serpen.logic.entity.Role;
-
+/**
+ * clase usuario
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
+ *
+ *
+ */
 public class User {
 	/**
 	 * usuario para ingresar a la plataforma
@@ -53,14 +60,17 @@ public class User {
 	 */
 	private char affiliate;
 	/**
+	 * tipo de entidad salud
+	 */
+	private HealthEntity healthEntity;
+	/**
 	 * fondo de penciones a la que pertenece el usuario
 	 */
 	private PensionFund pensionFund;
 	
-	private HealthEntity entityHealth;
 	/**
 	 * estado activo del suaurio
-	 */
+	 */	
 	public static final char STATE_TYPE_ACTIVE = 'A';
 	/**
 	 * tipo de afiliacion contisante
@@ -95,7 +105,7 @@ public class User {
 	public User(int nickname, String password, String answer, Role rol,
 			String name, String lastName, String address,
 			String numberPhone, String business, double salary, char affiliate,
-			PensionFund pensionFund, HealthEntity entityHealth) {
+			PensionFund pensionFund,HealthEntity entity) {
 		this.nickname = nickname;
 		this.password = password;
 		this.answer = answer;
@@ -109,7 +119,7 @@ public class User {
 		this.salary = salary;
 		this.affiliate = affiliate;
 		this.pensionFund = pensionFund;
-		this.entityHealth =  entityHealth;
+		this.healthEntity=healthEntity;
 	}
 	/**
 	 * retorna el rol al que pertenece el usuario
@@ -264,6 +274,12 @@ public class User {
 		return pensionFund;
 	}
 
+	public HealthEntity getHealthEntity() {
+		return healthEntity;
+	}
+	public void setHealthEntity(HealthEntity healthEntity) {
+		this.healthEntity = healthEntity;
+	}
 	public char getState() {
 		return state;
 	}
@@ -283,13 +299,6 @@ public class User {
 	public void setPensionFund(PensionFund pensionFund) {
 		this.pensionFund = pensionFund;
 	}
-	
-	public HealthEntity getEntityHealth() {
-		return entityHealth;
-	}
-	public void setEntityHealth(HealthEntity entityHealth) {
-		this.entityHealth = entityHealth;
-	}
 	@Override
 	public String toString() {
 		return "User [nickname=" + nickname + ", password=" + password
@@ -297,8 +306,7 @@ public class User {
 				+ ", name=" + name + ", lastName=" + lastName + ", address="
 				+ address + ", numberPhone=" + numberPhone + ", business="
 				+ business + ", salary=" + salary + ", affiliate=" + affiliate
-				+ ", pensionFund=" + pensionFund + ", entityHealth="
-				+ entityHealth + "]";
+				+ ", pensionFund=" + pensionFund + "]";
 	}
 
 }

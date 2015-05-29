@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * clase entidad financiera
- * 
+ *   
  * @author Diana Milena Gonzalez Prieto
  * @author Edgar Antonio Meneses Cadena
  * @author Daniela Alezandra Blanco Albarracin

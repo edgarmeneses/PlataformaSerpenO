@@ -16,70 +16,82 @@ import com.serpen.persistence.conf.HibernateUtil;
 
 public class ControlService {
 	
-	private Session session;
-	private Transaction transaction;
+	Session session;
 	
-    public ControlService(Session session,Transaction transaction){
-    	super();
+    public ControlService(Session session){
     	this.session=session;
-    	this.transaction=transaction;
     }
+    /**
+     * Metodo para insertar un servicio
+     * @param id
+     * @param name
+     * @param cost
+     */
     public void insert(int id, String name,double cost){
     	Service service = new Service();
     	service.setId(id);
     	service.setName(name);
     	service.setCost(cost);
     	session.save(service);
-    	transaction.commit();
+    	session.beginTransaction().commit();
     }
+    /**
+     * Consulta in servicio de aucerdo al identificador de este (id)
+     * @param id
+     * @return
+     */
     public Service consult(int id){	
     	Service service =(Service) session.load(Service.class, id) ; 
-        System.out.println(service);
         return service;
     }
+    /**
+     * Consulta un servicio por su nombre
+     * @param name
+     * @return
+     */
     public Service consultName(String name){
     	Criteria criteria = session.createCriteria(Service.class);
     	criteria.add(Restrictions.like("name",name));
-    	System.out.println((Service)criteria.list().get(0));
     	return  (Service)criteria.list().get(0);
     }
-    public List<Service> lisrService(String name){
+    /**
+     * lista todos los servicios insertados en la base de datos 
+     * @return
+     */
+    public List<Service> list(){
+    	Criteria criteria = session.createCriteria(Service.class);
+    	return criteria.list();
+    }
+    /**
+     * hace un fitrado de servicios de acuerdo a una palabra clave
+     * @param name
+     * @return
+     */
+    public List<Service> list(String name){
     	Criteria criteria = session.createCriteria(Service.class);
     	criteria.add(Restrictions.like("name","%"+name+"%"));
-    	 for (int i = 0; i < criteria.list().size(); i++) {
-   		  criteria.list().get(i);	
-   		}
     	return  criteria.list();
     }
+    /**
+     * permite eliminar un servicio
+     * @param id
+     * @throws ErrorConnection
+     */
     public void remove(int id)throws ErrorConnection{
 		Service service = (Service) session.load(Service.class, id);
 		session.delete(service);
-		transaction.commit();
+		session.beginTransaction().commit();
 	}
+    /**
+     * permite modificar el costo de un servicio
+     * @param id
+     * @param cost
+     * @throws ErrorConnection
+     */
 	public void update(int id,double cost)throws ErrorConnection{
 		Service service= (Service) session.load(Service.class, id);
 		service.setCost(cost);
 		session.update(service);
-		transaction.commit();	
+		session.beginTransaction().commit();	
 	}
-    
-    
-    
-    public static void main(String[] args) {
-       Session session = HibernateUtil.getSessionFactory().openSession();
-    	Transaction transaction=session.beginTransaction();
-        ControlService controlService = new ControlService(session, transaction);	
-  //      controlService.consult(1);
-        controlService.insert(1, "odontologia",8.9);
-  //  	controlService.consultName("odontologia");
-     //  controlService.lisrService("0");
-        try {
-        	//controlService.remove(1);
-//        	controlService.update(1, 10.5);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}   
-        session.close();	
-	}
-
 }

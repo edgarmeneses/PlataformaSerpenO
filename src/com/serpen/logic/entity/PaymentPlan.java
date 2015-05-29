@@ -4,7 +4,11 @@ import java.util.Date;
 
 /**
  * plan de pago
- * @author Edgar Meneses
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
+ *
  *
  */
 public class PaymentPlan {

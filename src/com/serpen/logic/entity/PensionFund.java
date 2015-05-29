@@ -3,7 +3,14 @@ package com.serpen.logic.entity;
 import java.util.Set;
 
 import com.google.gwt.dev.util.collect.HashSet;
-
+/**
+ * Clase Fondo de Penciones
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
+ *
+ */
 public class PensionFund {
 	/**
 	 * nit del fondo de penciones

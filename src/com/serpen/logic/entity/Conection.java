@@ -1,5 +1,6 @@
 package com.serpen.logic.entity;
 /**
+ * Clase coneccion
  * UNiversidad Pedagogica y Tecnologica de Colombia
  * @author Eliana Ayala
  * 		   Daniela Blanco
