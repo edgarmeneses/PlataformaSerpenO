@@ -13,15 +13,17 @@ public class Service {
 	private int id;
 	private String name;
 	private double cost;
+	private String description;
 	
 	public Service() {
 		
 	}
 
-	public Service(int id , String name, int cost){
+	public Service(int id , String name, int cost,String description){
 		this.id = id; 
 		this.name = name;
 		this.cost = cost;
+		this.description=description;
 		
 	}
 
@@ -46,10 +48,18 @@ public class Service {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
-		return "Service [id=" + id + ", name=" + name + ", cost=" + cost + "]";
-	}
-	
-	
+		return "Service [id=" + id + ", name=" + name + ", cost=" + cost
+				+ ", description=" + description + "]";
+	}	
 }

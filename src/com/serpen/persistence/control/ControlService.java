@@ -1,12 +1,10 @@
 package com.serpen.persistence.control;
 
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
-
 import com.google.gwt.aria.client.ListRole;
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Conection;
@@ -27,11 +25,12 @@ public class ControlService {
      * @param name
      * @param cost
      */
-    public void insert(int id, String name,double cost){
+    public void insert(int id, String name,double cost,String description){
     	Service service = new Service();
     	service.setId(id);
     	service.setName(name);
     	service.setCost(cost);
+    	service.setDescription(description);
     	session.save(service);
     	session.beginTransaction().commit();
     }

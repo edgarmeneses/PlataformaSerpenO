@@ -14,5 +14,8 @@
         <property name="cost" type="double" length="9" precision="2">
             <column name="costo" />
         </property>
+        <property name="description" type="string" length="100" >
+            <column name="descripcion" />
+        </property>
     </class>
 </hibernate-mapping>
