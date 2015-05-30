@@ -1,37 +1,46 @@
 package com.serpen.interfaces;
 
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 
-public class EntityHealth extends CustomComponent {
+public class EntityHealth extends CustomComponent implements View {
 
 	private PanelOptionHealth panelOptionHealth;
 	private PanelGeneral general;
-	private PanelTableService  panelTableService;
+	private  Navigator navigator;
+	private PanelTable  panelTable;
+	public static String NAMESENTITYHEALTH="EntityHealth";
 	
 	public EntityHealth(){
 		
-		FormLayout formLayout = new FormLayout();
+//		this.navigator = navigator;
 		
-		HorizontalLayout verticalLayout = new HorizontalLayout();
+		HorizontalLayout horizontalLayout = new HorizontalLayout();
+		horizontalLayout.setVisible(true);
 		
+		panelOptionHealth = new PanelOptionHealth(navigator);
+		panelTable = new PanelTable(navigator);
+		panelTable.setVisible(true);
 		general = new PanelGeneral();
-		general.setWidth("200px");
-		general.setHeight("500px");
 		
-		panelOptionHealth = new PanelOptionHealth();
-		general = new PanelGeneral();
-		panelTableService = new PanelTableService();
-		
-		verticalLayout.addComponent(panelOptionHealth);
-		verticalLayout.addComponent(panelTableService);
-		verticalLayout.addComponent(general);
+		horizontalLayout.addComponent(panelOptionHealth);
+		horizontalLayout.addComponent(panelTable);
+		horizontalLayout.addComponent(general);
 
 		
-		formLayout.addComponent(verticalLayout);
-		setCompositionRoot(formLayout);
+		setCompositionRoot(horizontalLayout);
+		setSizeFull();
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

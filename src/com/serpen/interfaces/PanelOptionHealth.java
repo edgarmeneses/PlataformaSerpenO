@@ -1,5 +1,8 @@
 package com.serpen.interfaces;
 
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
@@ -7,17 +10,18 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
-public class PanelOptionHealth extends Panel {
+public class PanelOptionHealth extends Panel implements View{
 	
 	private Image  imgHealth;
 	private Image imgReport;
+	private Navigator navigator;
 	
-	public PanelOptionHealth (){
+	public PanelOptionHealth (Navigator navigator){
 		
+		this.navigator = navigator;
     FormLayout formLayout = new FormLayout();
     formLayout.setVisible(true);
     
-
 	VerticalLayout verticalHealth = new VerticalLayout();
 	
 	VerticalLayout verticalReport = new VerticalLayout();
@@ -47,6 +51,12 @@ public class PanelOptionHealth extends Panel {
 	setContent(formLayout);
 	
 	
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
