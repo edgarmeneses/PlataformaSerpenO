@@ -1,16 +1,10 @@
 package com.serpen.logic.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import com.google.gwt.dev.util.collect.HashSet;
-/**
- * Clase Fondo de Penciones
- * @author Diana Milena Gonzalez Prieto
- * @author Edgar Antonio Meneses Cadena
- * @author Daniela Alezandra Blanco Albarracin
- * @author Eliana Carolina Ayala Sosa
- *
- */
+
+
 public class PensionFund {
 	/**
 	 * nit del fondo de penciones
@@ -109,6 +103,12 @@ public class PensionFund {
 	public void setCollectionUser(Set<User> collectionUser) {
 		this.collectionUser = collectionUser;
 	}
+	
+	public double  UnemploymentCalculate(int day, int Salary){
+		double unemployment=(Salary*day)/360;
+		return unemployment;
+	}
+
 	/**
 	 * metodo delegado toString
 	 */

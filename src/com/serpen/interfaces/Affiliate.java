@@ -1,4 +1,9 @@
 package com.serpen.interfaces;
+import com.vaadin.event.MouseEvents.ClickEvent;
+import com.vaadin.event.MouseEvents.ClickListener;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
@@ -8,7 +13,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
-public class Affiliate extends CustomComponent{
+public class Affiliate extends CustomComponent implements View{
 
 	private Image imgPensions;
 	private Label lblPensions;
@@ -17,8 +22,12 @@ public class Affiliate extends CustomComponent{
 	private Image imgHealth;
 	private Label lblHealth;
 	private Panel pnlPrincipal;
+	private Navigator navigator;
+	public static String NAMEAFILIATE = "";
 	
-	public Affiliate(){
+	public Affiliate(Navigator navigator){
+		
+		this.navigator= navigator;
 		
 		FormLayout layoutprincipal = new FormLayout();
 		layoutprincipal.setSizeFull();
@@ -47,6 +56,18 @@ public class Affiliate extends CustomComponent{
 		this.imgPensions.setWidth("100px");
 		this.imgPensions.setHeight("100px");
 		this.imgPensions.setVisible(true);
+		
+        this.imgPensions.addClickListener(new ClickListener() {
+			
+			@Override
+			public void click(ClickEvent event) {
+				// TODO Auto-generated method stub				
+				navegator();			
+			}
+		});
+		
+		
+		
 		
 		this.lblPensions = new Label("Fondo Pension");
 		this.lblPensions.setVisible(true);
@@ -95,5 +116,16 @@ public class Affiliate extends CustomComponent{
 		this.setCompositionRoot(layoutPanel);
 		
 		this.setSizeFull();		
+	}
+	
+	private void navegator(){
+		navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator));
+		navigator.navigateTo(Simulator.NAMESIMULATOR);
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 }

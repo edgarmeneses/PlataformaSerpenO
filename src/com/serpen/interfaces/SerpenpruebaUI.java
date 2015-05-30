@@ -35,19 +35,20 @@ public class SerpenpruebaUI extends UI{
 	@Override
 	protected void init(VaadinRequest request) {
 		
-		VerticalLayout layout = new VerticalLayout();
-		setContent(layout);
-		
-
+//		VerticalLayout layout = new VerticalLayout();
+//		setContent(layout);
 //		EntityEducation question = new EntityEducation();
 //		layout.addComponent(question);
 //		
 //		EntityPensions pensions= new EntityPensions();
 //		layout.addComponent(pensions);
 		
-		HomePageFound pFound = new HomePageFound();
-		layout.addComponent(pFound);
+//		HomePageFound pFound = new HomePageFound();
+//		layout.addComponent(pFound);
+		Navigator navigator = new Navigator(this, this);
+		navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator));
 		
 	}
 
 }
+

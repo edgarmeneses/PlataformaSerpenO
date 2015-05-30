@@ -2,14 +2,18 @@ package com.serpen.interfaces;
 
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.Button.ClickEvent;
 
-public class PanelBoardReport extends Panel{
+public class PanelBoardReport extends Panel implements View{
 	
 	private Label lblReport;
 	private Label lblUser;
@@ -21,12 +25,14 @@ public class PanelBoardReport extends Panel{
 	private TextField  txtDiscountCredit;
 	private TextField  txtDiscountHealth;
 	private Button  btnReturn;
+	private Navigator navigator;
+	public static String NAMEBOARD="BoardReport";
 
 	
-	public PanelBoardReport() {
+	public PanelBoardReport(Navigator navigator) {
 		
 		
-		
+		this.navigator=navigator;
 		// TODO Auto-generated constructor stub
 		FormLayout layoutPanel = new FormLayout();
 		layoutPanel.setSizeFull();
@@ -90,7 +96,16 @@ public class PanelBoardReport extends Panel{
 		btnReturn= new  Button("Regresar");
 		btnReturn.setWidth("150px");
 		btnReturn.setHeight("50px");
-		btnReturn.setVisible(true);
+		btnReturn.setVisible(true);	
+		btnReturn.addClickListener(new Button.ClickListener(){
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub		
+				navigator.navigateTo(Simulator.NAMESIMULATOR);
+			}
+
+		});
 		
 		horizontalLayout1.addComponent(lblReport);
 		
@@ -105,7 +120,6 @@ public class PanelBoardReport extends Panel{
 		
 		horizontalLayout5.addComponent(lblDiscountHealth);
 		horizontalLayout5.addComponent(txtDiscountHealth);
-		
 		horizontalLayout6.addComponent(btnReturn);
 		
 		layoutPanel.addComponent(horizontalLayout1);
@@ -116,5 +130,12 @@ public class PanelBoardReport extends Panel{
 		layoutPanel.addComponent(horizontalLayout6);
 		
 		setContent(layoutPanel);		
+	}
+
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 }
