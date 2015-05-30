@@ -16,11 +16,10 @@ public class EntityHealth extends CustomComponent implements View {
 	private PanelTable  panelTable;
 	public static String NAMESENTITYHEALTH="EntityHealth";
 	
-	public EntityHealth(){
+	public EntityHealth(Navigator navigator){
 		
-//		this.navigator = navigator;
-		
-		HorizontalLayout horizontalLayout = new HorizontalLayout();
+    	this.navigator = navigator;
+	    HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setVisible(true);
 		
 		panelOptionHealth = new PanelOptionHealth(navigator);

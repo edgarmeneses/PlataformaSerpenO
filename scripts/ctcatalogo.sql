@@ -6,7 +6,7 @@
 -- Fecha ultima modificacion: 
 -- Revisado por:
 -- Fecha Ultima Revision:
-CREATE TABLE CATALOGO(
+CREATE TABLE catalogo(
 id     		 INT    	NOT NULL    AUTO_INCREMENT,
 descuento    	 NUMERIC(3,1)  	NOT NULL,
 servicio         INT		NOT NULL,

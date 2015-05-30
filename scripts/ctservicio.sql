@@ -10,5 +10,6 @@ CREATE TABLE servicio(
 id     		 INT    	NOT NULL    AUTO_INCREMENT,
 nombre    	 VARCHAR(30)  	NOT NULL,
 costo    	 NUMERIC(9,2)   NOT NULL,
+descripcion      VARCHAR(100)   NOT NULL,
 PRIMARY KEY(id)
 );

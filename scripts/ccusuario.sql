@@ -6,7 +6,7 @@
 -- Fecha ultima modificacion: 03 de abril del 2015
 -- Revisado por:
 -- Fecha Revision: 
-ALTER TABLE USUARIO ADD (
+ALTER TABLE usuario ADD (
 
 CONSTRAINT us_fk_id     FOREIGN KEY (rol)      REFERENCES  rol(id),
 

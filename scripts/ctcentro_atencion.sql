@@ -6,7 +6,7 @@
 -- Fecha ultima modificacion: 
 -- Revisado por:
 -- Fecha Ultima Revision:
-CREATE TABLE CENTRO_ATENCION(
+CREATE TABLE centro_atencion(
 nit                   VARCHAR(11)        NOT NULL,     
 nombre                VARCHAR(30)        NOT NULL, 
 direccion             VARCHAR(25)        NOT NULL,

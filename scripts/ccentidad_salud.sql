@@ -6,6 +6,6 @@
 -- Fecha ultima modificacion: 
 -- Revisado por:
 -- Fecha Revision: 
-ALTER TABLE ENTIDAD_SALUD ADD (
+ALTER TABLE entidad_salud ADD (
   CONSTRAINT us_fk_cat     FOREIGN KEY (catalogo)        REFERENCES  catalogo(id)
 );

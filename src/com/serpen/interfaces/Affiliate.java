@@ -66,19 +66,22 @@ public class Affiliate extends CustomComponent implements View{
 			}
 		});
 		
-		
-		
-		
 		this.lblPensions = new Label("Fondo Pension");
 		this.lblPensions.setVisible(true);
 		
 		this.imgBank = new Image("Entidad Banco");
 		ThemeResource resource2 = new ThemeResource("../Imagen/banco.png");
+		
 		imgBank = new Image(null, resource2);
 		this.imgBank.setWidth("100px");
 		this.imgBank.setHeight("100px");
 		this.imgBank.setVisible(true);
-		
+		 this.imgBank.addClickListener(new ClickListener(){
+			 public void click(ClickEvent event) {
+					// TODO Auto-generated method stub				
+				    //navegacion para los bancos
+				}
+		 });
 		this.lblBank = new Label("Entidad Banco");
 		this.lblBank.setVisible(true);
 		
@@ -88,6 +91,13 @@ public class Affiliate extends CustomComponent implements View{
 		this.imgHealth.setWidth("100px");
 		this.imgHealth.setHeight("100px");
 		this.imgHealth.setVisible(true);
+		 this.imgHealth.addClickListener(new ClickListener(){
+			 public void click(ClickEvent event) {
+					// TODO Auto-generated method stub				
+				    navigator.addView(EntityHealth.NAMESENTITYHEALTH,  new EntityHealth(navigator));
+					navigator.navigateTo(EntityHealth.NAMESENTITYHEALTH);
+				}
+		 });
 		
 		this.lblHealth = new Label("Entidad Salud");
 		this.lblHealth.setVisible(true);
