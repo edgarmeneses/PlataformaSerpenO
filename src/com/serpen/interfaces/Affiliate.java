@@ -61,8 +61,10 @@ public class Affiliate extends CustomComponent implements View{
 			
 			@Override
 			public void click(ClickEvent event) {
-				// TODO Auto-generated method stub				
-				navegator();			
+				// TODO Auto-generated method stub		
+				navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator));
+				navigator.navigateTo(Simulator.NAMESIMULATOR);
+//				navegator();			
 			}
 		});
 		

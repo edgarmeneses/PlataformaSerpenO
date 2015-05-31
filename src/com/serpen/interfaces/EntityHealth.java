@@ -25,7 +25,7 @@ public class EntityHealth extends CustomComponent implements View {
 		panelOptionHealth = new PanelOptionHealth(navigator);
 		panelTable = new PanelTable(navigator);
 		panelTable.setVisible(true);
-		general = new PanelGeneral();
+		general = new PanelGeneral(navigator);
 		
 		horizontalLayout.addComponent(panelOptionHealth);
 		horizontalLayout.addComponent(panelTable);

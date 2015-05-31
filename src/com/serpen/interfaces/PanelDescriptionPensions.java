@@ -16,7 +16,7 @@ public class PanelDescriptionPensions extends Panel {
 	private Label txtAddress;
 	private Panel pnlTitle;
 	private Panel pnlContent;
-	private Panel pnlinformation;
+ 	private Panel pnlinformation;
 
 	public PanelDescriptionPensions() {
 

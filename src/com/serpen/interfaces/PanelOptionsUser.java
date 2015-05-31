@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
@@ -17,12 +18,14 @@ public class PanelOptionsUser extends CustomComponent {
 		menuBar = new MenuBar();
 //		this.setVisible(menuBar);
 		
-		user = menuBar.addItem("USER", null, null);
+		user = menuBar.addItem("USER", new ThemeResource("../Imagen/sesion.png"), null);
 		
 		configuraton = user.addItem("Configuración", null, null);
 		logOut = user.addItem("Cerrar Sesión", null , null);
 		
 		setCompositionRoot(menuBar);
+		
+		
 		
 	}
 }
