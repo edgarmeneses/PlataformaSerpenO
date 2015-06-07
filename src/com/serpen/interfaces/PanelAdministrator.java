@@ -184,7 +184,8 @@ public class PanelAdministrator extends Panel{
 		layoutPanel.addComponent(horizontalLayout2);
 		layoutPanel.addComponent(horizontalLayout3);
 
-		this.pnlOption.setContent(layoutPanel);	
+		this.pnlOption.setContent(layoutPanel);
+		
 		setContent(layoutPrincipal);
 
 	}
