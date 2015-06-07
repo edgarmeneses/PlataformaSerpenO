@@ -86,7 +86,4 @@ public class Catalog {
 		return "Catalog [id=" + id + ", discount=" + discount + ", service="
 				+ service + ", carecenter=" + carecenter + "]";
 	}
-
-
-
 }
