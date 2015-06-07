@@ -34,7 +34,7 @@ public class Simulator extends CustomComponent implements View{
 		panelFoundConf = new PanelFoundConf(navigator);
 
 		
-		panelGeneral = new PanelGeneral();
+		panelGeneral = new PanelGeneral(navigator);
 		panelGeneral.setWidth("200px");
 		panelGeneral.setHeight("500px");
 		

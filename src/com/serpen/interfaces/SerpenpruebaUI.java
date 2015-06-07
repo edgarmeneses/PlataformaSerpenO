@@ -4,21 +4,16 @@ package com.serpen.interfaces;
 import javax.servlet.annotation.WebServlet;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import com.serpen.persistence.conf.HibernateUtil;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 
 //
 
@@ -35,20 +30,11 @@ public class SerpenpruebaUI extends UI{
 	@Override
 	protected void init(VaadinRequest request) {
 		
-//		VerticalLayout layout = new VerticalLayout();
-//		setContent(layout);
-//		EntityEducation question = new EntityEducation();
-//		layout.addComponent(question);
-//		
-//		EntityPensions pensions= new EntityPensions();
-//		layout.addComponent(pensions);
-		
-//		HomePageFound pFound = new HomePageFound();
-//		layout.addComponent(pFound);
+		Session sesion = HibernateUtil.getSessionFactory().openSession();
+		ControlGeneral controlGeneral = new ControlGeneral(sesion);
 		Navigator navigator = new Navigator(this, this);
-		navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator));
-		
+		//navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator));
+     	navigator.addView(Login.NAMElOGUEO, new Login(navigator,controlGeneral));	
+//		navigator.addView(Question.NAMEQUESTION, new Question(navigator, controlGeneral));
 	}
-
 }
-

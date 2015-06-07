@@ -14,12 +14,12 @@ public class ControlGeneral {
 	
 	
 	
-	public ControlGeneral(Session sesion, Transaction transaction) {
-//		
-//		this.controlRole = new ControlRole(sesion,transaction);
-//		this.controlUser = new ControlUser(sesion);
-//		this.controlHistoryRole = new ControlHistoryRole(sesion, transaction);
-//		this.controlHistoryUser = new ControlHistoryUser(sesion, transaction);
+public ControlGeneral(Session sesion) {
+		
+		this.controlRole = new ControlRole(sesion);
+		this.controlUser = new ControlUser(sesion);
+//        this.controlHistoryRole = new ControlHistoryRole(sesion, transaction);
+//        this.controlHistoryUser = new ControlHistoryUser(sesion, transaction);
 	}
 	
 //	public ControlGeneral(){

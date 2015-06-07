@@ -101,15 +101,15 @@ public class Login extends CustomComponent implements View{
 				// TODO Auto-generated method stub
 
 				try {
-//					User user = control.getUser().consult(Integer.valueOf(txfUserName.getValue()));
-//					System.out.println(user);
+					User user = control.getUser().consultId(Integer.valueOf(txfUserName.getValue()));
+					System.out.println(user);
 
 					Role rol = control.getRole().consult(4);
 					System.out.println("rol nuevo " +rol);
 
-//					if(validateUser(user)){
-//						navigate(user);
-//					}
+					if(validateUser(user)){
+						navigate(user);
+					}
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
 					Notification.show("No se puede ingresar letras en el campo  ");
