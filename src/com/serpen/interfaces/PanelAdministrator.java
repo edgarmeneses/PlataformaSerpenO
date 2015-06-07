@@ -75,8 +75,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-//				navigator.addView(CreateUser.NAMECREATE, new CreateUser(navigator,user,control));
-//				navigator.navigateTo(CreateUser.NAMECREATE);
+				navigator.addView(CreateUser.NAMECREATE, new CreateUser(navigator,user,control));
+				navigator.navigateTo(CreateUser.NAMECREATE);
 			}
 		});
 
@@ -91,8 +91,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-//				navigator.addView(List.NAMELIST, new List(navigator, user,control));
-//				navigator.navigateTo(List.NAMELIST);
+				navigator.addView(List.NAMELIST, new List(navigator, user,control));
+				navigator.navigateTo(List.NAMELIST);
 			}
 		});
 
@@ -106,8 +106,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-//				navigator.addView(EditUsers.NAMEEDIT, new EditUsers(navigator, user,control));
-//				navigator.navigateTo(EditUsers.NAMEEDIT);
+				navigator.addView(EditUsers.NAMEEDIT, new EditUsers(navigator, user,control));
+				navigator.navigateTo(EditUsers.NAMEEDIT);
 				System.out.println("hhhhh");
 			}
 
@@ -124,8 +124,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-//				navigator.addView(CreateRol.NAMECREATEROLE, new CreateRol(navigator, user, control));
-//				navigator.navigateTo(CreateRol.NAMECREATEROLE);
+				navigator.addView(CreateRol.NAMECREATEROLE, new CreateRol(navigator, user, control));
+				navigator.navigateTo(CreateRol.NAMECREATEROLE);
 			}
 
 		});
@@ -141,8 +141,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-//				navigator.addView(Configuration.NAMECONFIGURATION, new Configuration(navigator,user,control));
-//				navigator.navigateTo(Configuration.NAMECONFIGURATION);
+				navigator.addView(Configuration.NAMECONFIGURATION, new Configuration(navigator,user,control));
+				navigator.navigateTo(Configuration.NAMECONFIGURATION);
 				System.out.println("hhhhh");
 			}
 
@@ -160,8 +160,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-//				navigator.addView(ListRol.NAMELISTROLE, new ListRol(navigator, user, control));
-//				navigator.navigateTo(ListRol.NAMELISTROLE);
+				navigator.addView(ListRol.NAMELISTROLE, new ListRol(navigator, user, control));
+				navigator.navigateTo(ListRol.NAMELISTROLE);
 			}
 
 		});
