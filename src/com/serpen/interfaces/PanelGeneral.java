@@ -90,6 +90,16 @@ public class PanelGeneral extends Panel implements View{
 		this.imgBank.setWidth("50px");
 		this.imgBank.setHeight("50px");
 		this.imgBank.setVisible(true);
+		this.imgBank.addClickListener(new ClickListener() {
+			
+			@Override
+			public void click(ClickEvent event) {
+				// TODO Auto-generated method stub
+			
+				  navigator.addView(EntityBank.NAMEENTITYBANK,  new EntityBank(navigator));
+				  navigator.navigateTo(EntityBank.NAMEENTITYBANK);
+			}
+		});;
 
 		lblBank = new Label("Entidad Bancaria");
 		this.lblBank.setVisible(true);

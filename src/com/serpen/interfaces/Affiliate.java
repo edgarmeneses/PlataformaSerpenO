@@ -82,6 +82,9 @@ public class Affiliate extends CustomComponent implements View{
 			 public void click(ClickEvent event) {
 					// TODO Auto-generated method stub				
 				    //navegacion para los bancos
+				 
+				 navigator.addView(EntityBank.NAMEENTITYBANK,  new EntityBank(navigator));
+				 navigator.navigateTo(EntityBank.NAMEENTITYBANK);
 				}
 		 });
 		this.lblBank = new Label("Entidad Banco");
