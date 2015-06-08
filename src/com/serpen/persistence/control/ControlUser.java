@@ -147,15 +147,15 @@ public class ControlUser {
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		ControlUser controlUser= new ControlUser(session);
-				Role role = (Role) session.load(Role.class, 1);
+				Role role = (Role) session.load(Role.class, 2);
 				PensionFund pensionFund = (PensionFund) session.load(PensionFund.class,"12");
 		        HealthEntity healthEntity = (HealthEntity)session.load(HealthEntity.class, "3eerr");
 	
 		try {
 			System.out.println(controlUser.consultId(1));
-			//controlUser.insert(1, "123ed", "Profe123ed", role,"Eliana", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund,healthEntity);
+			 controlUser.insert(2, "abc", "Profe123ed", role,"Eliana", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund,healthEntity);
 			//controlUser.removeUser(1);
-			System.out.println(controlUser.consultName("Eliana"));
+			//System.out.println(controlUser.consultName("Eliana"));
 		} catch (ErrorConnection e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

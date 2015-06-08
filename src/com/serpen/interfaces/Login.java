@@ -123,11 +123,7 @@ public class Login extends CustomComponent implements View{
 
 			}
 		});
-
-
 		this.lblQuestion = new Link("¿olvido su contraseña?",new ExternalResource("#!"+Question.NAMEQUESTION));
-
-
 		pnlLogin = new Panel();
 		pnlLogin.setSizeFull();
 		pnlLogin.setWidth("400px");
@@ -170,11 +166,12 @@ public class Login extends CustomComponent implements View{
 			navigator.addView(Administrator.NAMEADMINISTRATOR, new Administrator(navigator,user,control));
 			navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 			break;
-		case "Usuario":
-			Notification.show("Modulo en construccion ");
+		case "Cliente":
+			navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator));   	   	
+	    	navigator.navigateTo(Affiliate.NAMEAFILIATE);
 			break;
 		default:
-			Notification.show("Rol inválido contacte a su administro ");
+			Notification.show("Rol inválido contacte a su administrador ");
 			break;
 		}
 
@@ -188,5 +185,7 @@ public class Login extends CustomComponent implements View{
 	private boolean validateUser(User user){
 		return user.getPassword().equals(txfPasword.getValue());
 	}
+	
+	
 
 }

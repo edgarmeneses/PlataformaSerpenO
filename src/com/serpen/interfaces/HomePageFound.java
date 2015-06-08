@@ -1,6 +1,8 @@
 package com.serpen.interfaces;
 
 
+import org.apache.catalina.startup.SetContextPropertiesRule;
+
 import com.serpen.logic.entity.Agreement;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button;
@@ -9,12 +11,13 @@ import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Embedded;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 
 
-public class HomePageFound extends CustomComponent implements TabSheet.SelectedTabChangeListener {
+public class HomePageFound extends Panel implements TabSheet.SelectedTabChangeListener {
 
 	public TabSheet tabsheet = new TabSheet();
 
@@ -29,9 +32,6 @@ public class HomePageFound extends CustomComponent implements TabSheet.SelectedT
 //	public Label tab4 = new Label("holaaaa4");
 
 	public HomePageFound() {
-
-		setCompositionRoot(tabsheet);
-
 		tabsheet.addListener(this);
 
 		tabsheet.addTab(pensions, "Informacion General", null);
@@ -45,6 +45,8 @@ public class HomePageFound extends CustomComponent implements TabSheet.SelectedT
 		
 		tabsheet.addTab(tourism, "Turismo", null);
 		tabsheet.getTab(tourism).setEnabled(true);
+		
+		setContent(tabsheet);
 	}
 
 	public void selectedTabChange(SelectedTabChangeEvent event) {

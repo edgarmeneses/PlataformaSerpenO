@@ -23,6 +23,7 @@ public class Simulator extends CustomComponent implements View{
 	private PanelFoundConf panelFoundConf;
 	private PanelGeneral   panelGeneral;
 	private  Navigator navigator;
+	private HomePageFound homePageFound ;
 	public static String NAMESIMULATOR="Simulator";
 
 	public  Simulator (Navigator navigator){
@@ -31,27 +32,23 @@ public class Simulator extends CustomComponent implements View{
 		
 		VerticalLayout horizontalLayout =  new VerticalLayout();
 		
+		homePageFound = new HomePageFound();
 		panelFoundConf = new PanelFoundConf(navigator);
-
+        
 		
 		panelGeneral = new PanelGeneral(navigator);
 		panelGeneral.setWidth("200px");
 		panelGeneral.setHeight("500px");
 		
 		horizontalLayout.addComponent(panelFoundConf);
+		horizontalLayout.addComponent(homePageFound);
 		horizontalLayout.addComponent(panelGeneral);
 		
 	    formLayout.addComponent(horizontalLayout);
-		setCompositionRoot(formLayout);
-				
+		setCompositionRoot(formLayout);			
 	}
-
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-	
-	
-
 }

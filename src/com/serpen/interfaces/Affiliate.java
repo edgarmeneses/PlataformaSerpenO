@@ -1,4 +1,5 @@
 package com.serpen.interfaces;
+import com.google.gwt.thirdparty.javascript.rhino.head.ast.FunctionNode.Form;
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
@@ -37,6 +38,10 @@ public class Affiliate extends CustomComponent implements View{
 		layoutPanel.setSizeFull();
 		layoutPanel.setVisible(true);
 		
+		FormLayout  layoutTable = new FormLayout();
+		layoutTable.setSizeFull();
+		layoutTable.setVisible(true);
+		
 		HorizontalLayout horizontal = new HorizontalLayout();
 		
 		VerticalLayout verticalPension = new VerticalLayout();
@@ -49,6 +54,7 @@ public class Affiliate extends CustomComponent implements View{
 		pnlPrincipal.setSizeFull();
 		pnlPrincipal.setWidth("500px");
 		pnlPrincipal.setHeight("500px");
+		
 		
 		this.imgPensions = new Image("Fondo Pension");
 		ThemeResource resource1 = new ThemeResource("../Imagen/pension.png");
@@ -128,7 +134,9 @@ public class Affiliate extends CustomComponent implements View{
         this.pnlPrincipal.setContent(layoutPanel);
        
 		this.setCompositionRoot(layoutprincipal);
+		this.setCompositionRoot(layoutTable);
 		this.setCompositionRoot(layoutPanel);
+		
 		
 		this.setSizeFull();		
 	}
