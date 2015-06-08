@@ -23,7 +23,7 @@ public class EntityBank extends CustomComponent implements  View{
 		horizontalLayout.setVisible(true);
 		
 		panelOptionBank = new PanelOptionBank(navigator);
-		panelTableBank = new PanelTableBank();
+		panelTableBank = new PanelTableBank(navigator);
 		panelTableBank.setVisible(true);
 		panelGeneral = new PanelGeneral(navigator);
 		

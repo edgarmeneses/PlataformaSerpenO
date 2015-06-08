@@ -306,7 +306,7 @@ public class User {
 				+ ", name=" + name + ", lastName=" + lastName + ", address="
 				+ address + ", numberPhone=" + numberPhone + ", business="
 				+ business + ", salary=" + salary + ", affiliate=" + affiliate
-				+ ", pensionFund=" + pensionFund + "]";
+				+ ", healthEntity=" + healthEntity + ", pensionFund="
+				+ pensionFund + "]";
 	}
-
 }

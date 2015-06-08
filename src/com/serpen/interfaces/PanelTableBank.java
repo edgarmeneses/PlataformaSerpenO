@@ -1,12 +1,25 @@
 package com.serpen.interfaces;
 
+import com.mysql.jdbc.util.Base64Decoder.IntWrapper;
+import com.serpen.logic.entity.Account;
+import com.serpen.logic.entity.TransactionP;
+import com.serpen.persistence.conf.HibernateUtil;
+import com.serpen.persistence.control.ControlAccount;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.Button.ClickEvent;
+
+import java.util.List;
+
+import org.hibernate.Session;
 
 public class PanelTableBank extends Panel {
 
@@ -20,8 +33,20 @@ public class PanelTableBank extends Panel {
 	private TextField txtSearch;
 	private Button btnSearch;
 	
+	private ControlAccount controlAccount;
+	
+	private Link lbllink;
+	private Navigator navigator;
+	
+	private TransactionP transactionP;
+	
 
-	public PanelTableBank(){
+	public PanelTableBank(Navigator navigator){
+		
+		this.navigator =  navigator;
+		Session  session = HibernateUtil.getSessionFactory().openSession();
+		
+		controlAccount = new ControlAccount(session);
 		
 		FormLayout formLayout = new FormLayout();
 		formLayout.setVisible(true);
@@ -79,17 +104,27 @@ public class PanelTableBank extends Panel {
 		btnSearch.setWidth("150px");
 		btnSearch.setHeight("50px");
 		btnSearch.setVisible(true);
-		
-	    table = new Table();
+		 
+		btnSearch.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub	
+			 fill();
+				
+			}
+		});
+	    
+		table = new Table();
 	    
 	    table.addContainerProperty("Tipo de cuenta", String.class, null);
-		table.addContainerProperty("Estado de cuenta", String.class, null);
-		table.addContainerProperty("Numero de cuenta", String.class, null);
-		table.addContainerProperty("Transacciones", String.class, null);
+		table.addContainerProperty("Estado de cuenta", Integer.class, 0);
+		table.addContainerProperty("Numero de cuenta", Integer.class, 0);
+		table.addContainerProperty("Transacciones", Link.class, null);
 
-		table.addItem(new Object[]{" ", " " , " ", " "}, 2);
-	    table.addItem(new Object[] { " " ," " , " ", " "},3);
-		
+//		lbllink = new Link("Transacciones" , new ExternalResource("#!"+ WindowBank.NAMEWINDOWSBANK));
+//		table.addItem(new Object[]{" ", " " , " ", new PanelLinkTransaction()}, 2);
+//	    table.addItem(new Object[] { " " ," " , " ", " "},3);
+//		
 	    table.setPageLength(table.size());
 		table.setWidth("80%"); 
 		table.setHeight("180px");
@@ -121,4 +156,34 @@ public class PanelTableBank extends Panel {
 		
 		
 	}
+	
+	public Object[] fillRow (Account account){
+		return new Object[] { account.getAccountType(), account.getNumber() ,account.getNumber() ,this.lbllink};
+	
+	}
+	
+	public void fill(){
+		try {
+			System.out.println(txtSearch.getValue());
+//		List<Account> account  = controlAccount.list(txtSearch.getValue());
+			
+		List<Account> account = controlAccount.list(txtSearch.getValue());	
+		
+		for (int i = 0; i < account.size(); i++) {
+			System.out.println("Lista" + fillRow(account.get(i)));
+				
+		}
+		table.removeAllItems();
+		for (int i = 0; i < account.size(); i++) {
+			table.addItem(fillRow(account.get(i)),i);
+			
+		} 
+		}  catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+		}
+		
+	}
+		
 }
+

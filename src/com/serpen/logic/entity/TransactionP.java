@@ -73,8 +73,8 @@ public class TransactionP {
 	public void setTransactionType(char transactionType) {
 		this.transactionType = transactionType;
 	}
-
-	@Override
+	
+		@Override
 	public String toString() {
 		return "TransactionP [id=" + id + ", transactionType="
 				+ transactionType + ", amount=" + amount + ", date=" + date

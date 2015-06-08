@@ -2,13 +2,16 @@ package com.serpen.persistence.control;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Account;
+import com.serpen.logic.entity.Catalog;
 import com.serpen.logic.entity.FinancialEntity;
 import com.serpen.logic.entity.Role;
+import com.serpen.logic.entity.TransactionP;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.conf.HibernateUtil;
 /**
@@ -62,38 +65,6 @@ public class ControlAccount {
 	}
 
 	/**
-	 * Metodo que permite listar los datoa que contiene la 
-	 * base de datos 
-	 * @return
-	 * @throws ErrorConnection
-	 */
-	public List<Account> list() throws ErrorConnection{
-
-		try{
-
-			List<Account> lisAccounts = session.createQuery(
-					"from cuenta "+
-					"in class com.serpen.logic.entity.Account").list();
-			for (int i = 0; i < lisAccounts.size(); i++) {
-				Account pAccount = lisAccounts.get(i);
-			}
-			if (!lisAccounts.isEmpty()){
-
-				return lisAccounts;
-			}else{
-
-				throw new ErrorConnection("No se cuenta con ningun dato de la cuenta");
-			}
-		}catch(Exception e){
-			throw new ErrorConnection("no se pudo realizar la conexion "
-					+ " Causa: " + e.getCause());
-
-		}
-
-
-	}
-
-	/**
 	 * Metodo que permite consultar un determinado 
 	 * dato en la base de datos 
 	 * @param numer
@@ -115,42 +86,67 @@ public class ControlAccount {
 
 	}
 	
+	public List<Account> list(String typeAccount){
+		
+		Criteria criteria = session.createCriteria(Account.class);
+    	return criteria.list();
+	}
+	
 	public static void main(String[] args) throws ErrorConnection {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-
+        TransactionP transactionP = (TransactionP) session.load(TransactionP.class, 10);
+        
 		ControlAccount cAccount = new ControlAccount(session);
-
+		Account account = new Account();
 		ControlUser user= new ControlUser(session);
-		User user2 = user.consultId(1049635);
+		User user2 = user.consultId(100794);
 
 		ControlFinacialEntity fEntity = new ControlFinacialEntity(session);
-		FinancialEntity fEntity2 = fEntity.consult("1234");
-
-
-		try{
+		FinancialEntity fEntity2 = fEntity.consult("123");
+        System.out.println(account.stateAccount(transactionP));
+        
+//		try{
 			
-			cAccount.insert(123,Account.CERTIFICADO_DE_DEPOSITO,user2,fEntity2);
-			cAccount.insert(13,Account.CERTIFICADO_DE_DEPOSITO,user2,fEntity2);
+//			cAccount.insert(123,Account.CERTIFICADO_DE_DEPOSITO,user2,fEntity2);
+//			System.out.println(cAccount.list("C"));
+//			cAccount.insert(13,Account.CERTIFICADO_DE_DEPOSITO,user2,fEntity2);
 
-			List<Account> accounts = cAccount.list();
-			System.out.println("Cuentas");
-			
-			for (Account account : accounts) {
-				System.out.println(account);
-			}
-			
-			System.out.println("cuenta");
-			
-			System.out.println(cAccount.consult(12));
-			
-//			cAccount.consult(1234);
+//			List<Account> accounts = cAccount.list();
+//			System.out.println("Cuentas");
+//			
+//			for (Account account : accounts) {
+//				System.out.println(account);
+//			}
+//			
+//			System.out.println("cuenta");
+//			
+//			System.out.println(cAccount.consult(12));
+//			
+////			cAccount.consult(1234);
 
-		}catch(ErrorConnection e){
-
-			e.printStackTrace();
-
-		}
+//		}catch(ErrorConnection e){
+//
+//			e.printStackTrace();
+//
+//		}
 	}
+	
+//	public static void main (){
+//		
+//		Session session = HibernateUtil.getSessionFactory().openSession();
+//		ControlAccount account = new ControlAccount(session);
+//		User user = (User) session.load(User.class, 100794);
+//		FinancialEntity financiera = (FinancialEntity) session.load(FinancialEntity.class, 1234);
+//
+//		try {
+//			account.insert(111111, Account.CUENTA_CORRIENTE, user, financiera);
+//			session.close();
+//		} catch (ErrorConnection e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+// 		
+//	}
 
 }

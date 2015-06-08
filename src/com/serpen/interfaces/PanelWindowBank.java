@@ -92,10 +92,9 @@ public class PanelWindowBank extends Panel{
         table = new Table();
 		
 		table.addContainerProperty("Fecha", String.class, null);
-		table.addContainerProperty("Descripción", String.class, null);
-		table.addContainerProperty("Ingreso", String.class, null);
-		table.addContainerProperty("Egreso", String.class, null);
-		table.addContainerProperty("Saldo", String.class, null);
+		table.addContainerProperty("Tipo transaccion", String.class, null);
+		table.addContainerProperty("Monto", String.class, null);
+	
 		
 	    table.addItem(new Object[]{" ", " " , " ", " "}, 2);
 	    table.addItem(new Object[] { " " ," " , " ", " "},3);

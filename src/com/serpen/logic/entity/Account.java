@@ -19,6 +19,7 @@ public class Account {
 	private User user;
 	private FinancialEntity financialEntity;
 	private Set<TransactionP> transactions;
+//	private TransactionP transactionP;
 	public static final String CERTIFICADO_DE_DEPOSITO="CDT";
 	public static final String CUENTA_CORRIENTE="COR";
 	public static final String CUENTA_DE_AHORROS="AHO";
@@ -77,6 +78,31 @@ public class Account {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+	
+	public double stateAccount(TransactionP p){
+		double retiro = 0;
+		double ingreso = 0;
+		double state = 0;
+		
+		for (int j = 0; j < transactions.size(); j++) {
+			System.out.println("nnnnnn");
+			System.out.println("lista" + transactions);
+			if (p.getTransactionType() =='R') {
+				retiro = retiro + p.getAmount();
+				transactions.iterator();
+				System.out.println(retiro);
+			}
+			if (p.getTransactionType() =='I') {
+				ingreso = ingreso + p.getAmount();
+				transactions.iterator();
+				System.out.println(ingreso);
+		}
+			
+		}
+		
+		return state = ingreso = retiro;
+	}
+	
 
 	@Override
 	public String toString() {
