@@ -1,0 +1,15 @@
+@import "addons.scss";
+@import "Affiliate.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in Affiliate.scss */
+.Affiliate {
+  @include addons;
+  @include Affiliate;
+  
+   .v-SIDEBAR{
+	$v-background-color: #87CEEB;
+     background-color: $v-background-color;
+}
+
+}
