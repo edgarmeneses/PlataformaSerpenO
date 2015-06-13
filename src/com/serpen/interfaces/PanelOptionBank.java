@@ -28,22 +28,13 @@ public class PanelOptionBank extends Panel{
 		VerticalLayout verticalLayout = new VerticalLayout();
 		
 		this.imgEntity = new Image("Entidad salud");
-		ThemeResource resource = new ThemeResource("../Imagen/banco.png");
+		ThemeResource resource = new ThemeResource("../Imagen/Banco.png");
 		this.imgEntity = new Image(null, resource);
 		this.imgEntity.setWidth("100px");
 		this.imgEntity.setHeight("100px");
 		this.setVisible(true);
 		
-		this.imgEntity.addClickListener(new ClickListener() {
-			
-			@Override
-			public void click(ClickEvent event) {
-				// TODO Auto-generated method stub
-		         WindowBank windowBank = new WindowBank(navigator);
-		         UI.getCurrent().addWindow(windowBank);
-			}
-		});
-		
+	
 		this.lblEntity = new Label("Entidad Banco");
 		this.lblEntity.setVisible(true);
 		

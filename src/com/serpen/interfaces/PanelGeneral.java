@@ -85,7 +85,7 @@ public class PanelGeneral extends Panel implements View{
 		this.setVisible(true);
 
 		this.imgBank = new Image("Entidad Banco");
-		ThemeResource resource5 = new ThemeResource("../Imagen/banco.png");
+		ThemeResource resource5 = new ThemeResource("../Imagen/bancogeneral.png");
 		imgBank = new Image(null, resource5);
 		this.imgBank.setWidth("50px");
 		this.imgBank.setHeight("50px");

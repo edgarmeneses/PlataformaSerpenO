@@ -33,6 +33,7 @@ public class Affiliate extends CustomComponent implements View{
 		FormLayout layoutprincipal = new FormLayout();
 		layoutprincipal.setSizeFull();
 		layoutprincipal.setVisible(true);
+		layoutprincipal.setStyleName("v-SIDEBAR");
 		
 		FormLayout layoutPanel= new FormLayout();
 		layoutPanel.setSizeFull();
@@ -78,7 +79,7 @@ public class Affiliate extends CustomComponent implements View{
 		this.lblPensions.setVisible(true);
 		
 		this.imgBank = new Image("Entidad Banco");
-		ThemeResource resource2 = new ThemeResource("../Imagen/banco.png");
+		ThemeResource resource2 = new ThemeResource("../Imagen/Banco.png");
 		
 		imgBank = new Image(null, resource2);
 		this.imgBank.setWidth("100px");

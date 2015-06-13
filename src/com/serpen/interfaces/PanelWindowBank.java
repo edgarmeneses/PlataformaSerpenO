@@ -1,5 +1,18 @@
 package com.serpen.interfaces;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder.In;
+
+import org.hibernate.Session;
+
+import com.google.gwt.dev.shell.BrowserChannel.Value.ValueType;
+import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.TransactionP;
+import com.serpen.persistence.conf.HibernateUtil;
+import com.serpen.persistence.control.ControlTransactionP;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -7,6 +20,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.Button.ClickEvent;
 
 public class PanelWindowBank extends Panel{
 
@@ -21,8 +35,18 @@ public class PanelWindowBank extends Panel{
 	private Panel pnlButton;
 	private Button btnCancel;
 	
+	private ControlTransactionP transactionP;
+	private PanelTableBank panelTableBank;
+	private Navigator navigator;
+	
+	private PanelButtonTransaction buttonTransaction;
+	
 	public PanelWindowBank (){
 		
+		Session session= HibernateUtil.getSessionFactory().openSession();
+		
+		transactionP = new ControlTransactionP(session);
+		this.panelTableBank = new PanelTableBank(navigator);
 		FormLayout formGeneral = new FormLayout();
 		formGeneral.setVisible(true);
 		
@@ -88,18 +112,24 @@ public class PanelWindowBank extends Panel{
 		btnSearch.setWidth("150px");
 		btnSearch.setHeight("50px");
 		btnSearch.setVisible(true);
+		
+		btnSearch.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub	
+			     fill();
+				
+			}
+		});
 
         table = new Table();
 		
+        table.addContainerProperty("Numero de transaccion", String.class, null);
 		table.addContainerProperty("Fecha", String.class, null);
 		table.addContainerProperty("Tipo transaccion", String.class, null);
 		table.addContainerProperty("Monto", String.class, null);
-	
-		
-	    table.addItem(new Object[]{" ", " " , " ", " "}, 2);
-	    table.addItem(new Object[] { " " ," " , " ", " "},3);
-		
-	    table.setPageLength(table.size());
+
+		table.setPageLength(table.size());
 		table.setWidth("80%"); 
 		table.setHeight("180px");
 		table.setFooterVisible(true);
@@ -140,6 +170,35 @@ public class PanelWindowBank extends Panel{
 	    
 	}
 	
+	public  Object[] fillRow(TransactionP transactionP){
+		return new Object[] { String.valueOf(transactionP.getId()),String.valueOf(transactionP.getDate()) , String.valueOf(transactionP.getTransactionType()), String.valueOf(transactionP.getAmount()) };
+		}
 	
+	public void  fill (){
+			
+		List<TransactionP> transaction;
+		try {
+			transaction = transactionP.list(Integer.valueOf(panelTableBank.getId()));
+			for (int i = 0; i < transaction.size(); i++) {
+				System.out.println("lista" + fillRow(transaction.get(i)));
+			}
+//			
+			table.removeAllItems();
+			for (int i = 0; i < transaction.size(); i++) {
+				table.addItem(fillRow(transaction.get(i)),i);
+			}
+			
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+     
 	
+	}
 }

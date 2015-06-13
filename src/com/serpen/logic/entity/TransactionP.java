@@ -66,12 +66,22 @@ public class TransactionP {
 		this.account = account;
 	}
 
-	public char getTransactionType() {
-		return transactionType;
+	public String getTransactionType() {
+		switch (this.transactionType){
+		case 'R':
+			return "Retiro";
+		case 'I':
+			return "Ingreso";
+		default:
+			break;
+		}
+		return String.valueOf(transactionType);
 	}
+	
+
 
 	public void setTransactionType(char transactionType) {
-		this.transactionType = transactionType;
+			this.transactionType = transactionType;
 	}
 	
 		@Override

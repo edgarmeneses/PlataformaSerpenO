@@ -1,6 +1,7 @@
 package com.serpen.logic.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -72,6 +73,18 @@ public class Account {
 	}
 
 	public String getAccountType() {
+		switch (this.accountType) {
+		case "CDT":			
+			return "CDT";
+		case "COR":			
+			return "CUENTA CORRIENTE";
+		case "AHO":			
+			return "CUENTA AHORRO";
+		case "COL":
+			return "CUENTA DE CARTERA COLECTIVA";
+		default:
+			break;
+		}
 		return accountType;
 	}
 
@@ -79,28 +92,21 @@ public class Account {
 		this.accountType = accountType;
 	}
 	
-	public double stateAccount(TransactionP p){
-		double retiro = 0;
-		double ingreso = 0;
-		double state = 0;
+   public double saldoCuenta(List<TransactionP> listTransaction){
 		
-		for (int j = 0; j < transactions.size(); j++) {
-			System.out.println("nnnnnn");
-			System.out.println("lista" + transactions);
-			if (p.getTransactionType() =='R') {
-				retiro = retiro + p.getAmount();
-				transactions.iterator();
-				System.out.println(retiro);
+	    double ingreso=0;
+	    double retiro=0;
+	    double saldo=0;
+	    
+	    for (TransactionP transactionP : listTransaction) {
+	    	if (transactionP.getTransactionType() == "Ingreso") {
+	    		ingreso= ingreso+transactionP.getAmount();
+	    	}else {
+				retiro=retiro+transactionP.getAmount();
 			}
-			if (p.getTransactionType() =='I') {
-				ingreso = ingreso + p.getAmount();
-				transactions.iterator();
-				System.out.println(ingreso);
 		}
-			
-		}
-		
-		return state = ingreso = retiro;
+	    saldo=ingreso-retiro;
+		return saldo; 
 	}
 	
 

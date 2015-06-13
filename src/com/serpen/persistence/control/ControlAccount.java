@@ -98,13 +98,16 @@ public class ControlAccount {
         TransactionP transactionP = (TransactionP) session.load(TransactionP.class, 10);
         
 		ControlAccount cAccount = new ControlAccount(session);
+		
 		Account account = new Account();
 		ControlUser user= new ControlUser(session);
 		User user2 = user.consultId(100794);
 
 		ControlFinacialEntity fEntity = new ControlFinacialEntity(session);
-		FinancialEntity fEntity2 = fEntity.consult("123");
-        System.out.println(account.stateAccount(transactionP));
+		FinancialEntity fEntity2 = fEntity.consult("1234");
+		cAccount.insert(234,Account.CERTIFICADO_DE_DEPOSITO,user2,fEntity2);
+		
+//        System.out.println(account.stateAccount(transactionP));
         
 //		try{
 			

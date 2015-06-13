@@ -8,6 +8,7 @@ public class WindowBank extends Window{
 
 	private PanelWindowBank panelWindowBank;
 	private Navigator navigator;
+	public static final String NAMEwINDOWSBANK="windowsBank";
 	
 	public WindowBank(Navigator navigator){
 		

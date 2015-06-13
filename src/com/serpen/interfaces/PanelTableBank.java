@@ -5,9 +5,11 @@ import com.serpen.logic.entity.Account;
 import com.serpen.logic.entity.TransactionP;
 import com.serpen.persistence.conf.HibernateUtil;
 import com.serpen.persistence.control.ControlAccount;
+import com.serpen.persistence.control.ControlTransactionP;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
@@ -16,6 +18,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.UI;
 
 import java.util.List;
 
@@ -35,16 +38,24 @@ public class PanelTableBank extends Panel {
 	
 	private ControlAccount controlAccount;
 	
-	private Link lbllink;
 	private Navigator navigator;
 	
-	private TransactionP transactionP;
+	private String id; 
 	
+	private TransactionP transactionP;
+	private ControlTransactionP controlTransactionP;
+	private Account account;
+	private Session session;
 
+	private int numberAccount;
+	private PanelButtonTransaction buttonTransaction;
 	public PanelTableBank(Navigator navigator){
 		
 		this.navigator =  navigator;
-		Session  session = HibernateUtil.getSessionFactory().openSession();
+		 session = HibernateUtil.getSessionFactory().openSession();
+		 this.account = new Account();
+		
+		 this.buttonTransaction = new PanelButtonTransaction(navigator, this, account);
 		
 		controlAccount = new ControlAccount(session);
 		
@@ -100,6 +111,7 @@ public class PanelTableBank extends Panel {
 		txtSearch.setNullRepresentation("");
 		txtSearch.setVisible(true);
 		
+				
 		btnSearch = new Button("Buscar");
 		btnSearch.setWidth("150px");
 		btnSearch.setHeight("50px");
@@ -116,15 +128,11 @@ public class PanelTableBank extends Panel {
 	    
 		table = new Table();
 	    
-	    table.addContainerProperty("Tipo de cuenta", String.class, null);
-		table.addContainerProperty("Estado de cuenta", Integer.class, 0);
-		table.addContainerProperty("Numero de cuenta", Integer.class, 0);
-		table.addContainerProperty("Transacciones", Link.class, null);
-
-//		lbllink = new Link("Transacciones" , new ExternalResource("#!"+ WindowBank.NAMEWINDOWSBANK));
-//		table.addItem(new Object[]{" ", " " , " ", new PanelLinkTransaction()}, 2);
-//	    table.addItem(new Object[] { " " ," " , " ", " "},3);
-//		
+		table.addContainerProperty("Tipo de cuenta", String.class, null);
+		table.addContainerProperty("Numero de cuenta", String.class, null);
+		table.addContainerProperty("Estado de Cuenta", String.class, null);
+		table.addContainerProperty("Transacciones", PanelButtonTransaction.class, null);
+	
 	    table.setPageLength(table.size());
 		table.setWidth("80%"); 
 		table.setHeight("180px");
@@ -157,33 +165,52 @@ public class PanelTableBank extends Panel {
 		
 	}
 	
-	public Object[] fillRow (Account account){
-		return new Object[] { account.getAccountType(), account.getNumber() ,account.getNumber() ,this.lbllink};
-	
+	public Object[] fillRow (Account account,List<TransactionP> listTransaction){
+		id = String.valueOf(account.getNumber());
+		return new Object[] { account.getAccountType() ,String.valueOf(account.getNumber()),String.valueOf(account.saldoCuenta(listTransaction)), new PanelButtonTransaction(navigator, this, account)};
+		
 	}
 	
 	public void fill(){
 		try {
-			System.out.println(txtSearch.getValue());
-//		List<Account> account  = controlAccount.list(txtSearch.getValue());
-			
+	
 		List<Account> account = controlAccount.list(txtSearch.getValue());	
+		ControlTransactionP controlTransactionP = new ControlTransactionP(session);
+		table.removeAllItems();
 		
 		for (int i = 0; i < account.size(); i++) {
-			System.out.println("Lista" + fillRow(account.get(i)));
-				
-		}
-		table.removeAllItems();
-		for (int i = 0; i < account.size(); i++) {
-			table.addItem(fillRow(account.get(i)),i);
-			
+			//System.out.println("listaaaa"+account.get(i));
+			//fillRow(account.get(i), controlTransactionP.list(account.get(i).getNumber()));
+			table.addItem(fillRow(account.get(i), controlTransactionP.list(account.get(i).getNumber())),i);
+		System.out.println(account.get(i).getNumber());	
+			int numberAccount  = account.get(i).getNumber();
 		} 
 		}  catch (Exception e) {
 		// TODO: handle exception
 		e.printStackTrace();
 		}
 		
+		
 	}
+
+	public PanelButtonTransaction getButtonTransaction() {
+		return buttonTransaction;
+	}
+
+	public void setButtonTransaction(PanelButtonTransaction buttonTransaction) {
+		this.buttonTransaction = buttonTransaction;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	
+	
 		
 }
 
