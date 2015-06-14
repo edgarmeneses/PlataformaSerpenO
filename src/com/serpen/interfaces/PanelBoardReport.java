@@ -1,5 +1,14 @@
 package com.serpen.interfaces;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.serpen.logic.entity.PensionFund;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
@@ -128,7 +137,8 @@ public class PanelBoardReport extends Panel implements View{
 		layoutPanel.addComponent(horizontalLayout4);
 		layoutPanel.addComponent(horizontalLayout5);
 		layoutPanel.addComponent(horizontalLayout6);
-		
+		PensionFund pensionFund = new PensionFund();
+		reporte();
 		setContent(layoutPanel);		
 	}
 
@@ -138,4 +148,22 @@ public class PanelBoardReport extends Panel implements View{
 		// TODO Auto-generated method stub
 		
 	}
+	public void reporte(){
+		Document document = new Document();
+		File f = new File("D:/sample1.pdf");
+		try {
+			PdfWriter.getInstance(document, new FileOutputStream(f));
+			document.open();
+
+			System.out.println("opening the document..");
+			 document.add(new Paragraph("Hello Pdf"));
+		     document.close();
+			
+		} catch (FileNotFoundException | DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }

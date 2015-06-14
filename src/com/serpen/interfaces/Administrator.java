@@ -35,17 +35,21 @@ public class Administrator extends CustomComponent implements View{
 
 	public static final String NAMEADMINISTRATOR="Administrador";
 	private PanelAdministrator paneAdministrator;
-	
 	private User user;
 	private ControlGeneral control;
+	private PanelFooter panelFooter;
 
 	public Administrator (Navigator navigator, User user, ControlGeneral control){
 
 		FormLayout layout = new FormLayout();
-		
 		paneAdministrator = new PanelAdministrator(navigator,user,control);
-	    layout.addComponent(paneAdministrator);	
+		panelFooter = new PanelFooter();
+		
 		setCompositionRoot(layout);
+	
+	    layout.addComponent(paneAdministrator);	
+	    layout.addComponent(panelFooter);
+	    	
 		setSizeFull();
 	}
 

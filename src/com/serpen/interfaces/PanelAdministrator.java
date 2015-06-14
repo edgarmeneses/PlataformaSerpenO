@@ -60,7 +60,7 @@ public class PanelAdministrator extends Panel{
 		pnlOption = new  Panel();
 		pnlOption.setSizeFull();
 		pnlOption.setWidth("200px");
-		pnlOption.setHeight("500px");
+		pnlOption.setHeight("250px");
 
 		this.Imglogo = new Image("LOGO");
 		ThemeResource resource = new ThemeResource("../Imagen/logo.jpg");

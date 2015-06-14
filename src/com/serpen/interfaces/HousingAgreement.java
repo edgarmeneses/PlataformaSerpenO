@@ -23,6 +23,7 @@ public class HousingAgreement extends CustomComponent implements View{
 	private PanelGeneral options;
 	private Navigator navigator;
 	
+	
 	public HousingAgreement() {
 		// TODO Auto-generated constructor stub
 		HorizontalLayout layout = new HorizontalLayout();

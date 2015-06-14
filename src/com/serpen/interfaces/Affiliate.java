@@ -24,11 +24,15 @@ public class Affiliate extends CustomComponent implements View{
 	private Label lblHealth;
 	private Panel pnlPrincipal;
 	private Navigator navigator;
+	private PanelFooter panelFooter;
 	public static String NAMEAFILIATE = "";
 	
 	public Affiliate(Navigator navigator){
 		
 		this.navigator= navigator;
+		
+		panelFooter = new PanelFooter();
+
 		
 		FormLayout layoutprincipal = new FormLayout();
 		layoutprincipal.setSizeFull();
@@ -38,10 +42,7 @@ public class Affiliate extends CustomComponent implements View{
 		FormLayout layoutPanel= new FormLayout();
 		layoutPanel.setSizeFull();
 		layoutPanel.setVisible(true);
-		
-		FormLayout  layoutTable = new FormLayout();
-		layoutTable.setSizeFull();
-		layoutTable.setVisible(true);
+	
 		
 		HorizontalLayout horizontal = new HorizontalLayout();
 		
@@ -54,7 +55,7 @@ public class Affiliate extends CustomComponent implements View{
 		pnlPrincipal = new Panel();
 		pnlPrincipal.setSizeFull();
 		pnlPrincipal.setWidth("500px");
-		pnlPrincipal.setHeight("500px");
+		pnlPrincipal.setHeight("450px");
 		
 		
 		this.imgPensions = new Image("Fondo Pension");
@@ -113,8 +114,10 @@ public class Affiliate extends CustomComponent implements View{
 		
 		this.lblHealth = new Label("Entidad Salud");
 		this.lblHealth.setVisible(true);
+		
 
 		layoutprincipal.addComponent(pnlPrincipal);
+		layoutprincipal.addComponent(panelFooter);
 		
 		layoutPanel.addComponent(verticalPension);
 		layoutPanel.addComponent(horizontal);
@@ -135,9 +138,6 @@ public class Affiliate extends CustomComponent implements View{
         this.pnlPrincipal.setContent(layoutPanel);
        
 		this.setCompositionRoot(layoutprincipal);
-		this.setCompositionRoot(layoutTable);
-		this.setCompositionRoot(layoutPanel);
-		
 		
 		this.setSizeFull();		
 	}

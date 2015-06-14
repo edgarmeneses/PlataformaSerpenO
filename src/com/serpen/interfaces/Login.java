@@ -47,17 +47,19 @@ public class Login extends CustomComponent implements View{
 	private Panel pnlLogin;
 	private Navigator navigator;
 	private ControlGeneral control;
+	private PanelFooter panelFooter;
 
 	public Login(Navigator navigator, ControlGeneral control){
 
 		this.navigator=navigator;
 		this.control = control;
-
+        panelFooter = new PanelFooter();
 		FormLayout layoutPrincipal= new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.beforeClientResponse(false);
 		layoutPrincipal.setVisible(true);
 		layoutPrincipal.setStyleName("v-SIDEBAR");
+		
 
 		FormLayout layoutPanel = new FormLayout();
 
@@ -127,7 +129,7 @@ public class Login extends CustomComponent implements View{
 		pnlLogin = new Panel();
 		pnlLogin.setSizeFull();
 		pnlLogin.setWidth("400px");
-		pnlLogin.setHeight("500px");
+		pnlLogin.setHeight("400px");
 
 		layoutUser.addComponent(imgUserName);
 		layoutUser.addComponent(txfUserName);
@@ -144,6 +146,7 @@ public class Login extends CustomComponent implements View{
 
 
 		layoutPrincipal.addComponent(pnlLogin);
+		layoutPrincipal.addComponent(panelFooter);
 		this.pnlLogin.setContent(layoutPanel);
 		this.setCompositionRoot(layoutPrincipal);
 		setSizeFull();

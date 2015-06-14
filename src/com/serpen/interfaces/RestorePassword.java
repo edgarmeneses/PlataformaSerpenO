@@ -1,6 +1,5 @@
 package com.serpen.interfaces;
 
-
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
