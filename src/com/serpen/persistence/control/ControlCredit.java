@@ -118,26 +118,19 @@ public class ControlCredit {
 	public List<Credit> listUser(int idUser) throws ErrorConnection{
 		try{
 			String sql = "from com.serpen.logic.entity.Credit c " +
-					"WHERE c.usuario ="+ idUser;
-            System.out.println(sql);
-			List<Credit> listaTransacion = session.createQuery(sql).list();
-            System.out.println(listaTransacion);
-			return listaTransacion;
+					"WHERE c.user.nickname = "+ idUser;
+			List<Credit> listaCredit = session.createQuery(sql).list();
+            System.out.println(listaCredit);
+			return listaCredit;
 		}catch(Exception e){
 			throw new ErrorConnection("No se pudo realizar la consulta"
 					+ " Causa: "+e.getCause());
 		}
 	}
 	public static void main(String[] args) throws ErrorConnection {
-
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		ControlCredit credit = new ControlCredit(session);
-
 		try{
-			//User user = (User) session.load(User.class,2);	
-			//FinancialEntity financialEntity= (FinancialEntity) session.load(FinancialEntity.class,"1234");
-			//credit.insert(2, 3.6, 21, user, financialEntity);
-			//credit.consult(1);
 			credit.listUser(2);
 			session.close();
 		}catch(ErrorConnection e){

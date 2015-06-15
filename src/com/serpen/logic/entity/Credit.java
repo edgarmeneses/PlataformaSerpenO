@@ -87,7 +87,9 @@ public class Credit {
 	public String toString() {
 		return "Credit [id=" + id + ", amount=" + amount + ", share=" + share
 				+ ", user=" + user + ", financialEntity=" + financialEntity
-				+ "]";
+				+ ", "+ "]";
 	}
+
+
 
 }

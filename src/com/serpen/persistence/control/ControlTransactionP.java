@@ -58,10 +58,7 @@ public class ControlTransactionP {
 		}catch(Exception e){
 
 			throw new ErrorConnection("No se pudo insertar la transaccion " + "Causa: "+e.getCause());
-		}
-		
-		
-		
+		}	
 	}
 	/**
 	 * Metodo que permite listar los datos que estan en la entidad 
@@ -135,27 +132,6 @@ public class ControlTransactionP {
 		
 		ControlAccount account = new ControlAccount(session);
 		System.out.println(cTransaction.list(123));
-//		Account account2 = account.consult(123);
-		
-//		Date date = new Date(112,7,7);// 2012-08-07
-
-//		cTransaction.insert(15,TransactionP.RETREAT, 1234.3, date,account2);
-		
-//		System.out.println(cTransaction.consult(13));
-
-		
-//		try{
-//			
-////			cTransaction.insert(10,TransactionP.ENTRY, 1234.3, date,account2);
-////			cTransaction.list();
-////			cTransaction.consult(10);
-//		
-//			
-//		}catch(ErrorConnection e){
-//
-//			e.printStackTrace();
-//
-//		}
 	}
 
 }

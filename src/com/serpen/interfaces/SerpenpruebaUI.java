@@ -27,7 +27,6 @@ public class SerpenpruebaUI extends UI{
 	@VaadinServletConfiguration(productionMode = false, ui = SerpenpruebaUI.class)
 	public static class Servlet extends VaadinServlet {
 	}
-
 	@Override
 	protected void init(VaadinRequest request) {
 		
