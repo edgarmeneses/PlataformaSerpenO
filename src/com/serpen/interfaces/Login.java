@@ -40,7 +40,7 @@ public class Login extends CustomComponent implements View{
 	private Image icon;
 	private Image imgUserName;
 	private Image imgPasword;
-	private TextField txfUserName;
+	public TextField txfUserName;
 	private PasswordField txfPasword;
 	private Link lblQuestion;
 	private Button btnLogin;
@@ -48,9 +48,12 @@ public class Login extends CustomComponent implements View{
 	private Navigator navigator;
 	private ControlGeneral control;
 	private PanelFooter panelFooter;
+	private User user;
+	
 
 	public Login(Navigator navigator, ControlGeneral control){
 
+		
 		this.navigator=navigator;
 		this.control = control;
         panelFooter = new PanelFooter();
@@ -103,11 +106,8 @@ public class Login extends CustomComponent implements View{
 				// TODO Auto-generated method stub
 
 				try {
-					User user = control.getUser().consultId(Integer.valueOf(txfUserName.getValue()));
-					System.out.println(user);
-
+				    user = control.getUser().consultId(Integer.valueOf(txfUserName.getValue())); 	
 					Role rol = control.getRole().consult(4);
-					System.out.println("rol nuevo " +rol);
 
 					if(validateUser(user)){
 						navigate(user);
@@ -170,7 +170,7 @@ public class Login extends CustomComponent implements View{
 			navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 			break;
 		case "Cliente":
-			navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator));   	   	
+			navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator,user));   	   	
 	    	navigator.navigateTo(Affiliate.NAMEAFILIATE);
 			break;
 		default:
@@ -188,7 +188,4 @@ public class Login extends CustomComponent implements View{
 	private boolean validateUser(User user){
 		return user.getPassword().equals(txfPasword.getValue());
 	}
-	
-	
-
 }

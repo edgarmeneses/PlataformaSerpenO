@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -15,17 +16,20 @@ public class EntityHealth extends CustomComponent implements View {
 	private  Navigator navigator;
 	private PanelTable  panelTable;
 	public static String NAMESENTITYHEALTH="EntityHealth";
+	private User user;
 	
-	public EntityHealth(Navigator navigator){
+	public EntityHealth(Navigator navigator, User user){
+		
 		
     	this.navigator = navigator;
+    	 this.user=user;
 	    HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setVisible(true);
 		
 		panelOptionHealth = new PanelOptionHealth(navigator);
 		panelTable = new PanelTable(navigator);
 		panelTable.setVisible(true);
-		general = new PanelGeneral(navigator);
+		general = new PanelGeneral(navigator,user);
 		
 		horizontalLayout.addComponent(panelOptionHealth);
 		horizontalLayout.addComponent(panelTable);

@@ -2,13 +2,17 @@ package com.serpen.persistence.control;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
+import com.itextpdf.text.log.SysoCounter;
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Account;
 import com.serpen.logic.entity.Credit;
 import com.serpen.logic.entity.FinancialEntity;
+import com.serpen.logic.entity.TransactionP;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.conf.HibernateUtil;
 /**
@@ -110,26 +114,31 @@ public class ControlCredit {
 		}
 
 	}
-
+	
+	public List<Credit> listUser(int idUser) throws ErrorConnection{
+		try{
+			String sql = "from com.serpen.logic.entity.Credit c " +
+					"WHERE c.usuario ="+ idUser;
+            System.out.println(sql);
+			List<Credit> listaTransacion = session.createQuery(sql).list();
+            System.out.println(listaTransacion);
+			return listaTransacion;
+		}catch(Exception e){
+			throw new ErrorConnection("No se pudo realizar la consulta"
+					+ " Causa: "+e.getCause());
+		}
+	}
 	public static void main(String[] args) throws ErrorConnection {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
-
 		ControlCredit credit = new ControlCredit(session);
 
-		ControlUser user= new ControlUser(session);
-		User user2 = user.consultId(1049635);
-
-		ControlFinacialEntity fEntity = new ControlFinacialEntity(session);
-		FinancialEntity fEntity2 = fEntity.consult("1234");
-
 		try{
-
-//			credit.insert(1,123.3,123,user2,fEntity2);
-//			credit.list();
-			credit.consult(2);
-
+			//User user = (User) session.load(User.class,2);	
+			//FinancialEntity financialEntity= (FinancialEntity) session.load(FinancialEntity.class,"1234");
+			//credit.insert(2, 3.6, 21, user, financialEntity);
+			//credit.consult(1);
+			credit.listUser(2);
 			session.close();
 		}catch(ErrorConnection e){
 			e.printStackTrace();

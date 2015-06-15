@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.serpen.logic.entity.Credit" table="CREDITO">
+    <class name="com.serpen.logic.entity.Credit" table="credito">
         <id name="id" type="integer"  length="5">
             <column name="id" />
             <generator class="assigned" />
@@ -27,7 +27,7 @@
         
         <set name="paymentPlans">
             <key>
-                <column name="ID" />
+                <column name="numero_cuota" />
             </key>
             <one-to-many class="com.serpen.logic.entity.PaymentPlan" />
         </set>

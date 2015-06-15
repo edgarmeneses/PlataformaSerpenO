@@ -4,12 +4,22 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import org.hibernate.Session;
+
+import com.google.gwt.dev.shell.BrowserChannel.Value;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.Account;
+import com.serpen.logic.entity.Credit;
 import com.serpen.logic.entity.PensionFund;
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.conf.HibernateUtil;
+import com.serpen.persistence.control.ControlCredit;
 import com.serpen.persistence.control.ControlGeneral;
+import com.serpen.persistence.control.ControlUser;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -27,6 +37,8 @@ public class PanelBoardReport extends Panel implements View{
 	private Label lblReport;
 	private Label lblUser;
 	private Label lblUserName;
+	private Label lblId;
+	private Label lblUserId;
 	private Label lblSalary;
 	private Label lblDiscountCredit;
 	private Label lblDiscountHealth;
@@ -36,19 +48,20 @@ public class PanelBoardReport extends Panel implements View{
 	private Button  btnReturn;
 	private Navigator navigator;
 	public static String NAMEBOARD="BoardReport";
-
-	
-	public PanelBoardReport(Navigator navigator) {
+	public  User user;
+	public PanelBoardReport(Navigator navigator,User user) {
 		
-		
+		this.user=user;
 		this.navigator=navigator;
+		
 		// TODO Auto-generated constructor stub
 		FormLayout layoutPanel = new FormLayout();
 		layoutPanel.setSizeFull();
 		layoutPanel.setVisible(true);
-		
+	
 		HorizontalLayout horizontalLayout1 = new HorizontalLayout();
 		HorizontalLayout horizontalLayout2 = new HorizontalLayout();
+		HorizontalLayout horizontalLayoutId = new HorizontalLayout();
 		HorizontalLayout horizontalLayout3 = new HorizontalLayout();
 		HorizontalLayout horizontalLayout4 = new HorizontalLayout();
 		HorizontalLayout horizontalLayout5 = new HorizontalLayout();
@@ -65,11 +78,21 @@ public class PanelBoardReport extends Panel implements View{
 		lblUser.setWidth("100px");
 		lblUser.setHeight("50px");
 		
+		lblId = new Label("Identificacion: ");
+		lblId.setVisible(true);
+		lblId.setWidth("100px");
+		lblId.setHeight("50px");
 		
-		lblUserName = new Label("Nombre del usuario");
+		
+		lblUserName = new Label(user.getName()+"  "+ user.getLastName());
 		lblUserName.setVisible(true);
 		lblUserName.setWidth("100px");
 		lblUserName.setHeight("50px");
+		
+		lblUserId = new Label( "    "+ String.valueOf(user.getNickname()));
+		lblUserId.setVisible(true);
+		lblUserId.setWidth("100px");
+		lblUserId.setHeight("50px");
 		
 		
 		lblSalary = new Label("Salario Actual");
@@ -87,22 +110,25 @@ public class PanelBoardReport extends Panel implements View{
 		lblDiscountHealth.setWidth("100px");
 		lblDiscountHealth.setHeight("50px");
 		
-		txtSalary = new TextField();
+		txtSalary = new TextField(String.valueOf(user.getSalary()));
 		txtSalary.setWidth("150px");
 		txtSalary.setHeight("50px");
-		txtSalary.setRequired(true);
+		txtSalary.setEnabled(false);
 		
-		txtDiscountCredit = new TextField();
+		
+		txtDiscountCredit = new TextField(String.valueOf(user.getHealthEntity().getCatalog().getDiscount()));
 		txtDiscountCredit.setWidth("150px");
 		txtDiscountCredit.setHeight("50px");
-		txtDiscountCredit.setRequired(true);
+		txtDiscountCredit.setEnabled(false);
+		
 		
 		txtDiscountHealth = new TextField();
 		txtDiscountHealth.setWidth("150px");
 		txtDiscountHealth.setHeight("50px");
-		txtDiscountHealth.setRequired(true);
+		txtDiscountHealth.setEnabled(false);
 		
-		btnReturn= new  Button("Regresar");
+		
+		btnReturn= new  Button("Guardar");
 		btnReturn.setWidth("150px");
 		btnReturn.setHeight("50px");
 		btnReturn.setVisible(true);	
@@ -112,6 +138,9 @@ public class PanelBoardReport extends Panel implements View{
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub		
 				navigator.navigateTo(Simulator.NAMESIMULATOR);
+				
+				// crea el reporte pdf
+				//reporte
 			}
 
 		});
@@ -121,33 +150,41 @@ public class PanelBoardReport extends Panel implements View{
 		horizontalLayout2.addComponent(lblUser);
 		horizontalLayout2.addComponent(lblUserName);
 		
+		horizontalLayoutId.addComponent(lblId);
+		horizontalLayoutId.addComponent(lblUserId);
+		
 		horizontalLayout3.addComponent(lblSalary);
-		horizontalLayout3.addComponent(txtSalary);
+		horizontalLayout3.addComponent(txtSalary);//Salario del usuario
 		
 		horizontalLayout4.addComponent(lblDiscountCredit);
-		horizontalLayout4.addComponent(txtDiscountCredit);
+		horizontalLayout4.addComponent(txtDiscountCredit);//Descuento Credito que es la suma 
 		
 		horizontalLayout5.addComponent(lblDiscountHealth);
-		horizontalLayout5.addComponent(txtDiscountHealth);
+		horizontalLayout5.addComponent(txtDiscountHealth);//Descuento Salud 
 		horizontalLayout6.addComponent(btnReturn);
+		
 		
 		layoutPanel.addComponent(horizontalLayout1);
 		layoutPanel.addComponent(horizontalLayout2);
+		layoutPanel.addComponent(horizontalLayoutId);
 		layoutPanel.addComponent(horizontalLayout3);
 		layoutPanel.addComponent(horizontalLayout4);
 		layoutPanel.addComponent(horizontalLayout5);
-		layoutPanel.addComponent(horizontalLayout6);
-		PensionFund pensionFund = new PensionFund();
-		reporte();
+		layoutPanel.addComponent(horizontalLayout6);		
 		setContent(layoutPanel);		
 	}
 
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
+		// TODO Auto-generated method stub	
+	}	
+    public void  discountCredits(){
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+    	ControlCredit  controlCredit = new ControlCredit(session);   
+    	
+    }
+	
 	public void reporte(){
 		Document document = new Document();
 		File f = new File("D:/sample1.pdf");
@@ -162,8 +199,6 @@ public class PanelBoardReport extends Panel implements View{
 		} catch (FileNotFoundException | DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
-
 }

@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 import com.google.gwt.thirdparty.javascript.rhino.head.ast.FunctionNode.Form;
+import com.serpen.logic.entity.User;
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
@@ -26,14 +27,16 @@ public class Affiliate extends CustomComponent implements View{
 	private Navigator navigator;
 	private PanelFooter panelFooter;
 	public static String NAMEAFILIATE = "";
+	private User user;
 	
-	public Affiliate(Navigator navigator){
+	public Affiliate(Navigator navigator,User user){
 		
 		this.navigator= navigator;
 		
 		panelFooter = new PanelFooter();
-
-		
+        
+		this.user=user;
+		System.out.println("Afiliado"+user);
 		FormLayout layoutprincipal = new FormLayout();
 		layoutprincipal.setSizeFull();
 		layoutprincipal.setVisible(true);
@@ -70,7 +73,7 @@ public class Affiliate extends CustomComponent implements View{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub		
-				navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator));
+				navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator,user));
 				navigator.navigateTo(Simulator.NAMESIMULATOR);
 //				navegator();			
 			}
@@ -91,7 +94,7 @@ public class Affiliate extends CustomComponent implements View{
 					// TODO Auto-generated method stub				
 				    //navegacion para los bancos
 				 
-				 navigator.addView(EntityBank.NAMEENTITYBANK,  new EntityBank(navigator));
+				 navigator.addView(EntityBank.NAMEENTITYBANK,  new EntityBank(navigator,user));
 				 navigator.navigateTo(EntityBank.NAMEENTITYBANK);
 				}
 		 });
@@ -107,7 +110,7 @@ public class Affiliate extends CustomComponent implements View{
 		 this.imgHealth.addClickListener(new ClickListener(){
 			 public void click(ClickEvent event) {
 					// TODO Auto-generated method stub				
-				    navigator.addView(EntityHealth.NAMESENTITYHEALTH,  new EntityHealth(navigator));
+				    navigator.addView(EntityHealth.NAMESENTITYHEALTH,  new EntityHealth(navigator,user));
 					navigator.navigateTo(EntityHealth.NAMESENTITYHEALTH);
 				}
 		 });
@@ -143,7 +146,7 @@ public class Affiliate extends CustomComponent implements View{
 	}
 	
 	private void navegator(){
-		navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator));
+		navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator,user));
 		navigator.navigateTo(Simulator.NAMESIMULATOR);
 	}
 

@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.*;
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
@@ -25,18 +26,18 @@ public class PanelGeneral extends Panel implements View{
 	private Label lblHealth;
 	public static String NAMEPANELGENERAL = "";
 	private Navigator navigator;
-	
+	private User userD;
 	private MenuBar menuBar;
 	private MenuItem user;
 	private MenuItem configuraton;
 	private MenuItem logOut;
 	
 
-	public PanelGeneral(Navigator navigator) {
+	public PanelGeneral(Navigator navigator, User userD) {
 	
 		// TODO Auto-generated constructor stub
 		this.navigator = navigator; 
-		
+		this.userD=userD;
 		FormLayout layoutPanelOption = new FormLayout();
 		layoutPanelOption.setSizeFull();
 		layoutPanelOption.setVisible(true);	
@@ -76,7 +77,7 @@ public class PanelGeneral extends Panel implements View{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator));
+				navigator.addView(Simulator.NAMESIMULATOR,  new Simulator(navigator,userD));
 				navigator.navigateTo(Simulator.NAMESIMULATOR);
 			}
 		});
@@ -96,7 +97,7 @@ public class PanelGeneral extends Panel implements View{
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
 			
-				  navigator.addView(EntityBank.NAMEENTITYBANK,  new EntityBank(navigator));
+				  navigator.addView(EntityBank.NAMEENTITYBANK,  new EntityBank(navigator,userD));
 				  navigator.navigateTo(EntityBank.NAMEENTITYBANK);
 			}
 		});;
@@ -116,7 +117,7 @@ public class PanelGeneral extends Panel implements View{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				  navigator.addView(EntityHealth.NAMESENTITYHEALTH,  new EntityHealth(navigator));
+				  navigator.addView(EntityHealth.NAMESENTITYHEALTH,  new EntityHealth(navigator,userD));
 				  navigator.navigateTo(EntityHealth.NAMESENTITYHEALTH);
 			}
 		});

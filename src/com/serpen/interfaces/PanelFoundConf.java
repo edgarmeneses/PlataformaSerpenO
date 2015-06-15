@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
@@ -20,12 +21,12 @@ public class PanelFoundConf  extends Panel implements View{
 	private Image imgSimulator;
 	private Label lblsimulator;
 	private Navigator navigator;
-
-	public PanelFoundConf(Navigator navigator) {
+    private User user;
+	public PanelFoundConf(Navigator navigator,User user) {
 		// TODO Auto-generated constructor stub
 
 		this.navigator=navigator;
-		
+		this.user=user;
 		FormLayout layoutPanelPension = new FormLayout();
 		//layoutPanelPension.setSizeFull();
 		layoutPanelPension.setVisible(true);
@@ -40,7 +41,7 @@ public class PanelFoundConf  extends Panel implements View{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				BoardReport boardReport = new BoardReport(navigator);
+				BoardReport boardReport = new BoardReport(navigator,user);
 				UI.getCurrent().addWindow(boardReport);
 				
 			}

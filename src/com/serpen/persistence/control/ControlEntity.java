@@ -83,14 +83,11 @@ public class ControlEntity {
 			session.update(entity);
 			session.beginTransaction().commit();
 	}
-	
-	
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		
 		ControlEntity entity = new ControlEntity(session);
-		
-		System.out.println(entity.consult("103890-70"));
+		entity.insert(2, "Nit-123", "Colpesiones", Entity.ENTITY_TYPE_EDUCATION , "poerurjrjrjrjrjrj");
+		//System.out.println(entity.consult("103890-70"));
 	}
 
 }

@@ -4,6 +4,7 @@ package com.serpen.interfaces;
 import org.apache.catalina.startup.SetContextPropertiesRule;
 
 import com.serpen.logic.entity.Agreement;
+import com.serpen.logic.entity.User;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -20,18 +21,23 @@ import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 public class HomePageFound extends Panel implements TabSheet.SelectedTabChangeListener {
 
 	public TabSheet tabsheet = new TabSheet();
-
-
-	public EntityPensions pensions = new EntityPensions();
-	public EntityEducation education = new EntityEducation();
-	public HousingAgreement housing = new HousingAgreement();
-	public TourismAgreement tourism = new TourismAgreement(); 
+	public User user;
+	public EntityPensions  pensions ;
+	public EntityEducation education;
+	public HousingAgreement housing;
+	public TourismAgreement tourism ;
 //	public Label tab1 = new Label("holaaa1");
 //	public Label tab2 = new Label("holaa2");
 //	public Label tab3 = new Label("hola3");
 //	public Label tab4 = new Label("holaaaa4");
 
-	public HomePageFound() {
+	public HomePageFound(User user) {
+		
+		this.user=user;
+		pensions = new EntityPensions();
+		education = new EntityEducation();
+	    housing = new HousingAgreement(user);
+		tourism = new TourismAgreement(); 
 		tabsheet.addListener(this);
 
 		tabsheet.addTab(pensions, "Informacion General", null);

@@ -299,6 +299,7 @@ public class User {
 	public void setPensionFund(PensionFund pensionFund) {
 		this.pensionFund = pensionFund;
 	}
+	
 	@Override
 	public String toString() {
 		return "User [nickname=" + nickname + ", password=" + password

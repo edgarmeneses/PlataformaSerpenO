@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
 import com.vaadin.client.ui.VHorizontalLayout;
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
@@ -25,18 +26,21 @@ public class Simulator extends CustomComponent implements View{
 	private  Navigator navigator;
 	private HomePageFound homePageFound ;
 	public static String NAMESIMULATOR="Simulator";
+	private User user;
 
-	public  Simulator (Navigator navigator){
+	public  Simulator (Navigator navigator, User user){
 		
+		this.user=user;
+		System.out.println("FOndo"+user);
 		FormLayout formLayout = new FormLayout();
 		
 		VerticalLayout horizontalLayout =  new VerticalLayout();
 		
-		homePageFound = new HomePageFound();
-		panelFoundConf = new PanelFoundConf(navigator);
+		homePageFound = new HomePageFound(user);
+		panelFoundConf = new PanelFoundConf(navigator,user);
         
 		
-		panelGeneral = new PanelGeneral(navigator);
+		panelGeneral = new PanelGeneral(navigator,user);
 		panelGeneral.setWidth("200px");
 		panelGeneral.setHeight("500px");
 		

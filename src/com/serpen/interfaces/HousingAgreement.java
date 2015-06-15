@@ -1,6 +1,7 @@
 package com.serpen.interfaces;
 
 //import com.sun.xml.internal.bind.v2.util.FatalAdapter;
+import com.serpen.logic.entity.User;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -22,9 +23,12 @@ public class HousingAgreement extends CustomComponent implements View{
 	private PanelHousingServices services;
 	private PanelGeneral options;
 	private Navigator navigator;
+	private User user;
 	
 	
-	public HousingAgreement() {
+	public HousingAgreement(User user) {
+		
+		this.user=user;
 		// TODO Auto-generated constructor stub
 		HorizontalLayout layout = new HorizontalLayout();
 		//layout.setSizeFull();
@@ -36,7 +40,7 @@ public class HousingAgreement extends CustomComponent implements View{
 		services = new PanelHousingServices();
 		services.setWidth("60%");
 		
-		options = new PanelGeneral(navigator);
+		options = new PanelGeneral(navigator,user);
 		options.setWidth("20%");
 		
 		layout.addComponent(entity);
