@@ -34,29 +34,22 @@ public class SerpenpruebaUI extends UI{
 		
 		
 		
-		VerticalLayout layout = new VerticalLayout();
-		setContent(layout);
-		
-
-//		EntityEducation question = new EntityEducation();
-//		layout.addComponent(question);
+//		VerticalLayout layout = new VerticalLayout();
+//		setContent(layout);
 //		
-//		EntityPensions pensions= new EntityPensions();
-//		layout.addComponent(pensions);
-		
-		HomePageFound pFound = new HomePageFound(null);
-		layout.addComponent(pFound);
-		
-//	Session sesion = HibernateUtil.getSessionFactory().openSession();
-//	ControlGeneral controlGeneral = new ControlGeneral(sesion);
-//	
-// Navigator navigator = new Navigator(this, this);
-// 
-// 	
-//   navigator.addView(Login.NAMElOGUEO, new Login(navigator,controlGeneral));
-////  navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator));	
-//  navigator.addView(Question.NAMEQUESTION, new Question(navigator, controlGeneral));
-//      //HorizontalLayout horizontalLayout = new HorizontalLayout();
+//		HomePageFound pFound = new HomePageFound(null);
+//		layout.addComponent(pFound);
+//		
+	Session sesion = HibernateUtil.getSessionFactory().openSession();
+	ControlGeneral controlGeneral = new ControlGeneral(sesion);
+	
+ Navigator navigator = new Navigator(this, this);
+ 
+ 	
+   navigator.addView(Login.NAMElOGUEO, new Login(navigator,controlGeneral));
+//  navigator.addView(Affiliate.NAMEAFILIATE, new Affiliate(navigator));	
+  navigator.addView(Question.NAMEQUESTION, new Question(navigator, controlGeneral));
+      //HorizontalLayout horizontalLayout = new HorizontalLayout();
      
 	}
 }
