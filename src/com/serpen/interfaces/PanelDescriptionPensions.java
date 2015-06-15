@@ -1,111 +1,198 @@
 package com.serpen.interfaces;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import org.hibernate.ObjectNotFoundException;
+
+import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.Role;
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
+import com.vaadin.annotations.Theme;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.ThemeResource;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
 
-public class PanelDescriptionPensions extends Panel {
+@SuppressWarnings("serial")
 
-	private Label lbltitle;
-	private Label lblcontent;
-	private Label lblphone;
-	private Label lblAddress;
-	private Label txtPhone;
-	private Label txtAddress;
-	private Panel pnlTitle;
-	private Panel pnlContent;
- 	private Panel pnlinformation;
+/**
+ * asigna el tema a la clase que se desea modelar
+ * @author 
+ *
+ */
+@Theme("themeCreateUser")
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel create User
+ *extiende de Panel
+ */
+public class PanelDescriptionPensions extends Panel{
 
-	public PanelDescriptionPensions() {
+	/**
+	 * Atributos de la clase panel create user
+	 */
+	private Label lblCreateUser;
+	private TextField txtNickname;
+	private PasswordField txtPassword;
+	private TextField txtAnswer;
+	private Image lblImagen;
+//	private ComboBox rol;
+	private Button btnNew;
+	private Button btnCancel;
+	private Panel panel;
+	private Label label;
+	private Navigator navigator;
+	private ControlGeneral control;
+
+	/**
+	 * Constructor que se pide por parametro 
+	 * @param navigator
+	 * @param control
+	 * Instancia los componentes que se van a pintar en la clase Create User
+	 */
+	 public PanelDescriptionPensions (Navigator navigator, ControlGeneral control) {
+
+		this.navigator = navigator;
+		this.control=control;
 
 		FormLayout layoutPrincipal = new FormLayout();
+		layoutPrincipal.setSizeFull();
+		layoutPrincipal.beforeClientResponse(false);
 		layoutPrincipal.setVisible(true);
-		
-		FormLayout layoutinf = new FormLayout();
-		layoutinf.setVisible(true);
-		
-		HorizontalLayout layouttitle = new HorizontalLayout();
-		layouttitle.setVisible(true);
-		
-		HorizontalLayout layoutcontent = new HorizontalLayout();
-		layoutcontent.setVisible(true);
-		
-		HorizontalLayout layoutphone = new HorizontalLayout();
-		layoutphone.setVisible(true);
-		
-		HorizontalLayout layoutaddres = new HorizontalLayout();
-		layoutaddres.setVisible(true);
 
-		pnlTitle = new Panel();
-		pnlTitle.setSizeFull();
-		pnlTitle.setWidth("1000");
-		pnlTitle.setHeight("80");
-		
-		pnlContent = new Panel();
-		pnlContent.setSizeFull();
-		pnlContent.setWidth("1000px");
-		pnlContent.setHeight("400px");
-		
-		pnlinformation = new Panel();
-		pnlinformation.setSizeFull();
-		pnlinformation.setWidth("1000");
-		pnlinformation.setHeight("250");
-		
-		lbltitle = new Label("Fondo de pensiones Colpensiones");		
-		lbltitle.setWidth("200px");
-		lbltitle.setHeight("50px");
-		lbltitle.setVisible(true);
-		
-		lblcontent = new Label("COLPENSIONES, es una Empresa Industrial y "
-				+ "comercial del estado organizada como entidad financiera"
-				+ "de caracter especial, vinculada al ministerio de trabajo");		
-		lblcontent.setWidth("200px");
-		lblcontent.setHeight("150px");
-		lblcontent.setVisible(true);
-		
-		lblphone = new Label("Telefono:");		
-		lblphone.setWidth("100px");
-		lblphone.setHeight("50px");
-		lblphone.setVisible(true);
 
-		txtPhone = new Label("313467798");
-		txtPhone.setWidth("150px");
-		txtPhone.setHeight("50px");
-		
-		lblAddress = new Label("Direccion:");		
-		lblAddress.setWidth("100px");
-		lblAddress.setHeight("50px");
-		lblAddress.setVisible(true);
+		FormLayout layoutPanel = new FormLayout();
+		layoutPanel.setVisible(true);
 
-		txtAddress = new Label("cr13a N 34");
-		txtAddress.setWidth("150px");
-		txtAddress.setHeight("50px");
+		HorizontalLayout layoutHorizontal = new HorizontalLayout();
+
+		VerticalLayout layoutDatos = new VerticalLayout();
+
+		txtNickname = new TextField("Usuario");
+		txtPassword = new PasswordField("Contraseña");
+		txtPassword.setRequired(true);
+		txtPassword.setValue("");
+		txtPassword.setNullRepresentation("");
+		txtAnswer = new TextField("Respuesta");
+
+		VerticalLayout layoutRol = new VerticalLayout();
+
+		ThemeResource resource = new ThemeResource("../Imagen/CrearUsuario.png");
+		lblImagen = new Image(null, resource);
+		this.lblImagen.setVisible(true);
+		this.lblImagen.setWidth("150px");
+		this.lblImagen.setHeight("150px");
+
+
+//		try {
+//			rolList();
+//			rol = new ComboBox("Rol",rolList());
+//			rol.setInputPrompt("Seleccionar Rol:");
+//			rol.setInvalidAllowed(false);
+//		} catch (ErrorConnection e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+
+		HorizontalLayout layoutbutton = new HorizontalLayout();
+
+		btnNew = new Button("Aceptar");		
+//		btnNew.addClickListener(new ClickListener() {		
+//			@Override
+//			public void buttonClick(ClickEvent event) {
+//				// TODO Auto-generated method stub
+//
+//				try {
+//					int nickame=Integer.valueOf(txtNickname.getValue());
+//					String password=txtPassword.getValue();
+//					String answer=txtAnswer.getValue();
+//					Role role = control.getRole().consultName(rol.getValue().toString());
+//					//control.getUser().insert(nickame,password,answer,role);// cambiarla cuando se modifique la interfazS
+//					Notification.show("El Usuario  ha sido insertado con exito!");
+//				} catch (ErrorConnection e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}		
+//			}
+//		});	
+		btnCancel = new Button("Cancelar");
+		btnCancel.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				//navigator.addView(Administrator.NAME3, new );
+
+				navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
+			}
+		});
+
+		panel = new Panel();
+		panel.setSizeFull();
+		panel.setWidth("700px");
+		panel.setHeight("500px");
+
+		layoutDatos.addComponent(txtNickname);
+		layoutDatos.addComponent(txtPassword);
+		layoutDatos.addComponent(txtAnswer);
+
+		layoutRol.addComponent(lblImagen);
+		//layoutRol.addComponent(rol);
+
+		layoutbutton.addComponent(btnNew);
+		layoutbutton.addComponent(btnCancel);
+
+		layoutHorizontal.addComponent(layoutDatos);
+		layoutHorizontal.addComponent(layoutRol);
+
+		layoutPanel.addComponent(layoutHorizontal);
+		layoutPanel.addComponent(layoutbutton);
+
+		layoutPrincipal.addComponent(panel);
+		this.panel.setContent(layoutPanel);
 		
-		layouttitle.addComponent(lbltitle);
-		layoutcontent.addComponent(lblcontent);
-		
-		
-		layoutphone.addComponent(lblphone);
-		layoutphone.addComponent(txtPhone);
-		
-		layoutaddres.addComponent(lblAddress);
-		layoutaddres.addComponent(txtAddress);
-		
-		layoutinf.addComponent(layoutphone);
-		layoutinf.addComponent(layoutaddres);
-				
-		this.pnlTitle.setContent(layouttitle);
-		this.pnlContent.setContent(layoutcontent);
-		this.pnlinformation.setContent(layoutinf);
-		
-		layoutPrincipal.addComponent(pnlTitle);
-		layoutPrincipal.addComponent(pnlContent);
-		layoutPrincipal.addComponent(pnlinformation);
 		
 		setContent(layoutPrincipal);
-		
-	}
 
+	}
+	
+//
+//    /**
+//     * metodo que se encarga de listar los roles 
+//     * @return
+//     * @throws ErrorConnection
+//     */
+//	public List<String> rolList() throws ErrorConnection{
+//		List<Role> role;
+//
+//		List<String> nameRole = new LinkedList<String>(); 
+//		role = control.getRole().list();
+//		System.out.println("rol nuevo "+role);
+//		for (int i = 0; i < role.size(); i++) {
+//			nameRole.add(role.get(i).getName());
+//
+//		}
+//		System.out.println(nameRole);
+//		return nameRole;		
+//	}	
 }

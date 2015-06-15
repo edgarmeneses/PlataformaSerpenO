@@ -2,6 +2,10 @@ package com.serpen.interfaces;
 
 import com.serpen.logic.entity.Agreement;
 import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -15,42 +19,45 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 
 
-public class HomePageEditUser extends Panel implements TabSheet.SelectedTabChangeListener {
+public class HomePageEditUser extends Panel implements TabSheet.SelectedTabChangeListener, View{
 
 	public TabSheet tabsheet = new TabSheet();
 	public User user;
-	public PanelEditUsers  euser ;
-	public EntityEducation education;
-	public HousingAgreement housing;
-	public TourismAgreement tourism ;
-//	public Label tab1 = new Label("holaaa1");
-//	public Label tab2 = new Label("holaa2");
-//	public Label tab3 = new Label("hola3");
-//	public Label tab4 = new Label("holaaaa4");
+	public PanelCreateUser createUser;
+	public PanelDescriptionPensions descriptionPensions;
+//	public EntityEducation education;
+//	public HousingAgreement housing;
+//	public TourismAgreement tourism ;
+	public Navigator navigator;
+	public ControlGeneral control;
+	public static String NAMEHOMEEDITUSEER="TablaEditarUsuario";
+
 
 	public HomePageEditUser(User user) {
 		
 		this.user=user;
-		/**
-		 * no te estreses
-		 */
-		euser = new PanelEditUsers(navigator, control);
-		education = new EntityEducation();
-	    housing = new HousingAgreement(user);
-		tourism = new TourismAgreement(); 
-		tabsheet.addListener(this);
+		createUser= new PanelCreateUser(navigator, control);
+		descriptionPensions= new PanelDescriptionPensions(navigator, control);
 
-		tabsheet.addTab(euser, "Informacion General", null);
-		tabsheet.getTab(euser).setVisible(true);
+//		education = new EntityEducation();
+//	    housing = new HousingAgreement(user);
+//		tourism = new TourismAgreement(); 
 
-		tabsheet.addTab(education, "Educacion", null);
-		tabsheet.getTab(education).setVisible(true);
+		tabsheet.addTab(createUser, "Informacion de la Cuenta", null);
+		tabsheet.getTab(createUser).setVisible(true);
 
-		tabsheet.addTab(housing, "Vivienda", null);
-		tabsheet.getTab(housing).setEnabled(true);
+		tabsheet.addTab(descriptionPensions, "Informacion Pesonal", null);
+		tabsheet.getTab(descriptionPensions).setVisible(true);
+
 		
-		tabsheet.addTab(tourism, "Turismo", null);
-		tabsheet.getTab(tourism).setEnabled(true);
+//		tabsheet.addTab(education, "Educacion", null);
+//		tabsheet.getTab(education).setVisible(true);
+
+//		tabsheet.addTab(housing, "Vivienda", null);
+//		tabsheet.getTab(housing).setEnabled(true);
+//		
+//		tabsheet.addTab(tourism, "Turismo", null);
+//		tabsheet.getTab(tourism).setEnabled(true);
 		
 		setContent(tabsheet);
 	}
@@ -59,6 +66,12 @@ public class HomePageEditUser extends Panel implements TabSheet.SelectedTabChang
 
 		final TabSheet source = (TabSheet) event.getSource();
 
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
