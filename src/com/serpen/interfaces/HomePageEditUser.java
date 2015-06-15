@@ -24,10 +24,7 @@ public class HomePageEditUser extends Panel implements TabSheet.SelectedTabChang
 	public TabSheet tabsheet = new TabSheet();
 	public User user;
 	public PanelCreateUser createUser;
-	public PanelDescriptionPensions descriptionPensions;
-//	public EntityEducation education;
-//	public HousingAgreement housing;
-//	public TourismAgreement tourism ;
+	public PanelPersonalInformation persdonalInformation;
 	public Navigator navigator;
 	public ControlGeneral control;
 	public static String NAMEHOMEEDITUSEER="TablaEditarUsuario";
@@ -37,28 +34,16 @@ public class HomePageEditUser extends Panel implements TabSheet.SelectedTabChang
 		
 		this.user=user;
 		createUser= new PanelCreateUser(navigator, control);
-		descriptionPensions= new PanelDescriptionPensions(navigator, control);
-
-//		education = new EntityEducation();
-//	    housing = new HousingAgreement(user);
-//		tourism = new TourismAgreement(); 
+		persdonalInformation= new PanelPersonalInformation(navigator, control);
 
 		tabsheet.addTab(createUser, "Informacion de la Cuenta", null);
 		tabsheet.getTab(createUser).setVisible(true);
 
-		tabsheet.addTab(descriptionPensions, "Informacion Pesonal", null);
-		tabsheet.getTab(descriptionPensions).setVisible(true);
+		tabsheet.addTab(persdonalInformation, "Informacion Pesonal", null);
+		tabsheet.getTab(persdonalInformation).setVisible(true);
 
 		
-//		tabsheet.addTab(education, "Educacion", null);
-//		tabsheet.getTab(education).setVisible(true);
-
-//		tabsheet.addTab(housing, "Vivienda", null);
-//		tabsheet.getTab(housing).setEnabled(true);
-//		
-//		tabsheet.addTab(tourism, "Turismo", null);
-//		tabsheet.getTab(tourism).setEnabled(true);
-		
+	
 		setContent(tabsheet);
 	}
 

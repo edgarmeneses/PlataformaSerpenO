@@ -55,7 +55,7 @@ public class PanelCreateUser extends Panel implements View{
 	private PasswordField txtPassword;
 	private TextField txtAnswer;
 	private Image lblImagen;
-	private ComboBox rol;
+	//private ComboBox rol;
 	private Button btnNew;
 	private Button btnCancel;
 	private Panel panel;
@@ -102,16 +102,16 @@ public class PanelCreateUser extends Panel implements View{
 		this.lblImagen.setWidth("150px");
 		this.lblImagen.setHeight("150px");
 
-
-		try {
-			rolList();
-			rol = new ComboBox("Rol",rolList());
-			rol.setInputPrompt("Seleccionar Rol:");
-			rol.setInvalidAllowed(false);
-		} catch (ErrorConnection e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//
+//		try {
+//			rolList();
+//			rol = new ComboBox("Rol",rolList());
+//			rol.setInputPrompt("Seleccionar Rol:");
+//			rol.setInvalidAllowed(false);
+//		} catch (ErrorConnection e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 
 		HorizontalLayout layoutbutton = new HorizontalLayout();
@@ -122,17 +122,17 @@ public class PanelCreateUser extends Panel implements View{
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 
-				try {
+//				try {
 					int nickame=Integer.valueOf(txtNickname.getValue());
 					String password=txtPassword.getValue();
 					String answer=txtAnswer.getValue();
-					Role role = control.getRole().consultName(rol.getValue().toString());
+//					Role role = control.getRole().consultName(rol.getValue().toString());
 					//control.getUser().insert(nickame,password,answer,role);// cambiarla cuando se modifique la interfazS
 					Notification.show("El Usuario  ha sido insertado con exito!");
-				} catch (ErrorConnection e) {
+//				} catch (ErrorConnection e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}		
+//					e.printStackTrace();
+//				}		
 			}
 		});	
 		btnCancel = new Button("Cancelar");
@@ -157,7 +157,7 @@ public class PanelCreateUser extends Panel implements View{
 		layoutDatos.addComponent(txtAnswer);
 
 		layoutRol.addComponent(lblImagen);
-		layoutRol.addComponent(rol);
+//		layoutRol.addComponent(rol);
 
 		layoutbutton.addComponent(btnNew);
 		layoutbutton.addComponent(btnCancel);

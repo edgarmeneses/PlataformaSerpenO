@@ -75,8 +75,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(CreateUser.NAMECREATE, new CreateUser(navigator,user,control));
-				navigator.navigateTo(CreateUser.NAMECREATE);
+				navigator.addView(HomePageEditUser.NAMEHOMEEDITUSEER, new HomePageEditUser(user));
+				navigator.navigateTo(HomePageEditUser.NAMEHOMEEDITUSEER);
 			}
 		});
 

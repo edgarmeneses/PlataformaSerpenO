@@ -18,7 +18,7 @@ public class EntityPensions extends CustomComponent implements View{
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setVisible(true);
 		
-//		Panelpensions= new PanelDescriptionPensions();
+		Panelpensions= new PanelDescriptionPensions();
 		
 		horizontalLayout.addComponent(Panelpensions);
 		
