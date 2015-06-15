@@ -31,7 +31,9 @@ public class HomePageEditUser extends Panel implements TabSheet.SelectedTabChang
 	public HomePageEditUser(User user) {
 		
 		this.user=user;
-		
+		/**
+		 * no te estreses
+		 */
 		euser = new PanelEditUsers(navigator, control);
 		education = new EntityEducation();
 	    housing = new HousingAgreement(user);
