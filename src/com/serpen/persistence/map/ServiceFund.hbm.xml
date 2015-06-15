@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/06/2015 06:42:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.ServiceFund" table="servicio_fondo">
+        <id name="id" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="nombre" />
+        </property>
+        <property name="value" type="double">
+            <column name="valor" />
+        </property>
+        <property name="description" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="discount" type="double">
+            <column name="descuento" />
+        </property>
+        <property name="interest" type="double">
+            <column name="interes" />
+        </property>
+        <property name="information" type="string">
+            <column name="informacion" />
+        </property>
+        <property name="duration" type="string">
+            <column name="duracion" />
+        </property>
+         <many-to-one name="entity" class="com.serpen.logic.entity.Entity" fetch="join">
+            <column name="entidad" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

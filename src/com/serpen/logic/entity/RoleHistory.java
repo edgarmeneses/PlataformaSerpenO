@@ -1,5 +1,13 @@
 package com.serpen.logic.entity;
-
+/**
+ * Clase historial rol
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
+ *
+ *
+ */
 public class RoleHistory {
 	
 	private int id;

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.TransactionP" table="transaccion">
+        <id column="id" length="12" name="id" type="integer">
+            <generator class="assigned" />
+        </id>
+        <property column="tipo_transccion" length="1" name="transactionType" type="char"/>
+        <property column="monto"  name="amount" type="double" length="9" precision="2"/>
+        <property column="fecha" name="date" type="date"/>
+		<many-to-one name="account" class="com.serpen.logic.entity.Account" fetch="join">
+            <column name="cuenta" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

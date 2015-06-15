@@ -10,7 +10,7 @@
 		</id>
 		<!-- Atributos basicos de la clase PensionFund -->
 		<property column="nombre" length="25" name="name" type="string" />
-		<property name="porcent" column="porcentaje" type="double" />
+		<property name="porcent" column="porcentaje" type="double" length="3" precision="1"/>
 
 		<!-- Atributos 0relacionados con otras tablas -->
 		<set name="collectionAgreement">

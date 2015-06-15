@@ -15,6 +15,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.HealthEntity;
 import com.serpen.logic.entity.PensionFund;
 import com.serpen.logic.entity.Role;
 import com.serpen.logic.entity.User;
@@ -29,16 +30,14 @@ public class ControlUser {
  * Atributos de la clase control
  */
 	Session session;
-	Transaction  transaction;
 	/**
 	 * Constructor de la clase Control Conection
 	 * @param session
 	 * @param transaction
 	 */
-	public ControlUser(Session session,Transaction transaction) {
+	public ControlUser(Session session) {
 		// TODO Auto-generated constructor stub
 		this.session=session;
-		this.transaction=transaction;	
 	}
     
 	/**
@@ -60,18 +59,14 @@ public class ControlUser {
 	public void insert(int nickname,String password,String answer,
 			Role role,String name,String lastName,
 			String address,String numberPhone,String business,
-			double salary,char affiliate,PensionFund pensionFund)throws ErrorConnection{
+			double salary,char affiliate,PensionFund pensionFund,HealthEntity healthEntity)throws ErrorConnection{
 
-		transaction = session.beginTransaction();
-		Role rol= role;
-		rol = (Role) session.load(Role.class,rol.getId());
-		PensionFund pensionFun = pensionFund;
-		pensionFun = (PensionFund) session.load(PensionFund.class, pensionFun.getNit());
+		//transaction = session.beginTransaction();	
 		User user = new User();
 		user.setNickname(nickname);
 		user.setPassword(password);
 		user.setAnswer(answer);
-		user.setRol(rol);
+		user.setRol(role);
 		user.setName(name);
 		user.setLastName(lastName);
 		user.setAddress(address);
@@ -79,11 +74,11 @@ public class ControlUser {
 		user.setBusiness(business);
 		user.setSalary(salary);
 		user.setAffiliate(affiliate);
-		user.setPensionFund(pensionFun);
+		user.setPensionFund(pensionFund);
 		user.setState(user.STATE_TYPE_ACTIVE);
+		user.setHealthEntity(healthEntity);
 		session.save(user);	
-		transaction.commit();
-		session.close();
+		session.beginTransaction().commit();
 	}
 /**
  * metodo que se encarga de consultar un Usuario  por el id
@@ -124,8 +119,7 @@ public class ControlUser {
 		user.setAddress(address);
 		user.setNumberPhone(numberPhone);
 		session.update(user);
-		transaction.commit();		
-		session.close();
+		session.beginTransaction().commit();
 	}
 	/**
 	 * Metodo que se encarga de remover un Usuario
@@ -136,8 +130,7 @@ public class ControlUser {
 
 		User user =consultId(nickname);
 		session.delete(user);
-		transaction.commit();
-		session.close();
+		session.beginTransaction().commit();
 	}
 	/**
 	 * Metodo que se encarga de listar los usuarios
@@ -153,20 +146,23 @@ public class ControlUser {
 
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
-		ControlUser controlUser= new ControlUser(session,transaction);
-		//		Role role = (Role) session.load(Role.class, 1);
-		//		PensionFund pensionFund = (PensionFund) session.load(PensionFund.class,"123r45-1-1");
-		//		controlUser.insert(1, "123ed", "ProfeCarlos", role,"Eliana", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund);
-		// controlUser.consultId(1);
-		// System.out.println(controlUser.consultName("Eliana"));
-		//controlUser.update(1,"Actualizacion", "Juan Jose", "Jesi", "Ramirez", "Calle", "312234354");
+		ControlUser controlUser= new ControlUser(session);
+				Role role = (Role) session.load(Role.class, 2);
+				PensionFund pensionFund = (PensionFund) session.load(PensionFund.class,"12");
+		        HealthEntity healthEntity = (HealthEntity)session.load(HealthEntity.class, "3eerr");
+	
 		try {
-			controlUser.removeUser(1);
+			System.out.println(controlUser.consultId(1));
+			 controlUser.insert(2, "abc", "Profe123ed", role,"Eliana", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund,healthEntity);
+			//controlUser.removeUser(1);
+			//System.out.println(controlUser.consultName("Eliana"));
 		} catch (ErrorConnection e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//controlUser.update(1,"Actualizacion", "Juan Jose", "Jesi", "Ramirez", "Calle", "312234354");
+		
 	}
 
 }

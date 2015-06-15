@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.PaymentPlan" table="plan_pago">
+        <id name="quotaNumber" type="int" length="3">
+            <column name="numero_cuota" />
+            <generator class="increment" />
+        </id>
+        
+        <property name="paymntDate" type="java.util.Date">
+            <column name="fecha_pago" />
+        </property>
+        <property name="amount" type="double">
+            <column name="monto" />
+        </property>
+        
+        <many-to-one name="credit" class="com.serpen.logic.entity.Credit" fetch="join">
+            <column name="CREDITO" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -22,7 +22,7 @@ public static void main(String[] args) {
 			PensionFund pensionFund = new PensionFund("1111-1a", "Corpobanca", 8.5);
 			session.save(pensionFund);
 			
-			User user = new User(1, "constraseña", "respuesta", role,"Juan", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund);
+			User user = new User(1, "constraseña", "respuesta", role,"Juan", "Perez", "direccion", "312456476", "Algarra", 100.00, User.AFFILIATE_TYPE_CONTRIBUTOR, pensionFund, null);
 		    session.save(user);
 		    transaction.commit();
 			session.close();

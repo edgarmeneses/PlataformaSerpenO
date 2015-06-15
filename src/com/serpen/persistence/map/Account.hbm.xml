@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/05/2015 11:39:31 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.Account" table="cuenta">
+        <id name="number"  type="int">
+            <column name="numero" />
+            <generator class="assigned" />
+        </id>
+        <property name="accountType" length="3" type="string">
+            <column name="tipo_cuenta" />
+        </property>
+        <many-to-one name="user" class="com.serpen.logic.entity.User" fetch="join">
+            <column name="usuario" />
+        </many-to-one>
+        <many-to-one name="financialEntity" class="com.serpen.logic.entity.FinancialEntity" fetch="join">
+            <column name="banco" />
+        </many-to-one>
+        <set name="transactions">
+            <key>
+                <column name="cuenta" />
+            </key>
+            <one-to-many class="com.serpen.logic.entity.TransactionP" />
+        </set>
+    </class>
+</hibernate-mapping>

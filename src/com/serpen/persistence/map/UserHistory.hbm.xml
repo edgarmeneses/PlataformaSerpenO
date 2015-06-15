@@ -1,21 +1,40 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 1/04/2015 02:53:56 PM by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 29/05/2015 12:04:26 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.serpen.logic.entity.UserHistory" table="historial_usuario">
+    
         <id name="id" type="int">
-            <column name="id" />
-            <generator class="assigned" />
+            <column name="ID" />
+            <generator class="increment" />
         </id>
-        <property name="nickname" type="int">
+        <property name="nickname" type="int" length="6">
             <column name="nickname" />
         </property>
         <property name="estado" type="char">
             <column name="estado" />
         </property>
-        <property name="rol" type="int">
-            <column name="rol" />
+        <property name="rol" type="java.lang.String" length="15">
+            <column name="ROL" />
+        </property>
+        <property name="name" type="java.lang.String" length="15">
+            <column name="nombre" />
+        </property>
+        <property name="lastName" type="java.lang.String" length="15">
+            <column name="apellido" />
+        </property>
+        <property name="PensionFund" type="java.lang.String" length="15">
+            <column name="fondo" />
+        </property>
+        <property name="healthEntity" type="java.lang.String" length="30">
+            <column name="eps" />
+        </property>
+        <property name="business" type="java.lang.String" length="20">
+            <column name="empresa" />
+        </property>
+        <property name="salary" type="double" length="9" precision="2">
+            <column name="salario" />
         </property>
     </class>
 </hibernate-mapping>

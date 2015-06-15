@@ -35,7 +35,7 @@ public class PanelEntityEducation extends Panel{
 	pnlMenu = new  Panel();
 	pnlMenu.setSizeFull();
 	pnlMenu.setWidth("200px");
-	pnlMenu.setHeight("800px");
+	pnlMenu.setHeight("300px");
 
 	this.ImgneUserEdu = new Image("Crear");
 	ThemeResource resource = new ThemeResource("../Imagen/educacion.png");

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/05/2015 11:28:56 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.serpen.logic.entity.HealthEntity" table="entidad_salud">
+        <id name="nit" type="java.lang.String">
+            <column name="nit" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="nombre" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="direccion" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="telefono" />
+        </property>
+        <many-to-one name="catalog" class="com.serpen.logic.entity.Catalog" fetch="join">
+            <column name="catalogo" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

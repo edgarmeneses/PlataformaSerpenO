@@ -2,7 +2,15 @@ package com.serpen.logic.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Clase Rol
+ * @author Diana Milena Gonzalez Prieto
+ * @author Edgar Antonio Meneses Cadena
+ * @author Daniela Alezandra Blanco Albarracin
+ * @author Eliana Carolina Ayala Sosa
+ *
+ *
+ */
 public class Role {
 	
 	private int id;

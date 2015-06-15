@@ -1,8 +1,17 @@
 package com.serpen.logic.entity;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.HashSet;
 import java.util.Set;
 
-import com.google.gwt.dev.util.collect.HashSet;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+
 
 public class PensionFund {
 	/**
@@ -102,6 +111,14 @@ public class PensionFund {
 	public void setCollectionUser(Set<User> collectionUser) {
 		this.collectionUser = collectionUser;
 	}
+	
+	public double  UnemploymentCalculate(int day, int Salary){
+		double unemployment=(Salary*day)/360;
+		return unemployment;
+	}
+
+	
+
 	/**
 	 * metodo delegado toString
 	 */

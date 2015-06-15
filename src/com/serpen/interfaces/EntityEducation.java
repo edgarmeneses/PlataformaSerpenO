@@ -15,25 +15,26 @@ public class EntityEducation extends CustomComponent implements View{
 	
 	public EntityEducation() {
 		
-		FormLayout layout = new FormLayout();
+		//FormLayout layout = new FormLayout();
 	
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setVisible(true);
 		
-		FormLayout horizontal = new FormLayout();
-		horizontal.setVisible(true);
+		///FormLayout horizontal = new FormLayout();
+		//horizontal.setVisible(true);
 		
 		panelEducation= new PanelEntityEducation();
 		
 		
 		pServiceEducation = new PanelServiceEducation();
+		pServiceEducation.setVisible(true);
 		
 		horizontalLayout.addComponent(panelEducation);
 		horizontalLayout.addComponent(pServiceEducation);
 		
-		horizontal.addComponent(horizontalLayout);
-		layout.addComponent(horizontal);
-		setCompositionRoot(layout);
+		//horizontal.addComponent(horizontalLayout);
+		//layout.addComponent(horizontal);
+		setCompositionRoot(horizontalLayout);
 		setSizeFull();
 		
 
