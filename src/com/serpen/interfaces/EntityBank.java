@@ -5,6 +5,7 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 
 public class EntityBank extends CustomComponent implements  View{
@@ -21,6 +22,12 @@ public class EntityBank extends CustomComponent implements  View{
 		
 		this.navigator = navigator;
 		this.user=user;
+	   	FormLayout layoutPrincipal= new FormLayout();
+	 	layoutPrincipal.setSizeFull();
+	 	layoutPrincipal.beforeClientResponse(false);
+	 	layoutPrincipal.setVisible(true);
+	 	layoutPrincipal.setStyleName("v-SIDEBAR");
+	 		
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setVisible(true);
 		
@@ -33,7 +40,8 @@ public class EntityBank extends CustomComponent implements  View{
 		horizontalLayout.addComponent(panelTableBank);
 		horizontalLayout.addComponent(panelGeneral);
 		
-		setCompositionRoot(horizontalLayout);
+		layoutPrincipal.addComponent(horizontalLayout);
+		setCompositionRoot(layoutPrincipal);
 		setSizeFull();
 	}
 

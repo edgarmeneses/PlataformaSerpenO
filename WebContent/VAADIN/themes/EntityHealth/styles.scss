@@ -1,0 +1,15 @@
+@import "addons.scss";
+@import "EntityHealth.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in EntityHealth.scss */
+.EntityHealth {
+  @include addons;
+  @include EntityHealth;
+  
+     .v-SIDEBAR{
+	$v-background-color: #87CEEB;
+     background-color: $v-background-color;
+}
+  
+}

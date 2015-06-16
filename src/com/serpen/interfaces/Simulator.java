@@ -33,6 +33,7 @@ public class Simulator extends CustomComponent implements View{
 		this.user=user;
 		System.out.println("FOndo"+user);
 		FormLayout formLayout = new FormLayout();
+		formLayout.setStyleName("v-SIDEBAR");
 		
 		HorizontalLayout horizontalLayout =  new HorizontalLayout();
 		

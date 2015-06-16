@@ -23,6 +23,13 @@ public class EntityHealth extends CustomComponent implements View {
 		
     	this.navigator = navigator;
     	 this.user=user;
+    	
+    	FormLayout layoutPrincipal= new FormLayout();
+ 		layoutPrincipal.setSizeFull();
+ 		layoutPrincipal.beforeClientResponse(false);
+ 		layoutPrincipal.setVisible(true);
+ 		layoutPrincipal.setStyleName("v-SIDEBAR");
+ 		
 	    HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setVisible(true);
 		
@@ -34,9 +41,9 @@ public class EntityHealth extends CustomComponent implements View {
 		horizontalLayout.addComponent(panelOptionHealth);
 		horizontalLayout.addComponent(panelTable);
 		horizontalLayout.addComponent(general);
-
 		
-		setCompositionRoot(horizontalLayout);
+		layoutPrincipal.addComponent(horizontalLayout);
+		setCompositionRoot(layoutPrincipal);
 		setSizeFull();
 	}
 

@@ -63,7 +63,6 @@ public class Login extends CustomComponent implements View{
 		layoutPrincipal.setVisible(true);
 		layoutPrincipal.setStyleName("v-SIDEBAR");
 		
-
 		FormLayout layoutPanel = new FormLayout();
 
 		layoutPanel.setVisible(true);

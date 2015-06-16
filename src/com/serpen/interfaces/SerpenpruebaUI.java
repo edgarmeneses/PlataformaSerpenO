@@ -19,7 +19,7 @@ import com.vaadin.ui.UI;
 //
 import com.vaadin.ui.VerticalLayout;
 
-@Theme("Affiliate")
+@Theme("EntityBank")
 public class SerpenpruebaUI extends UI{
 
 	public Button button;
