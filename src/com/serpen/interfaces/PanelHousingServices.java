@@ -85,7 +85,7 @@ public class PanelHousingServices extends Panel{
 		benefict= new Label(".....................");
 
 
-		lblSearch = new Label("Carrera");
+		lblSearch = new Label("Nombre");
 		lblSearch.setVisible(true);
 		
 		txtSearch = new TextField();
@@ -121,8 +121,8 @@ public class PanelHousingServices extends Panel{
 		//	    table.setHeight("170px"); //Altura del Grid.
 
 		// Definir  columnas 
-		services.addContainerProperty("Tasa Iteres", String.class, null);
-		services.addContainerProperty("Descriocion", String.class, null);
+		services.addContainerProperty("Tasa Interes", String.class, null);
+		services.addContainerProperty("Descripcion", String.class, null);
 		services.addContainerProperty("Contacto", String.class, null);
 //		fillTable();
 		//	    Añadir algunas otras filas utilizando addItem

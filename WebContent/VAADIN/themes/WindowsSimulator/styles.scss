@@ -1,0 +1,15 @@
+@import "addons.scss";
+@import "WindowsSimulator.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in WindowsSimulator.scss */
+.WindowsSimulator {
+  @include addons;
+  @include WindowsSimulator;
+  
+    .v-SIDEBAR{
+	$v-background-color:  #A9A9A9;
+     background-color: $v-background-color;
+}
+
+}

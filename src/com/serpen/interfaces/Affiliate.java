@@ -46,6 +46,9 @@ public class Affiliate extends CustomComponent implements View{
 		layoutPanel.setSizeFull();
 		layoutPanel.setVisible(true);
 	
+		FormLayout layoutInvi = new FormLayout();
+		layoutInvi.setSizeFull();
+		layoutInvi.setVisible(true);
 		
 		HorizontalLayout horizontal = new HorizontalLayout();
 		
@@ -138,7 +141,9 @@ public class Affiliate extends CustomComponent implements View{
 		horizontal.addComponent(verticalBank);
 		horizontal.addComponent(verticalHealth);
 
+		this.pnlPrincipal.setContent(layoutInvi);
         this.pnlPrincipal.setContent(layoutPanel);
+        
        
 		this.setCompositionRoot(layoutprincipal);
 		
