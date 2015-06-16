@@ -34,11 +34,15 @@ public class Simulator extends CustomComponent implements View{
 		System.out.println("FOndo"+user);
 		FormLayout formLayout = new FormLayout();
 		
-		VerticalLayout horizontalLayout =  new VerticalLayout();
+		HorizontalLayout horizontalLayout =  new HorizontalLayout();
 		
 		homePageFound = new HomePageFound(user);
+		homePageFound.setWidth("700px");
+		homePageFound.setHeight("500px");
+		
 		panelFoundConf = new PanelFoundConf(navigator,user);
-        
+		panelFoundConf.setWidth("200px");
+		panelFoundConf.setHeight("500px");
 		
 		panelGeneral = new PanelGeneral(navigator,user);
 		panelGeneral.setWidth("200px");
