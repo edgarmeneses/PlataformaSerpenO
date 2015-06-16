@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Entity;
 import com.serpen.logic.entity.ServiceFund;
+import com.serpen.logic.entity.TransactionP;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.conf.HibernateUtil;
 
@@ -128,12 +129,32 @@ public class ControlServiceFund {
 		
 	}
 	
+	public List<ServiceFund> listaEntity(char entity) throws ErrorConnection{
+		try{
+			String sql = "from com.serpen.logic.entity.ServiceFund s " +
+					"WHERE s.entity.entityType ='"+ entity+"'";
+			System.out.println(sql);
+			List<ServiceFund> listaServiceFondo = session.createQuery(sql).list();
+            System.out.println(listaServiceFondo);
+			return listaServiceFondo;
+		}catch(Exception e){
+			throw new ErrorConnection("No se pudo realizar la consulta"
+					+ " Causa: "+e.getCause());
+		}
+		
+	}
+	
 	public static void main(String[] args){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		ControlServiceFund controlServiceFund= new ControlServiceFund(session);
-		Entity entity  = (Entity) session.load(Entity.class, 1);
-		controlServiceFund.insert(1, "Educativo", 456.99, "Setvicio que se ",45.7,4, "trfff", "gyyuu", entity);
+		Entity entity  = (Entity) session.load(Entity.class,1);
+		controlServiceFund.insert(6, "Matematicas", 100.000, "Setvicio que se ",45.7,4, "trfff", "gyyuu", entity);
 		
-		
+//		try {
+////			System.out.println(controlServiceFund.listaEntity('E'));
+//		} catch (ErrorConnection e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 }

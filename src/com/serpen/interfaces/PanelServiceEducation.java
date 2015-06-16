@@ -1,7 +1,12 @@
 package com.serpen.interfaces;
 
 
+import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.Entity;
+import com.serpen.logic.entity.ServiceFund;
+import com.serpen.persistence.conf.HibernateUtil;
 import com.serpen.persistence.control.ControlGeneral;
+import com.serpen.persistence.control.ControlServiceFund;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
@@ -14,6 +19,11 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.VerticalLayout;
 
+import java.util.List;
+
+import org.hibernate.Session;
+
+
 public class PanelServiceEducation extends Panel{
 	
 	private Label lblUser;
@@ -24,13 +34,22 @@ public class PanelServiceEducation extends Panel{
 	private Label txtPhone;
 	private Label txtAddress;
 	private Button btnReturn;
+	private Label lblSearch;
+	private TextField txtSearch;
+	private Button btnSearch;
+	private Panel pnlSearch;
 	private Table table;
 	private Panel pnlMenu;
+	
 	private Panel pnlTable;
 	private Panel pnlTitle;
+	
+	private ControlServiceFund controlServiceFund;
 
 	
 	public PanelServiceEducation() {
+		Session session= HibernateUtil.getSessionFactory().openSession();
+		controlServiceFund = new ControlServiceFund(session);
 		
 		FormLayout layoutPrin = new FormLayout();
 		layoutPrin.setVisible(true);
@@ -43,6 +62,9 @@ public class PanelServiceEducation extends Panel{
 		
 		HorizontalLayout layoutTitle = new HorizontalLayout();
 		layoutTitle.setVisible(true);
+		
+		HorizontalLayout layoutSearch = new HorizontalLayout();
+		layoutSearch.setVisible(true);
 		
 		HorizontalLayout layoutUser = new HorizontalLayout();
 		layoutUser.setVisible(true);
@@ -64,6 +86,10 @@ public class PanelServiceEducation extends Panel{
 		pnlMenu.setWidth("1000");
 		pnlMenu.setHeight("250");
 		
+		pnlSearch = new Panel();
+		pnlSearch.setSizeFull();
+		pnlSearch.setWidth("1000");
+		pnlSearch.setHeight("100");
 		
 		pnlTable = new Panel();
      	pnlTable.setSizeFull();
@@ -109,6 +135,37 @@ public class PanelServiceEducation extends Panel{
 		btnReturn.setHeight("50px");
 		btnReturn.setVisible(true);
 	
+		lblSearch = new Label("Carrera");
+		lblSearch.setVisible(true);
+		
+		txtSearch = new TextField();
+		txtSearch.setWidth("150px");
+		txtSearch.setHeight("50px");
+		txtSearch.setRequired(true);
+		txtSearch.setValue("");
+		txtSearch.setNullRepresentation("");
+		txtSearch.setVisible(true);
+		
+		btnSearch = new Button("Buscar");
+		btnSearch.setWidth("150px");
+		btnSearch.setHeight("50px");
+		btnSearch.setVisible(true);
+		
+		btnSearch.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub	
+				 
+			     try {
+					fill();
+				} catch (ErrorConnection e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		
 		table = new Table();
 
 	    table.addContainerProperty("Carrera", String.class, null);
@@ -116,8 +173,8 @@ public class PanelServiceEducation extends Panel{
 	    table.addContainerProperty("Descuento", String.class, null);
 	    table.addContainerProperty("Informacion", String.class, null);
 
-	    table.addItem(new Object[]{" ", " " , " ", " "}, 2);
-	    table.addItem(new Object[] { " " ," " , " ", " "},3);
+//	    table.addItem(new Object[]{" ", " " , " ", " "}, 2);
+//	    table.addItem(new Object[] { " " ," " , " ", " "},3);
 
 	    table.setPageLength(table.size());  
 	    table.setWidth("80%"); //Ocupa todo el ancho del navegador
@@ -139,18 +196,49 @@ public class PanelServiceEducation extends Panel{
 	    layoutAddress.addComponent(lblAddress);
 		layoutAddress.addComponent(txtAddress);
 		
-
+        layoutSearch.addComponent(lblSearch);
+        layoutSearch.addComponent(txtSearch);
+        layoutSearch.addComponent(btnSearch);
+        
 		
 		this.pnlTitle.setContent(layoutTitle);
+		this.pnlSearch.setContent(layoutSearch);
 		this.pnlTable.setContent(layoutTable);
 		this.pnlMenu.setContent(layoutPanelInfo);
 	
 		
 		layoutPrin.addComponent(pnlTitle);
+		layoutPrin.addComponent(pnlSearch);
 		layoutPrin.addComponent(pnlTable);
 		layoutPrin.addComponent(pnlMenu);
 		
 		setContent(layoutPrin);
 	
+	}
+	
+	
+	public Object[] fillRow(ServiceFund serviceFund){
+		return new Object[]{String.valueOf(serviceFund.getName()) , String.valueOf(serviceFund.getId()) , String.valueOf(serviceFund.getDiscount()), String.valueOf(serviceFund.getInformation())};
+		
+	}
+	
+	public void fill() throws ErrorConnection{
+		List<ServiceFund> serviceFund =  controlServiceFund.listaEntity('E');
+		try {
+			serviceFund = controlServiceFund.listoServiceFund(txtSearch.getValue());
+			for (int i = 0; i < serviceFund.size(); i++) {
+				System.out.println("lista servicio fondo " + fillRow(serviceFund.get(i)));
+				
+			}
+			table.removeAllItems();
+			
+			for (int i = 0; i < serviceFund.size(); i++) {
+				table.addItem(fillRow(serviceFund.get(i)),i);
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 }
