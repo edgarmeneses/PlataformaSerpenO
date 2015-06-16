@@ -75,8 +75,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(CreateUser.NAMECREATE, new CreateUser(navigator,user,control));
-				navigator.navigateTo(CreateUser.NAMECREATE);
+				navigator.addView(HomePageCreateUser.NAMEHOMECREATEUSER, new HomePageCreateUser(user,navigator,control));
+				navigator.navigateTo(HomePageCreateUser.NAMEHOMECREATEUSER);
 			}
 		});
 
@@ -106,9 +106,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(EditUsers.NAMEEDIT, new EditUsers(navigator, user,control));
-				navigator.navigateTo(EditUsers.NAMEEDIT);
-				System.out.println("hhhhh");
+				navigator.addView(HomePageEditUser.NAMEHOMEEDITUSEER, new HomePageEditUser(user, navigator, control));
+				navigator.navigateTo(HomePageEditUser.NAMEHOMEEDITUSEER);
 			}
 
 		});

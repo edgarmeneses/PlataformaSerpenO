@@ -9,6 +9,8 @@ public class ControlGeneral {
 	
 	private ControlRole controlRole;
 	private ControlUser controlUser;
+	private ControlHealthEntity controlHealthEntity;
+	private ControlPensionFund controlPensionFund;
 	private ControlHistoryRole controlHistoryRole;
 	private ControlHistoryUser controlHistoryUser;
 	
@@ -18,6 +20,8 @@ public ControlGeneral(Session sesion) {
 		
 		this.controlRole = new ControlRole(sesion);
 		this.controlUser = new ControlUser(sesion);
+		this.controlHealthEntity = new ControlHealthEntity(sesion);
+		this.controlPensionFund = new ControlPensionFund(sesion);
 //        this.controlHistoryRole = new ControlHistoryRole(sesion, transaction);
 //        this.controlHistoryUser = new ControlHistoryUser(sesion, transaction);
 	}
@@ -80,13 +84,23 @@ public ControlGeneral(Session sesion) {
 	public void setHistoryUser(ControlHistoryUser controlHistoryUser) {
 		this.controlHistoryUser = controlHistoryUser;
 	}
-	
-	
-	
-	
-	
 
-	
-	
+	public ControlHealthEntity getlHealth() {
+		return controlHealthEntity;
+	}
 
+	public void setHealth(ControlHealthEntity controlHealthEntity) {
+		this.controlHealthEntity = controlHealthEntity;
+	}
+
+	public ControlPensionFund getPensionFund() {
+		return controlPensionFund;
+	}
+
+	public void setPensionFund(ControlPensionFund controlPensionFund) {
+		this.controlPensionFund = controlPensionFund;
+	}
+	
+	
+	
 }

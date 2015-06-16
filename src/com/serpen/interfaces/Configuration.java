@@ -24,7 +24,7 @@ public class Configuration extends CustomComponent implements View{
 	/**
 	 * Atributos de la clase Configuration
 	 */
-	private PanelAdministrator administrator;
+	private PanelGeneralAdministrator administrator;
 	private PanelConfiguration configuration;
 	public static final String NAMECONFIGURATION="configuraciones";
 
@@ -38,10 +38,12 @@ public class Configuration extends CustomComponent implements View{
 	public Configuration(Navigator navigator, User user, ControlGeneral control) {
 		// TODO Auto-generated constructor stub
 		HorizontalLayout layout = new HorizontalLayout();
-		administrator = new PanelAdministrator(navigator, user,control);
+		administrator = new PanelGeneralAdministrator(navigator, user,control);
+		administrator.getImgConfig().setEnabled(false);
 		configuration = new PanelConfiguration(navigator, user,control);
-		layout.addComponent(administrator);
 		layout.addComponent(configuration);
+		layout.addComponent(administrator);
+
 		setCompositionRoot(layout);
 		setSizeFull();
 	}

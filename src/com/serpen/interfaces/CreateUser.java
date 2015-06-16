@@ -35,7 +35,7 @@ public class CreateUser extends CustomComponent implements View{
 	public CreateUser(Navigator navigator, User user, ControlGeneral control) {
 		// TODO Auto-generated constructor stubd
 		administrator = new PanelAdministrator(navigator, user, control);
-		createUser = new PanelCreateUser(navigator,control);
+		//createUser = new PanelCreateUser(navigator,control);
 
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 

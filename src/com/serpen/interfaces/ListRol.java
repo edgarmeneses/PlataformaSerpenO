@@ -29,7 +29,7 @@ public class ListRol extends CustomComponent implements View{
 	/**
 	 * Atributos de la clase listar rol
 	 */
-	private PanelAdministrator administrator;
+	private PanelGeneralAdministrator administrator;
 	private PanelListRol roListRol;
 	public static final String NAMELISTROLE="ListarRoles";
 
@@ -42,10 +42,12 @@ public class ListRol extends CustomComponent implements View{
 	 */
 	public ListRol(Navigator navigator, User user, ControlGeneral control){
 		HorizontalLayout layout = new HorizontalLayout();
-		administrator= new PanelAdministrator(navigator, user, control);
+		administrator= new PanelGeneralAdministrator(navigator, user, control);
+		administrator.getImgRol().setEnabled(true);
 		roListRol= new PanelListRol(navigator, control);
-		layout.addComponent(administrator);
 		layout.addComponent(roListRol);
+		layout.addComponent(administrator);
+
 		setCompositionRoot(layout);
 		setSizeFull();
 	}

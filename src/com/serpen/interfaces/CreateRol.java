@@ -22,7 +22,7 @@ public class CreateRol extends CustomComponent implements View{
 	 * Atributos  de la clase createRol 
 	 */
 	private PanelCreateRole  panelCreateRole;
-	private PanelAdministrator administrator;
+	private PanelGeneralAdministrator administrator;
 	public static final String NAMECREATEROLE="Roles";
 	/**
 	 * Constructor de la clase Create rol que por parametro pide 
@@ -35,11 +35,13 @@ public class CreateRol extends CustomComponent implements View{
 		// TODO Auto-generated constructor stub
 
 		panelCreateRole = new PanelCreateRole(navigator,control);
-		administrator= new PanelAdministrator(navigator, user , control);
+		administrator= new PanelGeneralAdministrator(navigator, user , control);
+		administrator.getImgNewRol().setEnabled(false);
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 
-		horizontalLayout.addComponent(administrator);
 		horizontalLayout.addComponent(panelCreateRole);
+		horizontalLayout.addComponent(administrator);
+
 
 		setCompositionRoot(horizontalLayout);
 		setSizeFull();

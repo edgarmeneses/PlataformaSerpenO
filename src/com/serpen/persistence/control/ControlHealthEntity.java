@@ -17,11 +17,8 @@ import com.serpen.persistence.conf.HibernateUtil;
 public class ControlHealthEntity {
 	
 	private Session session;
-	private Transaction transaction;
-	public ControlHealthEntity(Session session, Transaction transaction) {
-		super();
+	public ControlHealthEntity(Session session) {
 		this.session = session;
-		this.transaction = transaction;
 	}
 	
 	  public void insert(String nit, String name,String address,String phone,Catalog catalog){
@@ -32,7 +29,7 @@ public class ControlHealthEntity {
 	    	healthEntity.setPhone(phone);
 	    	healthEntity.setCatalog(catalog);
 	    	session.save(healthEntity);
-	    	transaction.commit();
+	    	session.beginTransaction().commit();
 	    }
 	  
 	
@@ -55,10 +52,15 @@ public class ControlHealthEntity {
 	   		}
 	    	return  criteria.list();
 	    }
+	  
+	  public List<HealthEntity> list(){
+		  Criteria criteria = session.createCriteria(HealthEntity.class);
+		  return criteria.list();
+	  }
 	  public void remove(String nit)throws ErrorConnection{
 			HealthEntity healthEntity = (HealthEntity) session.load(HealthEntity.class, nit);
 			session.delete(healthEntity);
-			transaction.commit();
+			session.beginTransaction().commit();
 		}
 	  public void update(String nit,String name,String address,String phone)throws ErrorConnection{
 			HealthEntity healthEntity= (HealthEntity) session.load(HealthEntity.class, nit);
@@ -66,14 +68,13 @@ public class ControlHealthEntity {
 	    	healthEntity.setAddress(address);
 	    	healthEntity.setPhone(phone);
 			session.update(healthEntity);
-			transaction.commit();	
+			session.beginTransaction().commit();	
 		}
 	  
 	  
 	  public static void main(String[] args) {
 		  Session session = HibernateUtil.getSessionFactory().openSession();
-	    	Transaction transaction=session.beginTransaction();
-	    	ControlHealthEntity controlHealthEntity = new ControlHealthEntity(session, transaction);
+	    	ControlHealthEntity controlHealthEntity = new ControlHealthEntity(session);
 	    	Catalog catalog= (Catalog)session.load(Catalog.class, 1);
 	    	controlHealthEntity.insert("3eerr","Salud","direccion","12345",catalog);
 	    	//controlHealthEntity.consult("3eerr");

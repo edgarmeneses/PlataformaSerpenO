@@ -21,7 +21,7 @@ public class List extends CustomComponent implements View{
 	/**
 	 * Atributos de la clase List
 	 */
-	private PanelAdministrator administrator;
+	private PanelGeneralAdministrator administrator;
 	private PanelList list;
 	public static final String NAMELIST="ListarUsuarios";
 
@@ -34,10 +34,12 @@ public class List extends CustomComponent implements View{
 	 */
 	public List(Navigator navigator, User user, ControlGeneral control) {
 		HorizontalLayout layout = new HorizontalLayout();
-		administrator = new PanelAdministrator(navigator, user, control);
+		administrator = new PanelGeneralAdministrator(navigator, user, control);
+		administrator.getImgList().setEnabled(false);
 		list = new PanelList(navigator, control);
-		layout.addComponent(administrator);
 		layout.addComponent(list);
+		layout.addComponent(administrator);
+
 		setCompositionRoot(layout);
 		setSizeFull();
 	}
