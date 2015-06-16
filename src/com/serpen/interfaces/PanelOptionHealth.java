@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
@@ -21,11 +22,12 @@ public class PanelOptionHealth extends Panel implements View{
 	private Image imgReport;
 	private Label lblReport;
 	private Navigator navigator;
+	private User user;
 	
 	
-	public PanelOptionHealth (Navigator navigator){
+	public PanelOptionHealth (Navigator navigator,User user){
 		
-		this.navigator = navigator;
+	this.navigator = navigator;
     FormLayout formLayout = new FormLayout();
     formLayout.setVisible(true);
     
@@ -55,7 +57,7 @@ public class PanelOptionHealth extends Panel implements View{
 		
 		@Override
 		public void click(ClickEvent event) {
-			MembershipCertificate certificate = new MembershipCertificate(navigator);
+			MembershipCertificate certificate = new MembershipCertificate(navigator,user);
 			UI.getCurrent().addWindow(certificate);
 			
 		}

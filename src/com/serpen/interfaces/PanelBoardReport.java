@@ -4,12 +4,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -207,24 +212,61 @@ public class PanelBoardReport extends Panel implements View{
 	}
 	public void reporte(){
 		Document document = new Document();
-		File f = new File("D:/sample2.pdf");
+		  Calendar cal1 = Calendar.getInstance();
+		File f = new File("D:/Inf_"+user.getName()+cal1.get(Calendar.MILLISECOND)+".pdf");
 		try {
 			PdfWriter.getInstance(document, new FileOutputStream(f));
 			document.open();
 			System.out.println("Opening the document..");
 	        Image image = Image.getInstance("D:/Proyecto_VadW/PlataformaSerpenO/WebContent/VAADIN/themes/Imagen/logo.jpg");
-			 
+	        image.setAlignment(image.ALIGN_CENTER);
+	       
+	        Paragraph   paragraphDate = new Paragraph(String.valueOf(""+cal1.get(Calendar.DATE)+"-"+cal1.get(Calendar.MONTH)+"-"+cal1.get(Calendar.YEAR)),FontFactory.getFont("arial",18,Font.ITALIC));
+	        paragraphDate.setAlignment(paragraphDate.ALIGN_RIGHT);
+	        
+	        
+	        Paragraph paragraphInf = new Paragraph("INFORMACION DEL SALARIO PENSIONADO",FontFactory.getFont("arial",22,Font.ITALIC,BaseColor.BLUE));
+	        paragraphInf.setAlignment(paragraphInf.ALIGN_CENTER);
+	        
+	        Paragraph paragraphFirmL = new Paragraph("________________________________________");
+	        paragraphFirmL.setAlignment(paragraphFirmL.ALIGN_CENTER);
+	        Paragraph paragraphFirm = new Paragraph("FIRMA");
+	        paragraphFirm.setAlignment(paragraphFirm.ALIGN_CENTER);
+	        
+	        
 	        document.add(image);
-			document.add(new Paragraph("INFORMACION DEL SALARIO PENSIONADO"));
-			document.add(new Paragraph("Usuario: " + user.getName()+ user.getLastName()));
-			document.add(new Paragraph("Empresa en la que trabaja"+user.getBusiness()));
-			document.add(new Paragraph("Salario Actual"+ user.getSalary()));
-			document.add(new Paragraph("Cantidad de creditos"+listaCredit.size()));
-			document.add(new Paragraph("Descuento Creditos"+discountCredits()));
-			document.add(new Paragraph("Descuento Salud"+discountHealth()));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph(" "));
+	        document.add(paragraphDate);
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph(" "));
+	        document.add(paragraphInf);
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph("Usuario:                 			       " +user.getName()+ "    "+user.getLastName(), FontFactory.getFont("arial",18,Font.ITALIC)));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph("Empresa en la que trabaja:                 " +user.getBusiness(), FontFactory.getFont("arial",16,Font.ITALIC)));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph("Salario Actual:					   	       " +user.getSalary(), FontFactory.getFont("arial",16,Font.ITALIC)));
+	        document.add(new Paragraph("  "));
+	        document.add(new Paragraph("Cantidad de creditos:			  	       "  +listaCredit.size(), FontFactory.getFont("arial",16,Font.ITALIC)));
+	        document.add(new Paragraph(" "));
+	        document.add(new Paragraph("Descuento Creditos:				  			" +     discountCredits(), FontFactory.getFont("arial",16,Font.ITALIC)));
+	        document.add(new Paragraph("  "));
+	        document.add(new Paragraph("Descuento Salud:				  	      	"+discountHealth(), FontFactory.getFont("arial",16,Font.ITALIC)));        
+	        document.add(new Paragraph("  "));
+	        document.add(new Paragraph("  "));
+	        document.add(new Paragraph("  "));
+	        document.add(new Paragraph("  "));
+	        document.add(new Paragraph("  "));
+	        document.add(new Paragraph("  "));
+	        document.add(paragraphFirmL);
+			document.add(paragraphFirm);
 			
-			document.close();
-
+	        document.close();
 		} catch (FileNotFoundException | DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

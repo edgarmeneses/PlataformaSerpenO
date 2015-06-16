@@ -31,9 +31,6 @@ public class SerpenpruebaUI extends UI{
 
 	@Override
 	protected void init(VaadinRequest request) {
-		
-		
-		
 //		VerticalLayout layout = new VerticalLayout();
 //		setContent(layout);
 //		
